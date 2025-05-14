@@ -40,3 +40,10 @@ build/
 ### DATABASE ###
 *.sqlite
 *.db
+### Environment files ###
+.env
+
+### Secrets ###
+*.jks
+.pem
+.key
