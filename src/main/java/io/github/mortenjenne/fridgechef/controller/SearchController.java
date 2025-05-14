@@ -21,20 +21,13 @@ import java.util.ResourceBundle;
 public class SearchController implements Initializable, SceneController {
     private AppManager appManager;
 
-    @FXML
-    private Button searchRecipeButton;
-    @FXML
-    private CheckBox isVegetarian;
-    @FXML
-    private ChoiceBox<String> chooseCuisineBox;
-    @FXML
-    private ChoiceBox<Ingredient> chooseIngredientBox1;
-    @FXML
-    private ChoiceBox<Ingredient> chooseIngredientBox2;
-    @FXML
-    private ChoiceBox<Ingredient> chooseIngredientBox3;
-    @FXML
-    private Button returnButton;
+    @FXML private Button searchRecipeButton;
+    @FXML private CheckBox isVegetarian;
+    @FXML private ChoiceBox<String> chooseCuisineBox;
+    @FXML private ChoiceBox<Ingredient> chooseIngredientBox1;
+    @FXML private ChoiceBox<Ingredient> chooseIngredientBox2;
+    @FXML private ChoiceBox<Ingredient> chooseIngredientBox3;
+    @FXML private Button returnButton;
 
     private final String[] cuisines = {"Chinese", "French", "Indian", "Italian", "Japanese", "Mexican", "Thai"};
     private List<Ingredient> ingredientsInFridge;
