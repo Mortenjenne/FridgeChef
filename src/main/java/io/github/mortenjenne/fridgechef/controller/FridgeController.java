@@ -22,31 +22,21 @@ import java.util.ResourceBundle;
 public class FridgeController implements Initializable, SceneController {
     private AppManager appManager;
 
-    @FXML
-    private Button addToFridgeButton;
-    @FXML
-    private Button returnButton;
-    @FXML
-    private Button searchButton;
-    @FXML
-    private Label searchLabel;
-    @FXML
-    private ImageView searchImage;
-    @FXML
-    private TextField searchText;
+    @FXML private Button addToFridgeButton;
+    @FXML private Button returnButton;
+    @FXML private Button searchButton;
+    @FXML private Button searchDishesButton;
+    @FXML private Button removeButton;
+    @FXML private Label searchLabel;
+    @FXML private ImageView searchImage;
+    @FXML private TextField searchText;
 
-    @FXML
-    ComboBox<Ingredient> comboBox;
+    @FXML ComboBox<Ingredient> comboBox;
 
-    @FXML
-    Button removeButton;
 
-    @FXML
-    ImageView fridge1_1, fridge1_2, fridge1_3, fridge1_4, fridge1_5;
-    @FXML
-    ImageView fridge2_1, fridge2_2, fridge2_3, fridge2_4, fridge2_5;
-    @FXML
-    ImageView fridge3_1, fridge3_2, fridge3_3, fridge3_4, fridge3_5;
+    @FXML ImageView fridge1_1, fridge1_2, fridge1_3, fridge1_4, fridge1_5;
+    @FXML ImageView fridge2_1, fridge2_2, fridge2_3, fridge2_4, fridge2_5;
+    @FXML ImageView fridge3_1, fridge3_2, fridge3_3, fridge3_4, fridge3_5;
 
     List<ImageView> fridgeDisplay = new ArrayList<>();
     private Ingredient ingredient;
@@ -68,17 +58,15 @@ public class FridgeController implements Initializable, SceneController {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addViewsToList();
 
-        searchButton.setOnAction(event ->
-            searchForIngredient());
+        searchButton.setOnAction(event -> searchForIngredient());
 
-        addToFridgeButton.setOnAction(event ->
-            addIngredientsToFridge());
+        addToFridgeButton.setOnAction(event -> addIngredientsToFridge());
 
-        removeButton.setOnAction(event ->
-                removeIngredientFromFridge());
+        removeButton.setOnAction(event -> removeIngredientFromFridge());
 
-        returnButton.setOnAction(event ->
-                appManager.switchTo(View.MAIN));
+        returnButton.setOnAction(event -> appManager.switchTo(View.MAIN));
+
+        searchDishesButton.setOnAction((event -> appManager.switchTo(View.SEARCH)));
     }
 
     private void removeIngredientFromFridge(){
