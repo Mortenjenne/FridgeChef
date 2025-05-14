@@ -67,6 +67,7 @@ public class SearchController implements Initializable, SceneController {
             searchString = selectedIngredientOne + "," + selectedIngredientTwo + "," + selectedIngredientThree;
 
             appManager.setSearchQuery(searchString);
+            appManager.switchTo(View.RESULT);
 
             System.out.println(searchString);
         });

@@ -27,7 +27,7 @@ public class Controller {
     public void searchRecipe() {
         String query = searchField.getText();
         try {
-            List<Dish> dishes = manager.getRecipesByTitle(query);
+            List<Dish> dishes = manager.getRecipesByName(query);
 
             if (dishes.size() >= 3) {
                 recipeImage1.setImage(new Image(dishes.get(0).getImageUrl()));

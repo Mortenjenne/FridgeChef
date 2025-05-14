@@ -1,6 +1,7 @@
 package io.github.mortenjenne.fridgechef.logic;
 
 import io.github.mortenjenne.fridgechef.model.Account;
+import io.github.mortenjenne.fridgechef.model.Dish;
 import io.github.mortenjenne.fridgechef.model.Ingredient;
 import io.github.mortenjenne.fridgechef.util.DatabaseReader;
 import io.github.mortenjenne.fridgechef.util.DatabaseWriter;
@@ -51,15 +52,7 @@ private String searchQuery;
         sceneNavigator.switchTo(view);
     }
 
-    public List<Ingredient> searchIngredients (String name){
-        List<Ingredient> ingredients = new ArrayList<>();
-        try {
-             ingredients = recipeManager.getIngredient(name);
-        } catch (Exception e){
-            System.out.println("Error loading ingredient search");
-        }
-        return ingredients;
-    }
+
 
     public List<Ingredient> loadFridgeIngredients(){
         List<Ingredient> storedIngredients = new ArrayList<>();
@@ -117,6 +110,26 @@ private String searchQuery;
 
     public boolean isPasswordIndentical(String password, String confirmPassword) {
         return password.equals(confirmPassword);
+    }
+
+    public List<Ingredient> searchIngredients (String name){
+        List<Ingredient> ingredients = new ArrayList<>();
+        try {
+            ingredients = recipeManager.getIngredient(name);
+        } catch (Exception e){
+            System.out.println("Error loading ingredient search");
+        }
+        return ingredients;
+    }
+
+    public List<Dish> searchRecipesByIngredientList (String ingredients){
+        List<Dish> dishes = new ArrayList<>();
+        try {
+            dishes = recipeManager.getRecipesByIngredients(ingredients);
+        } catch (Exception e){
+            System.out.println("Error loading ingredient search");
+        }
+        return dishes;
     }
 
 }

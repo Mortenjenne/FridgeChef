@@ -7,6 +7,7 @@ import io.github.mortenjenne.fridgechef.model.Dish;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.fxml.FXML;
 
@@ -36,20 +37,31 @@ public class ResultController implements Initializable, SceneController {
     @Override
     public void setAppManager(AppManager appManager) {
         this.appManager = appManager;
-        //searchResult = appManager.(appManager.getSearchQuery());
+        this.searchResult = appManager.searchRecipesByIngredientList(appManager.getSearchQuery());
+        showSearchResult();
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
         returnButton.setOnAction(event -> appManager.switchTo(View.SEARCH));
         dishOne.setOnMouseClicked(event -> appManager.switchTo(View.RECIPE));
         // dishOneImg.setOnMouseClicked(event -> appManager.switchTo(View.RECIPE));
     }
 
-    private void viewRecipe(){
-        // TODO vievRecipe() body
-    }
+    public void showSearchResult() {
 
+        if (searchResult.size() >= 3) {
+            //dishOneImg.setImage(new Image(dishes.get(0).getImageUrl()));
+            dishOne.setText(searchResult.get(0).getTitle());
+
+            //recipeImage2.setImage(new Image(dishes.get(1).getImageUrl()));
+            dishTwo.setText(searchResult.get(1).getTitle());
+
+            //recipeImage3.setImage(new Image(dishes.get(2).getImageUrl()));
+            dishThree.setText(searchResult.get(2).getTitle());
+        }
+    }
 
 }
