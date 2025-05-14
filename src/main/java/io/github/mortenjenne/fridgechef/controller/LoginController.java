@@ -36,6 +36,9 @@ public class LoginController implements Initializable, SceneController {
 
     private void login(){
         // TODO login() body
+        String email = emailTextField.getText();
+        String password = passwordTextField.getText();
+        appManager.login(email,password);
     }
 
     private void signUp(){

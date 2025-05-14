@@ -77,7 +77,9 @@ private String searchQuery;
 
     public void createAccount(String accountName, String email, String password) {
         this.currentUser = new Account(accountName, email, password);
-        //dbWriter.createAccount(accountName,email,password);
+        if(!dbReader.checkExistingAccount(email)) {
+            dbWriter.createAccount(email, accountName, password);
+        }
     }
 
     public boolean isEmailValid(String email) {

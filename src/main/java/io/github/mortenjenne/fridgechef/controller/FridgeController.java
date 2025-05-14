@@ -22,18 +22,12 @@ import java.util.ResourceBundle;
 public class FridgeController implements Initializable, SceneController {
     private AppManager appManager;
 
-    @FXML
-    private Button addToFridgeButton;
-    @FXML
-    private Button returnButton;
-    @FXML
-    private Button searchButton;
-    @FXML
-    private Label searchLabel;
-    @FXML
-    private ImageView searchImage;
-    @FXML
-    private TextField searchText;
+    @FXML private Button addToFridgeButton;
+    @FXML private Button returnButton;
+    @FXML private Button searchButton;
+    @FXML private Label searchLabel;
+    @FXML private ImageView searchImage;
+    @FXML private TextField searchText;
 
     @FXML
     ComboBox<Ingredient> comboBox;
