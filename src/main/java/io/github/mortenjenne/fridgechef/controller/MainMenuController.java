@@ -23,7 +23,6 @@ public class MainMenuController implements Initializable, SceneController {
         searchButton.setOnAction(event -> appManager.switchTo(View.SEARCH));
         favoriteDishButton.setOnAction(event -> appManager.switchTo(View.LOGIN));
         fridgeButton.setOnAction(event -> appManager.switchTo(View.FRIDGE));
-        fridgeButton.setOnAction(event -> appManager.switchTo(View.TEST));
         returnButton.setOnAction(event -> appManager.switchTo(View.LOGIN));
     }
 

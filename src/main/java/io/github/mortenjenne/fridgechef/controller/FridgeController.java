@@ -1,9 +1,9 @@
 package io.github.mortenjenne.fridgechef.controller;
 
 import io.github.mortenjenne.fridgechef.logic.AppManager;
-import io.github.mortenjenne.fridgechef.logic.RecipeManager;
 import io.github.mortenjenne.fridgechef.logic.SceneController;
-import io.github.mortenjenne.fridgechef.model.Fridge;
+import io.github.mortenjenne.fridgechef.logic.View;
+import io.github.mortenjenne.fridgechef.model.Account;
 import io.github.mortenjenne.fridgechef.model.Ingredient;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,10 +21,11 @@ import java.util.ResourceBundle;
 
 public class FridgeController implements Initializable, SceneController {
     private AppManager appManager;
-    private Fridge fridge;
 
     @FXML
     private Button addToFridgeButton;
+    @FXML
+    private Button returnButton;
     @FXML
     private Button searchButton;
     @FXML
@@ -51,43 +52,49 @@ public class FridgeController implements Initializable, SceneController {
     private Ingredient ingredient;
     private List<Ingredient> ingredientList = new ArrayList<>();
     private List<Ingredient> userFridge = new ArrayList<>();
+    private Account account;
 
 
     @Override
     public void setAppManager(AppManager appManager) {
         this.appManager = appManager;
-        this.fridge = appManager.getFridge();
+        this.account = appManager.getCurrentUser();
+
         //TODO loadStoredFridgeFromDatabase();
+
+        updateFridgeDisplay();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addViewsToList();
 
-        searchButton.setOnAction(event -> {
-            searchForIngredient();
-        });
 
-        addToFridgeButton.setOnAction(event -> {
-            addIngredientsToFridge();
-        });
+        searchButton.setOnAction(event ->
+            searchForIngredient());
+
+        addToFridgeButton.setOnAction(event ->
+            addIngredientsToFridge());
 
         removeButton.setOnAction(event ->
                 removeIngredientFromFridge());
+
+        returnButton.setOnAction(event ->
+                appManager.switchTo(View.MAIN));
     }
 
     private void removeIngredientFromFridge(){
         Ingredient selectedIngredient = comboBox.getValue();
-        fridge.removeIngredientFromFridge(selectedIngredient);
+        appManager.removeIngredientFromFridge(selectedIngredient);
         updateComboBox();
         updateFridgeDisplay();
 
     }
 
     private void updateComboBox(){
-        userFridge = fridge.getIngredientsInFridge();
+        userFridge = appManager.getIngredientsInFridge();
         if(!userFridge.isEmpty()) {
-            comboBox.getItems().setAll(fridge.getIngredientsInFridge());
+            comboBox.getItems().setAll(appManager.getIngredientsInFridge());
         }
     }
 
@@ -110,7 +117,7 @@ public class FridgeController implements Initializable, SceneController {
             view.setImage(null);
         }
 
-        List<Ingredient> updatedFridge = fridge.getIngredientsInFridge();
+        List<Ingredient> updatedFridge = appManager.getIngredientsInFridge();
 
         for (int i = 0; i < updatedFridge.size() && i < fridgeDisplay.size(); i++) {
             fridgeDisplay.get(i).setImage(new Image(updatedFridge.get(i).getApiURL()));
@@ -136,7 +143,7 @@ public class FridgeController implements Initializable, SceneController {
 
     private void addIngredientsToFridge(){
         if (ingredient == null) return;
-        fridge.addIngredientToFridge(ingredient);
+        appManager.addIngredientToFridge(ingredient);
         updateComboBox();
 
         for (int i = 0; i < fridgeDisplay.size(); i++) {
@@ -153,6 +160,5 @@ public class FridgeController implements Initializable, SceneController {
                 fridge2_1, fridge2_2, fridge2_3, fridge2_4, fridge2_5,
                 fridge3_1, fridge3_2, fridge3_3, fridge3_4, fridge3_5));
     }
-
 
 }

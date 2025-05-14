@@ -1,9 +1,7 @@
 package io.github.mortenjenne.fridgechef.logic;
 
 import io.github.mortenjenne.fridgechef.model.Account;
-import io.github.mortenjenne.fridgechef.model.Fridge;
 import io.github.mortenjenne.fridgechef.model.Ingredient;
-import io.github.mortenjenne.fridgechef.util.DatabaseConnector;
 import io.github.mortenjenne.fridgechef.util.DatabaseReader;
 import io.github.mortenjenne.fridgechef.util.DatabaseWriter;
 
@@ -16,11 +14,27 @@ private Account currentUser;
 private SceneNavigator sceneNavigator;
 private DatabaseReader dbReader = new DatabaseReader();
 private DatabaseWriter dbWriter = new DatabaseWriter();
-private Fridge fridge = new Fridge();
 
-    public AppManager(SceneNavigator sceneNavigator, RecipeManager recipeManager) {
+    public AppManager(SceneNavigator sceneNavigator, RecipeManager recipeManager, Account currentUser) {
         this.recipeManager = recipeManager;
-        this.sceneNavigator = sceneNavigator;;
+        this.sceneNavigator = sceneNavigator;
+        this.currentUser = currentUser;
+    }
+
+    public Account getCurrentUser(){
+        return this.currentUser;
+    }
+
+    public void addIngredientToFridge(Ingredient ingredient){
+        currentUser.addIngredientToFridge(ingredient);
+    }
+
+    public void removeIngredientFromFridge(Ingredient ingredient){
+        currentUser.removeIngredientFromFridge(ingredient);
+    }
+
+    public List<Ingredient> getIngredientsInFridge(){
+        return currentUser.getIngredientsInFridge();
     }
 
     public void switchTo(View view) {
@@ -95,9 +109,6 @@ private Fridge fridge = new Fridge();
         return password.equals(confirmPassword);
     }
 
-    public Fridge getFridge() {
-        return fridge;
-    }
 }
 
     /*public String validatePasswordRequirements(String password) {

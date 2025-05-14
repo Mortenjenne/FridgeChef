@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.effect.Glow?>
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080" style="-fx-background-color: #d59faa;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.mortenjenne.fridgechef.controller.FridgeController">
     <!-- Background Image -->
     <ImageView fx:id="backgroundImage" fitHeight="720.0" fitWidth="1080.0">
@@ -101,4 +102,12 @@
    <effect>
       <InnerShadow />
    </effect>
+    <Button fx:id="returnButton" mnemonicParsing="false" style="-fx-background-color: #d59faa;" text="&lt;">
+        <font>
+            <Font size="14.0" />
+        </font>
+        <effect>
+            <Glow />
+        </effect>
+    </Button>
 </StackPane>
