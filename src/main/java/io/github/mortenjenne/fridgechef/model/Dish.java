@@ -28,4 +28,6 @@ public class Dish {
     public String getImageUrl(){
         return this.image;
     }
+
+    public String toString(){return this.title;}
 }

@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="720.0" prefWidth="1080" style="-fx-background-color: #d59faa;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.mortenjenne.fridgechef.controller.ResultController">
+<BorderPane prefHeight="720.0" prefWidth="1080" style="-fx-background-color: #d59faa;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.mortenjenne.fridgechef.controller.ResultController">
    <effect>
       <InnerShadow />
    </effect>
@@ -86,6 +93,7 @@
                      </padding>
                   </Label>
                   <ImageView fx:id="dishFiveImg" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="prevButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="126.0" text="Prev" />
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="0.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -99,6 +107,7 @@
                      </padding>
                   </Label>
                   <ImageView fx:id="dishSixImg" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="nextButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Next" />
                </children>
             </VBox>
          </children>

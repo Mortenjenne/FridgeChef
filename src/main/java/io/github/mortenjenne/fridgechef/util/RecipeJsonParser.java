@@ -3,6 +3,7 @@ package io.github.mortenjenne.fridgechef.util;
 import com.google.gson.Gson;
 import io.github.mortenjenne.fridgechef.model.Dish;
 import io.github.mortenjenne.fridgechef.model.Ingredient;
+import io.github.mortenjenne.fridgechef.model.Recipe;
 
 import java.util.List;
 
@@ -17,5 +18,10 @@ public class RecipeJsonParser {
     public List<Ingredient> parseIngredients(String jsonResponse) {
         IngredientResponse response = gson.fromJson(jsonResponse, IngredientResponse.class);
         return response.getResults();
+    }
+
+    public String parseRecipeImage(String jsonRespone){
+        Recipe recipe = gson.fromJson(jsonRespone,Recipe.class);
+        return recipe.getUrl();
     }
 }

@@ -17,12 +17,17 @@ private DatabaseReader dbReader = new DatabaseReader();
 private DatabaseWriter dbWriter = new DatabaseWriter();
 
 private String searchQuery;
+private Dish selectedDish;
 
     public AppManager(SceneNavigator sceneNavigator, RecipeManager recipeManager, Account currentUser) {
         this.recipeManager = recipeManager;
         this.sceneNavigator = sceneNavigator;
         this.currentUser = currentUser;
     }
+
+    public void setSelectedRecipe(Dish selectedDish){this.selectedDish = selectedDish;}
+
+    public int getSelectedDish(){return this.selectedDish.getId();}
 
     public void setSearchQuery(String query){
         this.searchQuery = query;
