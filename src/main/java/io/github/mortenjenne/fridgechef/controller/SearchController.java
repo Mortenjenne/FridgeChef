@@ -21,15 +21,22 @@ import java.util.ResourceBundle;
 public class SearchController implements Initializable, SceneController {
     private AppManager appManager;
 
-    @FXML private Button searchRecipeButton;
-    @FXML private CheckBox isVegetarian;
-    @FXML private ChoiceBox<String> chooseCuisineBox;
-    @FXML private ChoiceBox<Ingredient> chooseIngredientBox1;
-    @FXML private ChoiceBox<Ingredient> chooseIngredientBox2;
-    @FXML private ChoiceBox<Ingredient> chooseIngredientBox3;
-    @FXML private Button returnButton;
+    @FXML
+    private Button searchRecipeButton;
+    @FXML
+    private CheckBox isVegetarian;
+    @FXML
+    private ChoiceBox<String> chooseCuisineBox;
+    @FXML
+    private ChoiceBox<Ingredient> chooseIngredientBox1;
+    @FXML
+    private ChoiceBox<Ingredient> chooseIngredientBox2;
+    @FXML
+    private ChoiceBox<Ingredient> chooseIngredientBox3;
+    @FXML
+    private Button returnButton;
 
-    private String[] cuisines = {"Chinese","French", "Indian", "Italian", "Japanese", "Mexican", "Thai"};
+    private String[] cuisines = {"Chinese", "French", "Indian", "Italian", "Japanese", "Mexican", "Thai"};
     private List<Ingredient> ingredientsInFridge;
 
     private String selectedCuisine;
@@ -40,56 +47,76 @@ public class SearchController implements Initializable, SceneController {
 
 
     @Override
-    public void setAppManager(AppManager appManager){
+    public void setAppManager(AppManager appManager) {
         this.appManager = appManager;
-        this.ingredientsInFridge = appManager.getIngredientsInFridge();
+        fillChoiceBoxes();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //searchRecipeButton.setOnAction(event -> appManager.switchTo(View.RESULT));
-        System.out.println(ingredientsInFridge);
+        // searchRecipeButton.setOnAction(event -> appManager.switchTo(View.RESULT));
         returnButton.setOnAction(event -> appManager.switchTo(View.MAIN));
-
-        chooseCuisineBox.getItems().addAll(cuisines);
-
-        //chooseIngredientBox1.getItems().addAll(addIngredient(chooseIngredientBox1,ingredientsInFridge));
-        //addIngredient(chooseIngredientBox1,ingredientsInFridge);
-        chooseIngredientBox1.getItems().addAll(ingredientsInFridge);
-        chooseIngredientBox2.getItems().addAll(ingredientsInFridge);
-        chooseIngredientBox3.getItems().addAll(ingredientsInFridge);
 
 
         searchRecipeButton.setOnAction(event -> {
-                    selectedCuisine = chooseCuisineBox.getValue();
-                    selectedIngredientOne = chooseIngredientBox1.getValue().toString();
-                    selectedIngredientTwo = chooseIngredientBox2.getValue().toString();
-                    selectedIngredientThree = chooseIngredientBox3.getValue().toString();
+            selectedCuisine = chooseCuisineBox.getValue();
+            selectedIngredientOne = chooseIngredientBox1.getValue().toString();
+            selectedIngredientTwo = chooseIngredientBox2.getValue().toString();
+            selectedIngredientThree = chooseIngredientBox3.getValue().toString();
 
-                    searchString = selectedCuisine + "," + selectedIngredientOne + "," + selectedIngredientTwo + "," + selectedIngredientThree;
+            searchString = selectedIngredientOne + "," + selectedIngredientTwo + "," + selectedIngredientThree;
+
+            appManager.setSearchQuery(searchString);
+
             System.out.println(searchString);
         });
     }
 
-    private Ingredient addIngredient(ChoiceBox choiceBox, List ingredients){
+    private Ingredient addIngredient(ChoiceBox choiceBox, List ingredients) {
         chooseIngredientBox1.getItems().addAll(ingredients);
         Ingredient ingredient = (Ingredient) choiceBox.getValue();
         ingredients.remove(ingredient);
         return ingredient;
     }
 
-    private void updateChoiceBox(Ingredient ingredient){
-        if(chooseIngredientBox1.getValue() == null){
-            ingredientsInFridge.remove(ingredient);
-        }
-
-    }
-
     // Search methods from Class Diagram not added due to mismatch with "scene"
 
-    private boolean isVegetarian(boolean isVegetarian){
+    private boolean isVegetarian(boolean isVegetarian) {
         // TODO change name an code isVegetarian() body
         boolean findAppropriateName = isVegetarian;
         return findAppropriateName;
     }
+
+    public void setIngredientsInFridge(List<Ingredient> ingredients) {
+        this.ingredientsInFridge = ingredients;
+    }
+
+    private void fillChoiceBoxes() {
+        this.ingredientsInFridge = appManager.getIngredientsInFridge();
+        chooseCuisineBox.getItems().addAll(cuisines);
+        chooseIngredientBox1.getItems().addAll(ingredientsInFridge);
+        chooseIngredientBox2.getItems().addAll(ingredientsInFridge);
+        chooseIngredientBox3.getItems().addAll(ingredientsInFridge);
+    }
+
+
+    /*
+    private void addlistener(ChoiceBox<Ingredient> box){
+        box.getSelectionModel().selectedItemProperty().addListener((obs,oldVal,newValue) ->) {
+        updateChoiceBoxes();
+
+    }
+    private void updateChoiceBoxes(){
+        Ingredient selectedOne = chooseIngredientBox1.getValue();
+        Ingredient selectedTwo = chooseIngredientBox2.getValue();
+        Ingredient selectedThree = chooseIngredientBox3.getValue();
+
+        List<Ingredient> selected = new ArrayList<>();
+        if (selectedOne != null)selected.add(selectedOne);
+        if (selectedTwo != null)selected.add(selectedTwo);
+        if (selectedThree != null)selected.add(selectedThree);
+
+    }
+
+     */
 }

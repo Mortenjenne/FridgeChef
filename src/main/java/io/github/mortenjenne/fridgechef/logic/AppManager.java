@@ -15,10 +15,20 @@ private SceneNavigator sceneNavigator;
 private DatabaseReader dbReader = new DatabaseReader();
 private DatabaseWriter dbWriter = new DatabaseWriter();
 
+private String searchQuery;
+
     public AppManager(SceneNavigator sceneNavigator, RecipeManager recipeManager, Account currentUser) {
         this.recipeManager = recipeManager;
         this.sceneNavigator = sceneNavigator;
         this.currentUser = currentUser;
+    }
+
+    public void setSearchQuery(String query){
+        this.searchQuery = query;
+    }
+
+    public String getSearchQuery(){
+        return this.searchQuery;
     }
 
     public Account getCurrentUser(){

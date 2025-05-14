@@ -59,16 +59,14 @@ public class FridgeController implements Initializable, SceneController {
     public void setAppManager(AppManager appManager) {
         this.appManager = appManager;
         this.account = appManager.getCurrentUser();
-
         //TODO loadStoredFridgeFromDatabase();
-
         updateFridgeDisplay();
+        updateComboBox();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addViewsToList();
-
 
         searchButton.setOnAction(event ->
             searchForIngredient());
@@ -88,7 +86,6 @@ public class FridgeController implements Initializable, SceneController {
         appManager.removeIngredientFromFridge(selectedIngredient);
         updateComboBox();
         updateFridgeDisplay();
-
     }
 
     private void updateComboBox(){
