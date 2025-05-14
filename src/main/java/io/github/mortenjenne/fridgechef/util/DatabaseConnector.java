@@ -32,7 +32,7 @@ public class DatabaseConnector {
         String dburl = env.get("AIVEN_DB_URL");
 
         if (dburl == null) {
-            System.err.println("AIVEN_DB_URL not found in .env");
+            System.err.println("AIVEN_DB_URL not found in .env..");
             return;
         }
 
