@@ -51,7 +51,7 @@ public class ResultController implements Initializable, SceneController {
     private List<Label> labels = new ArrayList<>();
 
     private int currentPage = 0;
-    private int resultPerPage = 6;//TODO Denne variable skal ændres hvis vi viser 9 views!
+    private final int resultPerPage = 6;//TODO Denne variable skal ændres hvis vi viser 9 views!
 
     @Override
     public void setAppManager(AppManager appManager) {
@@ -97,7 +97,6 @@ public class ResultController implements Initializable, SceneController {
     private void showSearchResult() {
         addViewsToList();
         labelsToList();
-        //fillViewWithSearchResult();
         updatePage();
     }
 
@@ -109,22 +108,13 @@ public class ResultController implements Initializable, SceneController {
         labels.addAll(List.of(dishOne, dishTwo, dishThree, dishFour, dishFive, dishSix));
     }
 
-    private void fillViewWithSearchResult() {
-        if (!searchResult.isEmpty()) {
-            for (int i = 0; i < views.size(); i++) {
-                views.get(i).setImage(new Image(searchResult.get(i).getImageUrl()));
-                labels.get(i).setText(searchResult.get(i).getTitle());
-            }
-        } else {
-            dishOne.setText("No recipe found matching your ingredients.");
-        }
-    }
-
     private void showRecipe(int index){
         int dishIndex = currentPage * resultPerPage + index;
         if(dishIndex < searchResult.size()) {
             Dish selected = searchResult.get(dishIndex);
+
             appManager.setSelectedRecipe(selected);
+            System.out.println(appManager.getSelectedDish());
             appManager.switchTo(View.RECIPE);
             System.out.println(appManager.getSelectedDish());
         }

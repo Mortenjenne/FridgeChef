@@ -3,6 +3,7 @@ package io.github.mortenjenne.fridgechef.logic;
 import io.github.mortenjenne.fridgechef.model.Account;
 import io.github.mortenjenne.fridgechef.model.Dish;
 import io.github.mortenjenne.fridgechef.model.Ingredient;
+import io.github.mortenjenne.fridgechef.model.Recipe;
 import io.github.mortenjenne.fridgechef.util.DatabaseReader;
 import io.github.mortenjenne.fridgechef.util.DatabaseWriter;
 
@@ -23,6 +24,16 @@ private Dish selectedDish;
         this.recipeManager = recipeManager;
         this.sceneNavigator = sceneNavigator;
         this.currentUser = currentUser;
+    }
+
+    public List<Recipe> getRecipeView(int recipeId){
+        List<Recipe> recipes = new ArrayList<>();
+        try {
+            recipes = recipeManager.getImageUrl(recipeId);
+        } catch (Exception e){
+            System.out.println("Could not find image");
+        }
+        return recipes;
     }
 
     public void setSelectedRecipe(Dish selectedDish){this.selectedDish = selectedDish;}

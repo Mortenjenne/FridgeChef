@@ -1,6 +1,7 @@
 package io.github.mortenjenne.fridgechef.logic;
 
 import io.github.mortenjenne.fridgechef.model.Ingredient;
+import io.github.mortenjenne.fridgechef.model.Recipe;
 import io.github.mortenjenne.fridgechef.util.RecipeApiClient;
 import io.github.mortenjenne.fridgechef.util.RecipeJsonParser;
 import io.github.mortenjenne.fridgechef.model.Dish;
@@ -16,9 +17,9 @@ public class RecipeManager {
         this.jsonParser = new RecipeJsonParser();
     }
 
-    public String getImageUrl(int recipeId) throws Exception{
-        String jsonRespone = apiClient.fetchRecipeWidget(recipeId);
-        return jsonParser.parseRecipeImage(jsonRespone);
+    public List<Recipe> getImageUrl(int recipeId) throws Exception{
+        String jsonResponse = apiClient.fetchRecipeWidget(recipeId);
+        return jsonParser.parseRecipeImage(jsonResponse);
     }
 
     public List<Dish> getRecipesByIngredients(String ingredients) throws Exception{
