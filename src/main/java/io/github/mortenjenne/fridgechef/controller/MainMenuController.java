@@ -13,6 +13,8 @@ import java.util.ResourceBundle;
 public class MainMenuController implements Initializable, SceneController {
     private AppManager appManager;
 
+    private SearchController searchController = new SearchController();
+
     @FXML private Button searchButton;
     @FXML private Button favoriteDishButton;
     @FXML private Button fridgeButton;
@@ -20,10 +22,12 @@ public class MainMenuController implements Initializable, SceneController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        searchButton.setOnAction(event -> appManager.switchTo(View.SEARCH));
+        searchButton.setOnAction(event -> {
+            // searchController.setIngredientsInFridge(appManager.getIngredientsInFridge());
+            appManager.switchTo(View.SEARCH);
+        });
         favoriteDishButton.setOnAction(event -> appManager.switchTo(View.LOGIN));
         fridgeButton.setOnAction(event -> appManager.switchTo(View.FRIDGE));
-        fridgeButton.setOnAction(event -> appManager.switchTo(View.TEST));
         returnButton.setOnAction(event -> appManager.switchTo(View.LOGIN));
     }
 

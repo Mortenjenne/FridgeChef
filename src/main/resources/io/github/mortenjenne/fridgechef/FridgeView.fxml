@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080" style="-fx-background-color: #d59faa;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.mortenjenne.fridgechef.controller.FridgeController">
+<?import javafx.scene.effect.Glow?>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080" style="-fx-background-color: #d59faa;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.mortenjenne.fridgechef.controller.FridgeController">
     <!-- Background Image -->
     <ImageView fx:id="backgroundImage" fitHeight="720.0" fitWidth="1080.0">
         <image>
@@ -16,17 +25,17 @@
    <GridPane alignment="CENTER" hgap="10.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="743.0" prefWidth="600.0" vgap="10.0">
      <columnConstraints>
          <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.3333333333334" minWidth="10.0" prefWidth="85.99995930989583" />
-         <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.3333333333334" minWidth="10.0" prefWidth="204.00002034505212" />
-         <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.3333333333334" minWidth="10.0" prefWidth="127.99997965494788" />
-         <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.3333333333334" minWidth="10.0" prefWidth="102.0" />
-         <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.3333333333334" minWidth="0.0" prefWidth="89.00008138020837" />
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.3333333333334" minWidth="10.0" prefWidth="197.00004069010413" />
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.3333333333334" minWidth="10.0" prefWidth="108.33329264322919" />
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.3333333333334" minWidth="10.0" prefWidth="86.3333740234375" />
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.3333333333334" minWidth="0.0" prefWidth="88.99995930989587" />
          <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.3333333333334" minWidth="10.0" prefWidth="98.66666666666663" />
-       <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.3333333333334" minWidth="8.666707356770871" prefWidth="98.0" />
-       <ColumnConstraints hgrow="SOMETIMES" maxWidth="601.0" minWidth="10.0" prefWidth="335.33329264322924" />
+       <ColumnConstraints hgrow="SOMETIMES" maxWidth="603.3333333333334" minWidth="8.666707356770871" prefWidth="83.333251953125" />
+       <ColumnConstraints hgrow="SOMETIMES" maxWidth="601.0" minWidth="10.0" prefWidth="286.00008138020826" />
      </columnConstraints>
      <rowConstraints>
-         <RowConstraints maxHeight="635.0" minHeight="10.0" prefHeight="74.66665649414062" vgrow="SOMETIMES" />
-         <RowConstraints maxHeight="635.0" minHeight="10.0" prefHeight="114.3333536783854" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="635.0" minHeight="10.0" prefHeight="92.00000254313152" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="635.0" minHeight="10.0" prefHeight="81.33333079020183" vgrow="SOMETIMES" />
          <RowConstraints maxHeight="635.0" minHeight="10.0" prefHeight="94.99997965494794" vgrow="SOMETIMES" />
          <RowConstraints maxHeight="635.0" minHeight="10.0" prefHeight="36.666666666666686" vgrow="SOMETIMES" />
        <RowConstraints maxHeight="635.0" minHeight="10.0" prefHeight="111.99997965494794" vgrow="SOMETIMES" />
@@ -41,12 +50,13 @@
          <ImageView fitHeight="87.0" fitWidth="100.0" layoutX="577.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1" />
          <ImageView fitHeight="87.0" fitWidth="100.0" layoutX="683.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1" />
          <ImageView fx:id="fridge1_1" fitHeight="98.0" fitWidth="125.0" layoutX="783.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-         <ImageView fx:id="fridge1_2" fitHeight="73.0" fitWidth="95.0" layoutX="364.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-         <ImageView fx:id="fridge1_3" fitHeight="73.0" fitWidth="95.0" layoutX="472.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-         <ImageView fx:id="fridge1_4" fitHeight="73.0" fitWidth="95.0" layoutX="577.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+         <ImageView fx:id="fridge1_2" fitHeight="101.0" fitWidth="95.0" layoutX="364.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+         <ImageView fx:id="fridge1_3" fitHeight="96.0" fitWidth="95.0" layoutX="472.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+         <ImageView fx:id="fridge1_4" fitHeight="92.0" fitWidth="95.0" layoutX="577.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="4" />
          <ImageView fx:id="fridge1_5" fitHeight="116.0" fitWidth="89.0" layoutX="683.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-         <ImageView fx:id="fridge2_1" fitHeight="73.0" fitWidth="99.0" layoutX="783.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+         <ImageView fx:id="fridge2_1" fitHeight="76.0" fitWidth="105.0" layoutX="783.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="5" />
          <ImageView fx:id="fridge2_2" fitHeight="73.0" fitWidth="99.0" layoutX="364.0" layoutY="574.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+         <ImageView fx:id="fridge2_3" fitHeight="96.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="5" />
          <ImageView fx:id="fridge2_4" fitHeight="73.0" fitWidth="92.0" layoutX="472.0" layoutY="574.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="5" />
          <ImageView fx:id="fridge2_5" fitHeight="73.0" fitWidth="92.0" layoutX="683.0" layoutY="574.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="5" />
          <VBox prefHeight="113.0" prefWidth="192.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -66,7 +76,7 @@
          <ImageView fx:id="fridge3_5" fitHeight="81.0" fitWidth="96.0" layoutX="661.0" layoutY="580.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="6" />
          <VBox prefHeight="93.0" prefWidth="86.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <children>
-               <Label fx:id="searchLabel" prefHeight="17.0" prefWidth="99.0">
+               <Label fx:id="searchLabel" prefHeight="20.0" prefWidth="190.0" textFill="#ef0606">
                   <font>
                      <Font size="14.0" />
                   </font>
@@ -76,9 +86,28 @@
             </children>
          </VBox>
          <ImageView fx:id="fridge3_1" fitHeight="88.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+         <VBox prefHeight="107.0" prefWidth="306.0" GridPane.columnIndex="7" GridPane.rowIndex="1">
+            <children>
+               <Label text="Remove ingredients from your fridge">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <Button fx:id="removeButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="117.0" text="Remove" />
+               <ComboBox fx:id="comboBox" prefHeight="25.0" prefWidth="233.0" promptText="Remove ingredient from your fridge" />
+            </children>
+         </VBox>
       </children>
    </GridPane>
    <effect>
       <InnerShadow />
    </effect>
+    <Button fx:id="returnButton" mnemonicParsing="false" style="-fx-background-color: #d59faa;" text="&lt;">
+        <font>
+            <Font size="14.0" />
+        </font>
+        <effect>
+            <Glow />
+        </effect>
+    </Button>
 </StackPane>

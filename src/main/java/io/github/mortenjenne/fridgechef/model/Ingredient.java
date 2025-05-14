@@ -32,4 +32,8 @@ public class Ingredient {
         return this.apiURL + this.image;
     }
 
+    public String toString(){
+        return this.name;
+    }
+
 }

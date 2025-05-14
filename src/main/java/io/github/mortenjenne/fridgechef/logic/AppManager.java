@@ -2,7 +2,6 @@ package io.github.mortenjenne.fridgechef.logic;
 
 import io.github.mortenjenne.fridgechef.model.Account;
 import io.github.mortenjenne.fridgechef.model.Ingredient;
-import io.github.mortenjenne.fridgechef.util.DatabaseConnector;
 import io.github.mortenjenne.fridgechef.util.DatabaseReader;
 import io.github.mortenjenne.fridgechef.util.DatabaseWriter;
 
@@ -16,9 +15,36 @@ private SceneNavigator sceneNavigator;
 private DatabaseReader dbReader = new DatabaseReader();
 private DatabaseWriter dbWriter = new DatabaseWriter();
 
-    public AppManager(SceneNavigator sceneNavigator, RecipeManager recipeManager) {
+private String searchQuery;
+
+    public AppManager(SceneNavigator sceneNavigator, RecipeManager recipeManager, Account currentUser) {
         this.recipeManager = recipeManager;
         this.sceneNavigator = sceneNavigator;
+        this.currentUser = currentUser;
+    }
+
+    public void setSearchQuery(String query){
+        this.searchQuery = query;
+    }
+
+    public String getSearchQuery(){
+        return this.searchQuery;
+    }
+
+    public Account getCurrentUser(){
+        return this.currentUser;
+    }
+
+    public void addIngredientToFridge(Ingredient ingredient){
+        currentUser.addIngredientToFridge(ingredient);
+    }
+
+    public void removeIngredientFromFridge(Ingredient ingredient){
+        currentUser.removeIngredientFromFridge(ingredient);
+    }
+
+    public List<Ingredient> getIngredientsInFridge(){
+        return currentUser.getIngredientsInFridge();
     }
 
     public void switchTo(View view) {
@@ -33,6 +59,13 @@ private DatabaseWriter dbWriter = new DatabaseWriter();
             System.out.println("Error loading ingredient search");
         }
         return ingredients;
+    }
+
+    public List<Ingredient> loadFridgeIngredients(){
+        List<Ingredient> storedIngredients = new ArrayList<>();
+        //TODO Vi skal kunne hente en brugers ingredienser fra databasen og dermed få det vist i køle og opskriftsøgning
+        //storedIngredients = Dbreader.getUserIngredients()
+        return storedIngredients;
     }
 
     public boolean login(String email, String password) {
