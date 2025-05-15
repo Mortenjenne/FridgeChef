@@ -28,12 +28,6 @@
             <BorderPane.margin>
                 <Insets left="20.0" top="20.0" />
             </BorderPane.margin>
-         <effect>
-            <InnerShadow>
-               <input>
-                  <DropShadow />
-               </input></InnerShadow>
-         </effect>
         </HBox>
     </top>
    <center>
@@ -76,7 +70,7 @@
             <ImageView fx:id="fridge2_5" fitHeight="60.0" fitWidth="60.0" layoutX="683.0" layoutY="574.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4" />
             <VBox alignment="CENTER" prefHeight="91.0" prefWidth="213.0" spacing="5.0" GridPane.columnIndex="1">
                <children>
-                  <Label prefHeight="31.0" prefWidth="121.0" style="-fx-background-color: #d59faa; -fx-font-style: italic; -fx-font-weight: bold;" text="  Add ingredients">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #d59faa; -fx-font-style: italic; -fx-font-weight: bold;" text="  Add ingredients">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -93,9 +87,6 @@
                         <Glow />
                      </effect></Button>
                </children>
-               <effect>
-                  <DropShadow />
-               </effect>
             </VBox>
             <ImageView fx:id="fridge3_2" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="5" />
             <ImageView fx:id="fridge3_3" fitHeight="60.0" fitWidth="60.0" layoutX="453.0" layoutY="580.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="5" />
@@ -111,9 +102,6 @@
                                  <font>
                                     <Font name="System Bold Italic" size="14.0" />
                                  </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
                               </Label>
                               <ImageView fx:id="searchImage" fitHeight="75.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
@@ -128,7 +116,7 @@
             <ImageView fx:id="fridge3_1" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="5" />
             <VBox alignment="CENTER" prefHeight="156.0" prefWidth="349.0" spacing="5.0" GridPane.columnIndex="7">
                <children>
-                  <Label prefHeight="20.0" prefWidth="143.0" style="-fx-background-color: #d59faa; -fx-font-style: italic; -fx-font-weight: bold;" text=" Remove ingredients">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #d59faa; -fx-font-style: italic; -fx-font-weight: bold;" text=" Remove ingredients">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -145,17 +133,8 @@
                         <Glow />
                      </effect></Button>
                </children>
-               <effect>
-                  <DropShadow />
-               </effect>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <effect>
-                  <InnerShadow>
-                     <input>
-                        <DropShadow />
-                     </input></InnerShadow>
-               </effect>
                <children>
                   <Button fx:id="addToFridgeButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="92.0" style="-fx-background-color: #d59faa;" text="Add to fridge">
                      <font>
@@ -178,9 +157,6 @@
                      </effect>
                   </Button>
                </children>
-               <effect>
-                  <DropShadow />
-               </effect>
             </VBox>
          </children>
       </GridPane>

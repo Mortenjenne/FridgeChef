@@ -4,7 +4,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
 <BorderPane prefHeight="720.0" prefWidth="1080" style="-fx-background-color: #d59faa;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.mortenjenne.fridgechef.controller.MainMenuController">
@@ -61,13 +60,6 @@
                </effect></Button>
 
          </children>
-         <effect>
-            <InnerShadow height="23.93" width="18.07">
-               <color>
-                  <Color red="0.115" green="0.118" blue="0.113" />
-               </color>
-            </InnerShadow>
-         </effect>
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>

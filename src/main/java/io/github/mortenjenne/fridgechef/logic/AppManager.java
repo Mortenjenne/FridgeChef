@@ -38,7 +38,11 @@ private Dish selectedDish;
 
     public void setSelectedRecipe(Dish selectedDish){this.selectedDish = selectedDish;}
 
-    public int getSelectedDish(){return this.selectedDish.getId();}
+    public Dish getSelectedDish(){return this.selectedDish;}
+
+    public int getSelectedDishId(){return this.selectedDish.getId();}
+
+    public String getSelectedDishTitle(){return this.selectedDish.getTitle();}
 
     public void setSearchQuery(String query){
         this.searchQuery = query;
@@ -52,8 +56,13 @@ private Dish selectedDish;
         return this.currentUser;
     }
 
+    public void addToFavoriteDishes(Dish selectedDish) {
+        currentUser.addToFavorites(selectedDish);
+    }
+
     public void addIngredientToFridge(Ingredient ingredient){
         currentUser.addIngredientToFridge(ingredient);
+
     }
 
     public void removeIngredientFromFridge(Ingredient ingredient){
@@ -149,27 +158,7 @@ private Dish selectedDish;
         }
         return dishes;
     }
-
 }
 
-    /*public String validatePasswordRequirements(String password) {
-        if (password == null || password.trim().isEmpty()) {
-            return "Password cannot be empty.";
-        }
-        if (password.length() < 6) {
-            return "Password must be at least 6 characters long.";
-        }
-        if (!password.matches(".*[A-Z].*")) {
-            return "Password must contain at least one uppercase letter.";
-        }
-        if (!password.matches(".*[a-z].*")) {
-            return "Password must contain at least one lowercase letter.";
-        }
-        if (!password.matches(".*\\d.*")) {
-            return "Password must contain at least one digit.";
-        }
-        return ""; // Return an empty string as a success indicator
-    }
-    */
 
 

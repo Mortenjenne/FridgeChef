@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="720.0" prefWidth="1080" style="-fx-background-color: #d59faa;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.mortenjenne.fridgechef.controller.FavoritesController">
+    <effect>
+        <InnerShadow />
+    </effect>
+    <center>
+        <GridPane alignment="CENTER" prefWidth="1080.0" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <VBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="100.0">
+                    <children>
+                        <Label fx:id="dishOne" text="Dish 1">
+                            <font>
+                                <Font name="System Bold Italic" size="16.0" />
+                            </font>
+                            <padding>
+                                <Insets top="20.0" />
+                            </padding>
+                        </Label>
+                        <ImageView fx:id="dishOneImg" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                            <effect>
+                                <InnerShadow />
+                            </effect></ImageView>
+                    </children>
+                </VBox>
+                <VBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="100.0" GridPane.columnIndex="1">
+                    <children>
+                        <Label fx:id="dishTwo" text="Dish 2">
+                            <font>
+                                <Font name="System Bold Italic" size="16.0" />
+                            </font>
+                            <padding>
+                                <Insets top="20.0" />
+                            </padding>
+                        </Label>
+                        <ImageView fx:id="dishTwoImg" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                            <effect>
+                                <InnerShadow />
+                            </effect></ImageView>
+                    </children>
+                </VBox>
+                <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="0.0" prefWidth="100.0" GridPane.columnIndex="2">
+                    <children>
+                        <Label fx:id="dishThree" text="Dish 3">
+                            <font>
+                                <Font name="System Bold Italic" size="16.0" />
+                            </font>
+                            <padding>
+                                <Insets top="20.0" />
+                            </padding>
+                        </Label>
+                        <ImageView fx:id="dishThreeImg" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                            <effect>
+                                <InnerShadow />
+                            </effect></ImageView>
+                    </children>
+                </VBox>
+                <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="0.0" prefWidth="100.0" GridPane.rowIndex="1">
+                    <children>
+                        <Label fx:id="dishFour" text="Dish 4">
+                            <font>
+                                <Font name="System Bold Italic" size="16.0" />
+                            </font>
+                            <padding>
+                                <Insets top="20.0" />
+                            </padding>
+                        </Label>
+                        <ImageView fx:id="dishFourImg" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                            <effect>
+                                <InnerShadow />
+                            </effect></ImageView>
+                    </children>
+                </VBox>
+                <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="0.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <children>
+                        <Label fx:id="dishFive" text="Dish 5">
+                            <font>
+                                <Font name="System Bold Italic" size="16.0" />
+                            </font>
+                            <padding>
+                                <Insets top="20.0" />
+                            </padding>
+                        </Label>
+                        <ImageView fx:id="dishFiveImg" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                            <effect>
+                                <InnerShadow />
+                            </effect></ImageView>
+                    </children>
+                </VBox>
+                <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="0.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                    <children>
+                        <Label fx:id="dishSix" text="Dish 6">
+                            <font>
+                                <Font name="System Bold Italic" size="16.0" />
+                            </font>
+                            <padding>
+                                <Insets top="20.0" />
+                            </padding>
+                        </Label>
+                        <ImageView fx:id="dishSixImg" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                            <effect>
+                                <InnerShadow />
+                            </effect></ImageView>
+                    </children>
+                </VBox>
+                <VBox alignment="TOP_CENTER" layoutX="370.0" layoutY="456.0" prefHeight="0.0" prefWidth="100.0" GridPane.rowIndex="2">
+                    <children>
+                        <Label fx:id="dishSeven" text="Dish 7">
+                            <font>
+                                <Font name="System Bold Italic" size="16.0" />
+                            </font>
+                            <padding>
+                                <Insets top="20.0" />
+                            </padding>
+                        </Label>
+                        <ImageView fx:id="dishSevenImg" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                            <effect>
+                                <InnerShadow />
+                            </effect></ImageView>
+                    </children>
+                </VBox>
+                <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="0.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <children>
+                        <Label fx:id="dishEight" text="Dish 8">
+                            <font>
+                                <Font name="System Bold Italic" size="16.0" />
+                            </font>
+                            <padding>
+                                <Insets top="20.0" />
+                            </padding>
+                        </Label>
+                        <ImageView fx:id="dishEightImg" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                            <effect>
+                                <InnerShadow />
+                            </effect></ImageView>
+                    </children>
+                </VBox>
+                <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="0.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                    <children>
+                        <Label fx:id="dishNine" text="Dish 9">
+                            <font>
+                                <Font name="System Bold Italic" size="16.0" />
+                            </font>
+                            <padding>
+                                <Insets top="20.0" />
+                            </padding>
+                        </Label>
+                        <ImageView fx:id="dishNineImg" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                            <effect>
+                                <InnerShadow />
+                            </effect></ImageView>
+                    </children>
+                </VBox>
+            </children>
+        </GridPane>
+    </center>
+    <top>
+
+        <HBox prefHeight="26.0" prefWidth="335.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="returnButton" mnemonicParsing="false" style="-fx-background-color: #d59faa;" text="&lt;">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <effect>
+                        <Glow />
+                    </effect>
+                </Button>
+                <Button fx:id="prevButton" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" style="-fx-background-color: #d59faa; -fx-font-style: italic; -fx-font-weight: bold;" text="Prev">
+                    <effect>
+                        <Glow />
+                    </effect>
+                    <HBox.margin>
+                        <Insets left="170.0" top="3.0" />
+                    </HBox.margin>
+                </Button>
+                <Text text="Favorites" textAlignment="CENTER" wrappingWidth="395.86328125">
+                    <font>
+                        <Font name="System Bold Italic" size="33.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="-20.0" />
+                    </VBox.margin>
+                </Text>
+                <Button fx:id="nextButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" style="-fx-background-color: #d59faa; -fx-font-style: italic; -fx-font-weight: bold;" text="Next">
+                    <effect>
+                        <Glow />
+                    </effect>
+                    <HBox.margin>
+                        <Insets top="3.0" />
+                    </HBox.margin>
+                </Button>
+            </children>
+            <BorderPane.margin>
+                <Insets left="20.0" top="20.0" />
+            </BorderPane.margin>
+        </HBox>
+    </top>
+</BorderPane>

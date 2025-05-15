@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ResultController implements Initializable, SceneController {
+public class FavoritesController implements Initializable, SceneController {
     private AppManager appManager;
 
     @FXML
@@ -26,7 +26,7 @@ public class ResultController implements Initializable, SceneController {
     @FXML
     private Button returnButton, prevButton, nextButton;
 
-    private List<Dish> searchResult;
+    private List<Dish> favoriteDishes;
     private List<ImageView> views = new ArrayList<>();
     private List<Label> labels = new ArrayList<>();
 
@@ -36,14 +36,13 @@ public class ResultController implements Initializable, SceneController {
     @Override
     public void setAppManager(AppManager appManager) {
         this.appManager = appManager;
-        this.searchResult = appManager.searchRecipesByIngredientList(appManager.getSearchQuery());
-        showSearchResult();
+        this.favoriteDishes = appManager.getCurrentUser().getFavoriteDishes();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        returnButton.setOnAction(event -> appManager.switchTo(View.SEARCH));
+        returnButton.setOnAction(event -> appManager.switchTo(View.MAIN));
 
         dishOne.setOnMouseClicked(event -> showRecipe(0));
         dishOneImg.setOnMouseClicked(event -> showRecipe(0));
@@ -100,8 +99,8 @@ public class ResultController implements Initializable, SceneController {
 
     private void showRecipe(int index){
         int dishIndex = currentPage * resultPerPage + index;
-        if(dishIndex < searchResult.size()) {
-            Dish selected = searchResult.get(dishIndex);
+        if(dishIndex < favoriteDishes.size()) {
+            Dish selected = favoriteDishes.get(dishIndex);
 
             appManager.setSelectedRecipe(selected);
             System.out.println(appManager.getSelectedDishId());
@@ -112,29 +111,29 @@ public class ResultController implements Initializable, SceneController {
 
     private void updatePage() {
         int start = currentPage * resultPerPage;
-        int end = Math.min(start + resultPerPage, searchResult.size());
+        int end = Math.min(start + resultPerPage, favoriteDishes.size());
 
         for (int i = 0; i < views.size(); i++) {
             views.get(i).setImage(null);
             labels.get(i).setText("");
         }
 
-        if (searchResult.isEmpty()) {
-            labels.get(0).setText("No recipes found matching your ingredients.");
+        if (favoriteDishes.isEmpty()) {
+            labels.get(0).setText("No Favorites Added.");
             prevButton.setDisable(true);
             nextButton.setDisable(true);
 
         } else {
             int index = 0;
             for (int i = start; i < end; i++) {
-                Dish dish = searchResult.get(i);
+                Dish dish = favoriteDishes.get(i);
                 labels.get(index).setText(dish.getTitle());
                 views.get(index).setImage(new Image(dish.getImageUrl()));
                 index++;
             }
         }
         prevButton.setDisable(currentPage == 0);
-        nextButton.setDisable(currentPage * resultPerPage + resultPerPage >= searchResult.size());
+        nextButton.setDisable(currentPage * resultPerPage + resultPerPage >= favoriteDishes.size());
 
     }
 

@@ -15,9 +15,9 @@
    <center>
        <VBox alignment="CENTER" prefHeight="720.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
            <children>
-                      <Label fx:id="recipeNameLabel" alignment="TOP_LEFT" prefHeight="59.0" prefWidth="320.0" text=" &quot;Recipe Name&quot;">
+                      <Label fx:id="recipeNameLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="1000.0" text=" &quot;Recipe Name&quot;">
                     <font>
-                        <Font name="System Bold Italic" size="39.0" />
+                        <Font name="System Bold Italic" size="33.0" />
                     </font>
                 </Label>
             <ImageView fx:id="recipeWidget" fitHeight="574.0" fitWidth="594.0" pickOnBounds="true" preserveRatio="true" />
@@ -46,6 +46,17 @@
                         <Glow />
                     </effect>
                 </Button>
+            <Button fx:id="addToFavoriteButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: #d59faa;" text="Add to Favorites">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+               <HBox.margin>
+                  <Insets left="880.0" />
+               </HBox.margin>
+            </Button>
             </children>
             <BorderPane.margin>
                 <Insets left="20.0" top="20.0" />
