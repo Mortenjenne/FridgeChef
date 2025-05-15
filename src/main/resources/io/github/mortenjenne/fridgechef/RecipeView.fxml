@@ -63,7 +63,7 @@
          <children>
             <Label fx:id="recipeNameLabel" prefHeight="53.0" prefWidth="579.0" text="test" VBox.vgrow="SOMETIMES">
                <font>
-                  <Font size="36.0" />
+                  <Font size="24.0" />
                </font>
                <VBox.margin>
                   <Insets />
@@ -90,7 +90,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <TextArea prefHeight="165.0" prefWidth="576.0" style="-fx-background-color: #d59faa;" />
+            <TextArea fx:id="textArea" prefHeight="165.0" prefWidth="576.0" style="-fx-background-color: #d59faa;" />
          </children>
       </VBox>
    </left>

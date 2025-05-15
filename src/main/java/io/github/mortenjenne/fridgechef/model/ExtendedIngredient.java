@@ -29,6 +29,6 @@ public class ExtendedIngredient {
 
     @Override
     public String toString() {
-        return amount + " " + unit + " " + name;
+        return "- " + amount + " " + unit + " " + name;
     }
 }

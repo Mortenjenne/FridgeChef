@@ -22,6 +22,4 @@ public class AnalyzedInstruction {
         return this.steps;
     }
 
-
-
 }
