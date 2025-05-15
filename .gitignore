@@ -36,3 +36,14 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### DATABASE ###
+*.sqlite
+*.db
+### Environment files ###
+.env
+
+### Secrets ###
+*.jks
+.pem
+.key

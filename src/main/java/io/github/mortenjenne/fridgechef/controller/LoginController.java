@@ -16,15 +16,22 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable, SceneController {
        private AppManager appManager;
 
+       private String email;
+       private String password;
+
     @FXML private Button loginButton;
     @FXML private Button exitButton;
     @FXML private Label createAccountLabel;
-    @FXML private PasswordField passwordTextField;
+    @FXML private PasswordField passwordField;
     @FXML private TextField emailTextField;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        loginButton.setOnAction(event -> appManager.switchTo(View.MAIN));
+        loginButton.setOnAction(event -> {
+            email = emailTextField.getText();
+            password = passwordField.getText();
+            login(email,password);
+        });
         createAccountLabel.setOnMouseClicked(event -> appManager.switchTo(View.CREATE));
         exitButton.setOnAction(event -> closeApp());
     }
@@ -34,8 +41,11 @@ public class LoginController implements Initializable, SceneController {
         this.appManager = appManager;
     }
 
-    private void login(){
+    private void login(String email, String password){
         // TODO login() body
+        if(appManager.login(email,password)){
+            appManager.switchTo(View.MAIN);
+        }
     }
 
     private void signUp(){

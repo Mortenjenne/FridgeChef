@@ -8,7 +8,7 @@ public class DatabaseWriter extends DatabaseConnector{
 
     public boolean createAccount (String email, String accountName, String password) {
         connect();
-        String sql = "INSERT INTO accounts (accountName, email, password) values (?, ?, ?)";
+        String sql = "INSERT INTO accounts (email, accountName, password) values (?, ?, ?)";
 
 
         if (dbReader.checkExistingAccount(email)) {
@@ -17,8 +17,8 @@ public class DatabaseWriter extends DatabaseConnector{
         } else {
             try {
                 PreparedStatement stm = conn.prepareStatement(sql);
-                stm.setString(1, accountName);
-                stm.setString(2, email);
+                stm.setString(1, email);
+                stm.setString(2, accountName);
                 stm.setString(3, password);
                 int rowsUpdated = stm.executeUpdate();
 

@@ -15,7 +15,7 @@ class DatabaseWriterTest {
         boolean expected = true;
 
         //Act
-        boolean actual = dbWriter.createAccount("toby1@chef.com","tadmin","tobyChef123!");
+        boolean actual = dbWriter.createAccount("toby@chef.com","tadmin","tobyChef123!");
 
         //Assert
         assertEquals(expected,actual);
