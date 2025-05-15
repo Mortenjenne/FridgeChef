@@ -29,10 +29,7 @@
                 <Insets left="20.0" top="20.0" />
             </BorderPane.margin>
          <effect>
-            <InnerShadow>
-               <input>
-                  <DropShadow />
-               </input></InnerShadow>
+            <DropShadow />
          </effect>
         </HBox>
     </top>
@@ -111,9 +108,6 @@
                                  <font>
                                     <Font name="System Bold Italic" size="14.0" />
                                  </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
                               </Label>
                               <ImageView fx:id="searchImage" fitHeight="75.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
@@ -150,12 +144,6 @@
                </effect>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <effect>
-                  <InnerShadow>
-                     <input>
-                        <DropShadow />
-                     </input></InnerShadow>
-               </effect>
                <children>
                   <Button fx:id="addToFridgeButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="92.0" style="-fx-background-color: #d59faa;" text="Add to fridge">
                      <font>
@@ -166,6 +154,9 @@
                      </effect>
                   </Button>
                </children>
+               <effect>
+                  <DropShadow />
+               </effect>
             </VBox>
             <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <children>

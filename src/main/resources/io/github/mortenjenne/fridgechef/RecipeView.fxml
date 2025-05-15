@@ -46,10 +46,24 @@
                         <Glow />
                     </effect>
                 </Button>
+            <Button fx:id="returnButton1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: #d59faa;" text="Add to Favorites">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+               <HBox.margin>
+                  <Insets left="880.0" />
+               </HBox.margin>
+            </Button>
             </children>
             <BorderPane.margin>
                 <Insets left="20.0" top="20.0" />
             </BorderPane.margin>
+         <effect>
+            <DropShadow />
+         </effect>
         </HBox>
     </top>
 

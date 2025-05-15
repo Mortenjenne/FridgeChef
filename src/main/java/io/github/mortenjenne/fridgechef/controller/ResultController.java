@@ -20,29 +20,9 @@ public class ResultController implements Initializable, SceneController {
     private AppManager appManager;
 
     @FXML
-    private Label dishOne;
+    private Label dishOne, dishTwo, dishThree, dishFour, dishFive, dishSix, dishSeven, dishEight, dishNine;
     @FXML
-    private Label dishTwo;
-    @FXML
-    private Label dishThree;
-    @FXML
-    private Label dishFour;
-    @FXML
-    private Label dishFive;
-    @FXML
-    private Label dishSix;
-    @FXML
-    private ImageView dishOneImg;
-    @FXML
-    private ImageView dishTwoImg;
-    @FXML
-    private ImageView dishThreeImg;
-    @FXML
-    private ImageView dishFourImg;
-    @FXML
-    private ImageView dishFiveImg;
-    @FXML
-    private ImageView dishSixImg;
+    private ImageView dishOneImg, dishTwoImg, dishThreeImg, dishFourImg, dishFiveImg, dishSixImg, dishSevenImg, dishEightImg, dishNineImg;
     @FXML
     private Button returnButton, prevButton, nextButton;
 
@@ -51,7 +31,7 @@ public class ResultController implements Initializable, SceneController {
     private List<Label> labels = new ArrayList<>();
 
     private int currentPage = 0;
-    private final int resultPerPage = 6;//TODO Denne variable skal ændres hvis vi viser 9 views!
+    private final int resultPerPage = 9;
 
     @Override
     public void setAppManager(AppManager appManager) {
@@ -83,6 +63,16 @@ public class ResultController implements Initializable, SceneController {
         dishSix.setOnMouseClicked(event -> showRecipe(5));
         dishSixImg.setOnMouseClicked(event -> showRecipe(5));
 
+        dishSeven.setOnMouseClicked(event -> showRecipe(6));
+        dishSevenImg.setOnMouseClicked(event -> showRecipe(6));
+
+        dishEight.setOnMouseClicked(event -> showRecipe(7));
+        dishEightImg.setOnMouseClicked(event -> showRecipe(7));
+
+        dishNine.setOnMouseClicked(event -> showRecipe(8));
+        dishNineImg.setOnMouseClicked(event -> showRecipe(8));
+
+
         prevButton.setOnAction(event -> {
             this.currentPage--;
             updatePage();
@@ -101,11 +91,11 @@ public class ResultController implements Initializable, SceneController {
     }
 
     private void addViewsToList() {
-        views.addAll(List.of(dishOneImg, dishTwoImg, dishThreeImg, dishFourImg, dishFiveImg, dishSixImg));
+        views.addAll(List.of(dishOneImg, dishTwoImg, dishThreeImg, dishFourImg, dishFiveImg, dishSixImg, dishSevenImg, dishEightImg, dishNineImg));
     }
 
     private void labelsToList() {
-        labels.addAll(List.of(dishOne, dishTwo, dishThree, dishFour, dishFive, dishSix));
+        labels.addAll(List.of(dishOne, dishTwo, dishThree, dishFour, dishFive, dishSix, dishSeven, dishEight, dishNine));
     }
 
     private void showRecipe(int index){

@@ -20,7 +20,7 @@ public class RecipeController implements Initializable, SceneController {
 
     @FXML private Label recipeNameLabel;
     @FXML private ImageView recipeWidget;
-    @FXML private Button returnButton;
+    @FXML private Button returnButton, addToFavoriteButton;
 
     private List<Recipe> recipe;
 
@@ -28,12 +28,14 @@ public class RecipeController implements Initializable, SceneController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         returnButton.setOnAction(event -> appManager.switchTo(View.RESULT));
+        //TODO addToFavoriteButton.setOnAction(event -> appManager.addToFavorite(appManager.getSelectedDish());
 
     }
     @Override
     public void setAppManager(AppManager appManager) {
         this.appManager = appManager;
         recipe = appManager.getRecipeView(appManager.getSelectedDish());
+        //recipeNameLabel.setText(dish.getTitle());
         recipeWidget.setImage(new Image(recipe.get(0).getUrl()));
     }
 
