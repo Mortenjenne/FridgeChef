@@ -4,7 +4,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080" style="-fx-background-color: #d59faa;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.mortenjenne.fridgechef.controller.CreateAccountController">
@@ -38,7 +37,7 @@
                   <Glow />
                </effect>
                 </TextField>
-                <Label fx:id="firstNameErrorLabel" text="firstNameError" textFill="RED">
+                <Label fx:id="firstNameErrorLabel" textFill="RED">
                     <VBox.margin>
                         <Insets top="-50.0" />
                     </VBox.margin>
@@ -65,7 +64,7 @@
                   <Glow />
                </effect>
                 </TextField>
-                <Label fx:id="emailErrorLabel" text="emailError" textFill="RED">
+                <Label fx:id="emailErrorLabel" textFill="RED">
                     <VBox.margin>
                         <Insets top="-50.0" />
                     </VBox.margin>
@@ -104,7 +103,7 @@
                <effect>
                   <Glow />
                </effect></PasswordField>
-                <Label fx:id="passwordErrorLabel" layoutX="167.0" layoutY="311.0" text="passwordError" textFill="RED">
+                <Label fx:id="passwordErrorLabel" layoutX="167.0" layoutY="311.0" textFill="RED">
                     <VBox.margin>
                         <Insets top="-45.0" />
                     </VBox.margin>
@@ -121,13 +120,6 @@
                </effect>
                 </Button>
             </children>
-            <effect>
-                <InnerShadow height="23.93" width="18.07">
-                    <color>
-                        <Color red="0.115" green="0.118" blue="0.113" />
-                    </color>
-                </InnerShadow>
-            </effect>
         </VBox>
    </center>
     <top>

@@ -38,7 +38,11 @@ private Dish selectedDish;
 
     public void setSelectedRecipe(Dish selectedDish){this.selectedDish = selectedDish;}
 
-    public int getSelectedDish(){return this.selectedDish.getId();}
+    public Dish getSelectedDish(){return this.selectedDish;}
+
+    public int getSelectedDishId(){return this.selectedDish.getId();}
+
+    public String getSelectedDishTitle(){return this.selectedDish.getTitle();}
 
     public void setSearchQuery(String query){
         this.searchQuery = query;
@@ -50,6 +54,10 @@ private Dish selectedDish;
 
     public Account getCurrentUser(){
         return this.currentUser;
+    }
+
+    public void addToFavoriteDishes(Dish selectedDish) {
+        currentUser.addToFavorites(selectedDish);
     }
 
     public void addIngredientToFridge(Ingredient ingredient){
@@ -150,7 +158,6 @@ private Dish selectedDish;
         }
         return dishes;
     }
-
 }
 
 

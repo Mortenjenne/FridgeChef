@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
@@ -28,15 +27,16 @@ public class RecipeController implements Initializable, SceneController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         returnButton.setOnAction(event -> appManager.switchTo(View.RESULT));
-        //TODO addToFavoriteButton.setOnAction(event -> appManager.addToFavorite(appManager.getSelectedDish());
+        addToFavoriteButton.setOnAction(event -> appManager.addToFavoriteDishes(appManager.getSelectedDish()));
 
     }
+
     @Override
     public void setAppManager(AppManager appManager) {
         this.appManager = appManager;
-        recipe = appManager.getRecipeView(appManager.getSelectedDish());
-        //recipeNameLabel.setText(dish.getTitle());
-        recipeWidget.setImage(new Image(recipe.get(0).getUrl()));
+        recipe = appManager.getRecipeView(appManager.getSelectedDishId());
+        recipeNameLabel.setText(appManager.getSelectedDishTitle());
+        //recipeWidget.setImage(new Image(recipe.get(0).getUrl()));
     }
 
 }

@@ -8,8 +8,9 @@ public enum View {
     RESULT("/io/github/mortenjenne/fridgechef/ResultView.fxml"),
     RECIPE("/io/github/mortenjenne/fridgechef/RecipeView.fxml"),
     TEST("/io/github/mortenjenne/fridgechef/hello-view.fxml"),
-    FRIDGE("/io/github/mortenjenne/fridgechef/FridgeView.fxml");
-    //FAVORITES(fileName);
+    FRIDGE("/io/github/mortenjenne/fridgechef/FridgeView.fxml"),
+    FAVORITES("/io/github/mortenjenne/fridgechef/FavoritesView.fxml");
+
 
     private String fileName;
 

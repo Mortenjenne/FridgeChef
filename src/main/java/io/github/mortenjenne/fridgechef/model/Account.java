@@ -70,6 +70,7 @@ public class Account {
         this.favoriteDishes.remove(dish);
     }
 
+
     // Fridge
     public void addIngredientToFridge(Ingredient ingredient){
         this.ingredientsInFridge.add(ingredient);
