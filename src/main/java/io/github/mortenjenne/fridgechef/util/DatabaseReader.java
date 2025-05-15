@@ -1,6 +1,7 @@
 package io.github.mortenjenne.fridgechef.util;
 
 import java.sql.*;
+import java.util.List;
 
 public class DatabaseReader extends DatabaseConnector{
 
@@ -40,6 +41,76 @@ public class DatabaseReader extends DatabaseConnector{
         return false;
     }
 
+
+    //      ------  GETTERS  ------
+    public int getAccountId(String email) {
+        connect();
+        String sql = "SELECT accountID FROM accounts WHERE email = ?";
+        int value = 0;
+        try{
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setString(1,email);
+            ResultSet rs = stm.executeQuery();
+
+            if (rs.next()) {
+                System.out.println("getAccountID has next");
+                value = rs.getInt("accountID"); //Returns accountID if account email exists
+            }
+
+        } catch (SQLException e){
+            System.out.println("Error checking for accountID: "+e.getMessage());
+        }
+        return value;
+
+    }
+
+    public int getAccountFridgeID(int accountID){
+        connect();
+        String sql = "SELECT fridgeID FROM fridges WHERE accountID = ?";
+        int value = 0;
+        try{
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setInt(1,accountID);
+            ResultSet rs = stm.executeQuery();
+
+            if (rs.next()) {
+                value = rs.getInt("fridgeID"); //Returns fridgetID if account email exists
+            }
+
+        } catch (SQLException e){
+            System.out.println("Error checking for fridgeID: "+e.getMessage());
+        }
+        return value;
+    }
+
+    public String getAccountName(String email) {
+        connect();
+
+        String sql = "SELECT accountName FROM accounts WHERE email = ?";
+
+        try{
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setString(1,email);
+            ResultSet rs = stm.executeQuery();
+
+            if (rs.next()) {
+                rs.getString("accountName"); //Returns fridgetID if account email exists
+            }
+
+        } catch (SQLException e){
+            System.out.println("Error checking for accountname: "+e.getMessage());
+        }
+        return null;
+
+    }
+
+    public List<Integer> getAccountIngredients(String email){
+
+        return null;
+    }
+
+
+    //      ------  CHECKERS  ------
     public boolean checkExistingAccount (String email){
         connect();
         String sql = "SELECT email FROM accounts WHERE email = ?";
@@ -54,11 +125,27 @@ public class DatabaseReader extends DatabaseConnector{
             }
 
         } catch (SQLException e){
-            System.out.println("Error checking for accounts: "+e.getMessage());
+            System.out.println("Error checking for existing accounts: "+e.getMessage());
         }
         return false; //Returns false if account does NOT exist
     }
 
+    public boolean checkExistingIngredient(int ingredientID) {
+        connect();
 
+        String sql = "SELECT ingredientID FROM ingredients WHERE ingredientID = ?";
+        try{
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setInt(1,ingredientID);
+            ResultSet rs = stm.executeQuery();
 
+            if (rs.next()) {
+                return true; //Returns true if ingredient exist
+            }
+
+        } catch (SQLException e){
+            System.out.println("Error checking for existing ingredients: "+e.getMessage());
+        }
+        return false; //Returns false if ingredient does NOT exist
+    }
 }
