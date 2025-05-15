@@ -40,6 +40,7 @@ build/
 ### DATABASE ###
 *.sqlite
 *.db
+
 ### Environment files ###
 .env
 

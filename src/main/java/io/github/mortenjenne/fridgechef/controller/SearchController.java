@@ -13,10 +13,8 @@ import javafx.scene.control.ChoiceBox;
 
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class SearchController implements Initializable, SceneController {
     private AppManager appManager;
@@ -61,8 +59,11 @@ public class SearchController implements Initializable, SceneController {
         String selectedIngredientTwo = checkNullChoiceBoxes(chooseIngredientBox2);
         String selectedIngredientThree = checkNullChoiceBoxes(chooseIngredientBox3);
 
-        List<String> choices = new ArrayList<>(Arrays.asList(selectedIngredientOne, selectedIngredientTwo, selectedIngredientThree));
-        String searchString = String.join(",", choices);
+        // Create List as Stream - remove values if object is null or empty
+        List<String> choices = Stream.of(selectedIngredientOne, selectedIngredientTwo, selectedIngredientThree).filter(Objects::nonNull).filter(s -> !s.isEmpty()).toList();
+
+        // Replace ALL whitespace - eliminates problem when searching with ingredients consisting of more than one word
+        String searchString = String.join(",", choices).replaceAll("\\s+", "");
 
         appManager.setSearchQuery(searchString);
         appManager.switchTo(View.RESULT);
