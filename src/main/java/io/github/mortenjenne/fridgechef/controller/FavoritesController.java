@@ -1,3 +1,9 @@
+//ALOT OF STUFF IS DIRECTLY COPIED FROM RECIPECONTROLLER, NEED TO BE LOOKED THROUGH
+
+
+
+
+
 package io.github.mortenjenne.fridgechef.controller;
 
 import io.github.mortenjenne.fridgechef.logic.AppManager;
