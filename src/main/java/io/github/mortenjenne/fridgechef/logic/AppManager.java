@@ -54,6 +54,7 @@ private Dish selectedDish;
 
     public void addIngredientToFridge(Ingredient ingredient){
         currentUser.addIngredientToFridge(ingredient);
+        dbWriter.addIngredientToDatabase(ingredient, currentUser.getEmail());
     }
 
     public void removeIngredientFromFridge(Ingredient ingredient){
@@ -72,13 +73,17 @@ private Dish selectedDish;
 
     public List<Ingredient> loadFridgeIngredients(){
         List<Ingredient> storedIngredients = new ArrayList<>();
-        //TODO Vi skal kunne hente en brugers ingredienser fra databasen og dermed få det vist i køle og opskriftsøgning
-        //storedIngredients = Dbreader.getUserIngredients()
+        List<Integer> storedIngredientsID = new ArrayList<>();
+        //TODO
+        storedIngredientsID = dbReader.getAccountIngredients(currentUser.getEmail());
+
         return storedIngredients;
     }
 
     public boolean login(String email, String password) {
         if (dbReader.accountLogin(email, password)) {
+            String accountName = dbReader.getAccountName(email);
+            this.currentUser = new Account(accountName, email, password);
             return true;
         }
         return false;
@@ -87,7 +92,7 @@ private Dish selectedDish;
     public void createAccount(String accountName, String email, String password) {
         if(!dbReader.checkExistingAccount(email)) {
             dbWriter.createAccount(email, accountName, password);
-            this.currentUser = new Account(accountName, email, password);
+
         }
     }
 
