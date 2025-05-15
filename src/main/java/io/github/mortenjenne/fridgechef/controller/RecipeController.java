@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -21,9 +22,12 @@ import java.util.ResourceBundle;
 public class RecipeController implements Initializable, SceneController {
     private AppManager appManager;
 
-    @FXML private Label recipeNameLabel;
-    @FXML private ImageView recipeWidget;
     @FXML private Button returnButton, addToFavoriteButton;
+    @FXML private Label recipeNameLabel;
+    @FXML private Label timeLabel;
+    @FXML private Label servingsLabel;
+    @FXML private Label ingredientLabel;
+    @FXML private ListView ingredientView;
 
     private Recipe recipe;
 
