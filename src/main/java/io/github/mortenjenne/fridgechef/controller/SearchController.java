@@ -42,7 +42,7 @@ public class SearchController implements Initializable, SceneController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // searchRecipeButton.setOnAction(event -> appManager.switchTo(View.RESULT));
+        //searchRecipeButton.setOnAction(event -> appManager.switchTo(View.RESULT));
         returnButton.setOnAction(event -> appManager.switchTo(View.MAIN));
         searchRecipeButton.setOnAction(event -> selectedIngredients());
     }
@@ -65,6 +65,7 @@ public class SearchController implements Initializable, SceneController {
         String searchString = String.join(",", choices);
 
         appManager.setSearchQuery(searchString);
+        appManager.switchTo(View.RESULT);
     }
 
     private String checkNullChoiceBoxes(ChoiceBox<Ingredient> choiceBox){
