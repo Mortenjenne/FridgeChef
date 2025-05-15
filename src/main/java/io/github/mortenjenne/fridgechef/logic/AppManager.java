@@ -54,6 +54,7 @@ private Dish selectedDish;
 
     public void addIngredientToFridge(Ingredient ingredient){
         currentUser.addIngredientToFridge(ingredient);
+
     }
 
     public void removeIngredientFromFridge(Ingredient ingredient){
@@ -152,24 +153,5 @@ private Dish selectedDish;
 
 }
 
-    /*public String validatePasswordRequirements(String password) {
-        if (password == null || password.trim().isEmpty()) {
-            return "Password cannot be empty.";
-        }
-        if (password.length() < 6) {
-            return "Password must be at least 6 characters long.";
-        }
-        if (!password.matches(".*[A-Z].*")) {
-            return "Password must contain at least one uppercase letter.";
-        }
-        if (!password.matches(".*[a-z].*")) {
-            return "Password must contain at least one lowercase letter.";
-        }
-        if (!password.matches(".*\\d.*")) {
-            return "Password must contain at least one digit.";
-        }
-        return ""; // Return an empty string as a success indicator
-    }
-    */
 
 
