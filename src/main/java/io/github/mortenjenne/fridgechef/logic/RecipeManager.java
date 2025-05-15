@@ -17,9 +17,9 @@ public class RecipeManager {
         this.jsonParser = new RecipeJsonParser();
     }
 
-    public List<Recipe> getImageUrl(int recipeId) throws Exception{
-        String jsonResponse = apiClient.fetchRecipeWidget(recipeId);
-        return jsonParser.parseRecipeImage(jsonResponse);
+    public Recipe getFullRecipeDescription(int recipeId) throws Exception{
+        String jsonResponse = apiClient.fetchFullRecipe(recipeId);
+        return jsonParser.parseFullRecipeDescription(jsonResponse);
     }
 
     public List<Dish> getRecipesByIngredients(String ingredients) throws Exception{

@@ -3,11 +3,15 @@ package io.github.mortenjenne.fridgechef.controller;
 import io.github.mortenjenne.fridgechef.logic.AppManager;
 import io.github.mortenjenne.fridgechef.logic.SceneController;
 import io.github.mortenjenne.fridgechef.logic.View;
+import io.github.mortenjenne.fridgechef.model.AnalyzedInstruction;
+import io.github.mortenjenne.fridgechef.model.ExtendedIngredient;
+import io.github.mortenjenne.fridgechef.model.InstructionStep;
 import io.github.mortenjenne.fridgechef.model.Recipe;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
@@ -21,7 +25,7 @@ public class RecipeController implements Initializable, SceneController {
     @FXML private ImageView recipeWidget;
     @FXML private Button returnButton, addToFavoriteButton;
 
-    private List<Recipe> recipe;
+    private Recipe recipe;
 
 
     @Override
@@ -34,9 +38,26 @@ public class RecipeController implements Initializable, SceneController {
     @Override
     public void setAppManager(AppManager appManager) {
         this.appManager = appManager;
-        recipe = appManager.getRecipeView(appManager.getSelectedDishId());
-        recipeNameLabel.setText(appManager.getSelectedDishTitle());
-        //recipeWidget.setImage(new Image(recipe.get(0).getUrl()));
+        recipe = appManager.getFullRecipeDescription(appManager.getSelectedDishId());
+        recipeNameLabel.setText(recipe.getTitle());
+        recipeWidget.setImage(new Image(recipe.getImage()));
+        System.out.println("Navn: " + recipe.getTitle());
+        System.out.println("Tid: " + recipe.getReadyInMinutes() + " min");
+        System.out.println("Serveringer: " + recipe.getServings());
+        System.out.println("Instruktioner: " + recipe.getInstructions());
+        System.out.println("Ingredienser:");
+
+        for (ExtendedIngredient ing : recipe.getExtendedIngredients()) {
+            System.out.println(" - " + ing);
+        }
+
+        for(AnalyzedInstruction ing: recipe.getAnalyzedInstructions()){
+            for(InstructionStep steps: ing.getSteps()){
+                System.out.println(steps.getNumber() + ": " + steps.getStep());
+            }
+
+        }
+
     }
 
 }

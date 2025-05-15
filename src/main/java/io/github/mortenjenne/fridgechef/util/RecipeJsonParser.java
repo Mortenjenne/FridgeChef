@@ -20,9 +20,10 @@ public class RecipeJsonParser {
         return response.getResults();
     }
 
-    public List<Recipe> parseRecipeImage(String jsonRespone){
-
-        TestResponse test = gson.fromJson(jsonRespone, TestResponse.class);
-        return test.getResults();
+    public Recipe parseFullRecipeDescription(String jsonResponse){
+        return gson.fromJson(jsonResponse, Recipe.class);
     }
+
+
+
 }
