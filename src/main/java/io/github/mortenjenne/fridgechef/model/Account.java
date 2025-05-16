@@ -15,7 +15,6 @@ public class Account {
     private List<Dish> favoriteDishes;
 
     // Fridge
-    private int fridgeID;
     private Ingredient ingredient;
     private int amount;
     private List<Ingredient> ingredientsInFridge;
@@ -26,12 +25,11 @@ public class Account {
     }
 
 
-    public Account(String userName, String email, String password, int accountID, int fridgeID){
+    public Account(String userName, String email, String password, int accountID){
         this.userName = userName;
         this.email = email;
         this.password = password;
         this.accountID = accountID;
-        this.fridgeID = fridgeID;
         this.favoriteDishes = new ArrayList<>();
         this.ingredientsInFridge = new ArrayList<>();
     }
