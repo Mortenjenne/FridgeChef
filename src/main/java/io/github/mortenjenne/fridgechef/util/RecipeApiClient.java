@@ -8,12 +8,9 @@ import java.net.URL;
 public class RecipeApiClient {
     private final String apiSearchByRecipe = "https://api.spoonacular.com/recipes/complexSearch";
     private final String apiSearchIngredient = "https://api.spoonacular.com/food/ingredients/search";
-    private final String apiKey = "e46029883b574497bbdc4df0b9806361";
+    private final String apiKey = "4523e62af8d1441a889954ececef6c9a";
     private final String search = "?query=";
     private final String recipeMustContainIngredient = "?includeIngredients=";
-
-
-
 
     public String fetchRecipesByIngredientList(String ingredients) throws Exception{
         String endpoint = apiSearchByRecipe + recipeMustContainIngredient + ingredients + "&number=100&apiKey=" + apiKey;

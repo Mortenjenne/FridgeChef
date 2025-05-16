@@ -39,7 +39,6 @@ public class RecipeController implements Initializable, SceneController {
 
     private Recipe recipe;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         returnButton.setOnAction(event -> returnButtonOptions());
