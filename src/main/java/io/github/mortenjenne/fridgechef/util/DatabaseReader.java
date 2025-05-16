@@ -1,44 +1,41 @@
 package io.github.mortenjenne.fridgechef.util;
 
+import io.github.mortenjenne.fridgechef.model.Account;
+
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseReader extends DatabaseConnector{
 
-    public boolean accountLogin (String email, String password){
+    public Account accountLogin (String email, String password){
         connect();
 
-        String sql = "SELECT password FROM accounts WHERE email = ?";
+        String sql = "SELECT * FROM accounts WHERE email = ? AND password = ?";
         //? is a placeholder in the sql statement, we later input the correct values through setString.
         //This prevents SQL injections like "email = ' OR '1'='1", this would NOT be good!
         //Following sql command would run: SELECT password FROM accounts WHERE email = '' OR '1'='1'
 
         try {
             PreparedStatement stm = conn.prepareStatement(sql);
-            stm.setString(1,email); //Prevents SQL Injections by setting placeholder value
+            stm.setString(1, email); //Prevents SQL Injections by setting placeholder value
+            stm.setString(2, password);
 
             ResultSet rs = stm.executeQuery();
-            if (rs.next()) { //This if checks for email existence
-                String tmpPassword = rs.getString("password");
+            if (rs.next()) { //This if checks for account existence
 
-                if (password.equals(tmpPassword)) {
-                    System.out.println("Account login success - OK");
-                    return true;
-                } else {
-                    System.out.println("Email or password is incorrect");
-                    return false;
-                }
+                int accountID = rs.getInt("accountID");
+                String accountName = rs.getString("accountName");
 
+                Account returnAccount = new Account(accountName,email,password,accountID);
 
-            } else {
-                System.out.println("Email not found");
-                return false;
+                return returnAccount;
             }
 
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return false;
+        return null;
     }
 
 
@@ -104,7 +101,29 @@ public class DatabaseReader extends DatabaseConnector{
 
     }
 
-    public List<Integer> getAccountIngredients(String email){
+    public List<Integer> getAccountIngredients(int accountID){
+        connect();
+
+        List<Integer> returnAccIngrID = new ArrayList<>();
+
+        String sql = "SELECT ingredientID FROM fridge_ingredients WHERE fridgeID = ?";
+
+        int fridgeID = getAccountFridgeID(accountID);
+
+        try {
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setInt(1,fridgeID);
+            ResultSet rs = stm.executeQuery();
+
+            while(rs.next()){
+                returnAccIngrID.add(rs.getInt("ingredientID"));
+            }
+
+            return returnAccIngrID;
+
+        } catch (SQLException e) {
+            System.out.println("Error checking for AccountIngredients: "+e.getMessage());
+        }
 
         return null;
     }

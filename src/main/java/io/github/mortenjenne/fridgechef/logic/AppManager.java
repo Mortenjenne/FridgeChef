@@ -81,17 +81,16 @@ private Dish selectedDish;
 
     public List<Ingredient> loadFridgeIngredients(){
         List<Ingredient> storedIngredients = new ArrayList<>();
-        List<Integer> storedIngredientsID = new ArrayList<>();
-        //TODO
-        storedIngredientsID = dbReader.getAccountIngredients(currentUser.getEmail());
+        List<Integer> storedIngredientsID = dbReader.getAccountIngredients(currentUser.getAccountID());
+        //TODO Lav en
+
 
         return storedIngredients;
     }
 
     public boolean login(String email, String password) {
-        if (dbReader.accountLogin(email, password)) {
-            String accountName = dbReader.getAccountName(email);
-            this.currentUser = new Account(accountName, email, password);
+        this.currentUser = dbReader.accountLogin(email,password);
+        if(this.currentUser != null) {
             return true;
         }
         return false;
