@@ -51,6 +51,7 @@ public class FridgeController implements Initializable, SceneController {
         this.account = appManager.getCurrentUser();
         //this.appManager.loadFridgeIngredients();
         //loadStoredFridgeFromDatabase();
+        this.appManager.loadFridgeIngredients();
         updateFridgeDisplay();
         updateComboBox();
     }
