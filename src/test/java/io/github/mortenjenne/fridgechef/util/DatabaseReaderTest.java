@@ -56,6 +56,7 @@ class DatabaseReaderTest {
         expected.add(11282);
         expected.add(11352);
         expected.add(11529);
+        expected.add(10028033);
 
         //Act
         List<Integer> actual = dbReader.getAccountIngredients(userTest.getAccountID());

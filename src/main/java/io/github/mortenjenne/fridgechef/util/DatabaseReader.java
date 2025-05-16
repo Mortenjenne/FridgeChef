@@ -26,10 +26,9 @@ public class DatabaseReader extends DatabaseConnector{
 
                 int accountID = rs.getInt("accountID");
                 String accountName = rs.getString("accountName");
+                int fridgeID = getAccountFridgeID(accountID);
 
-                Account returnAccount = new Account(accountName,email,password,accountID);
-
-                return returnAccount;
+                return new Account(accountName,email,password,accountID,fridgeID);
             }
 
         } catch (SQLException e) {
@@ -40,6 +39,25 @@ public class DatabaseReader extends DatabaseConnector{
 
 
     //      ------  GETTERS  ------
+    public int getAccountFridgeID(int accountID){
+        connect();
+        String sql = "SELECT fridgeID FROM fridges WHERE accountID = ?";
+        int value = 0;
+        try{
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setInt(1,accountID);
+            ResultSet rs = stm.executeQuery();
+
+            if (rs.next()) {
+                value = rs.getInt("fridgeID"); //Returns fridgetID if account email exists
+            }
+
+        } catch (SQLException e){
+            System.out.println("Error checking for fridgeID: "+e.getMessage());
+        }
+        return value;
+    }
+
     public int getAccountId(String email) {
         connect();
         String sql = "SELECT accountID FROM accounts WHERE email = ?";
@@ -59,25 +77,6 @@ public class DatabaseReader extends DatabaseConnector{
         }
         return value;
 
-    }
-
-    public int getAccountFridgeID(int accountID){
-        connect();
-        String sql = "SELECT fridgeID FROM fridges WHERE accountID = ?";
-        int value = 0;
-        try{
-            PreparedStatement stm = conn.prepareStatement(sql);
-            stm.setInt(1,accountID);
-            ResultSet rs = stm.executeQuery();
-
-            if (rs.next()) {
-                value = rs.getInt("fridgeID"); //Returns fridgetID if account email exists
-            }
-
-        } catch (SQLException e){
-            System.out.println("Error checking for fridgeID: "+e.getMessage());
-        }
-        return value;
     }
 
     public String getAccountName(String email) {
@@ -105,24 +104,40 @@ public class DatabaseReader extends DatabaseConnector{
         connect();
 
         List<Integer> returnAccIngrID = new ArrayList<>();
-
-        String sql = "SELECT ingredientID FROM fridge_ingredients WHERE fridgeID = ?";
-
-        int fridgeID = getAccountFridgeID(accountID);
+        String sql = "SELECT ingredientID FROM account_ingredients WHERE accountID = ?";
 
         try {
             PreparedStatement stm = conn.prepareStatement(sql);
-            stm.setInt(1,fridgeID);
+            stm.setInt(1,accountID);
             ResultSet rs = stm.executeQuery();
-
             while(rs.next()){
                 returnAccIngrID.add(rs.getInt("ingredientID"));
             }
-
             return returnAccIngrID;
 
         } catch (SQLException e) {
             System.out.println("Error checking for AccountIngredients: "+e.getMessage());
+        }
+        return null;
+    }
+
+    public List<Integer> getAccountFavoriteDishes(int accountID){
+        connect();
+
+        List<Integer> returnFavoriteDishID = new ArrayList<>();
+        String sql = "SELECT dishID FROM favorite_dishes WHERE accountID = ?";
+
+        try {
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setInt(1,accountID);
+            ResultSet rs = stm.executeQuery();
+            while(rs.next()){
+                returnFavoriteDishID.add(rs.getInt("ingredientID"));
+            }
+            return returnFavoriteDishID;
+
+        } catch (SQLException e) {
+            System.out.println("Error checking for Favorite Dishes: "+e.getMessage());
         }
 
         return null;

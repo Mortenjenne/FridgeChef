@@ -1,5 +1,6 @@
 package io.github.mortenjenne.fridgechef.util;
 
+import io.github.mortenjenne.fridgechef.model.Dish;
 import io.github.mortenjenne.fridgechef.model.Ingredient;
 
 import java.sql.*;
@@ -56,59 +57,40 @@ public class DatabaseWriter extends DatabaseConnector{
         }
     }
 
-    public void addIngredientToDatabase(Ingredient ingredient, String email) {
+    public void addIngredientToDatabase(Ingredient ingredient, int accountID) {
         connect();
 
-        int accountID = dbReader.getAccountId(email);
-        System.out.println("Account email in addIngredientToDatabase: "+email);
         int ingredientID = ingredient.getId();
-        String ingredientName = ingredient.getName();
 
+        String sql = "INSERT INTO account_ingredients (accountID, ingredientID) VALUES (?,?)";
 
-        //Inserts ingredient to database if it doesnt exist already.
-        String sql = "INSERT INTO ingredients (ingredientID, name) values (?, ?)";
-
-        if(!dbReader.checkExistingIngredient(ingredientID)){
-            try{
-                PreparedStatement stm = conn.prepareStatement(sql);
-                stm.setInt(1,ingredientID);
-                stm.setString(2,ingredientName);
-                stm.executeUpdate();
-            } catch (SQLException e) {
-                System.out.println(e);
-            }
+        try{
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setInt(1,accountID);
+            stm.setInt(2,ingredientID);
+            stm.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
         }
-
-        //Gets fridgeID, and gives error message if no fridge was found..
-        int fridgeID = dbReader.getAccountFridgeID(accountID);
-        if (fridgeID == 0){
-            System.out.println("AccountID, in addIngredientToDatabse: "+accountID);
-            System.err.println("No fridge found for this account");
-            return;
-        }
-
-        //Insert ingredient into fridge_ingredients database
-        if(dbReader.checkExistingIngredient(ingredientID)){
-            //double defaultQuantity = 1.0;
-
-            sql = "INSERT INTO fridge_ingredients (fridgeID, ingredientID) VALUES (?,?)";
-
-            /*USE THIS IF QUANTITY IS BEING USED
-            sql = "INSERT INTO fridge_ingredients (fridgeID, ingredientsID, quantity) VALUES (?,?,?) "
-                + "ON DUPLICATE KEY UPDATE quantity = quantity + ?";
-
-             */
-
-            try{
-                PreparedStatement stm = conn.prepareStatement(sql);
-                stm.setInt(1,fridgeID);
-                stm.setInt(2,ingredientID);
-                stm.executeUpdate();
-            } catch (SQLException e) {
-                System.out.println(e);
-            }
-        }
-
-
     }
+
+    public void addDishToFavorites(Dish selectedDish, int accountID) {
+        connect();
+
+        int dishID = selectedDish.getId();
+
+        String sql = "INSERT INTO favorite_dishes (accountID, dishID) VALUES (?,?)";
+
+        //Insert dish into favorite database
+        try{
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setInt(1,accountID);
+            stm.setInt(2,dishID);
+            stm.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+
 }
