@@ -108,12 +108,20 @@ private boolean showRecipeFromFavorites = false;
         dbWriter.removeIngredientFromDatabase(ingredient, currentUser.getAccountID());
     }
 
-    public List<Ingredient> loadFridgeIngredients(){
-        List<Ingredient> storedIngredients = new ArrayList<>();
+    public void loadFridgeIngredients(){
+        Ingredient ingredient = null;
         List<Integer> storedIngredientsID = dbReader.getAccountIngredients(currentUser.getAccountID());
         //TODO Lav en metode til at søge på Integer listen storedIngredientsID
 
-        return storedIngredients;
+        for(Integer recipeId: storedIngredientsID){
+            try {
+                ingredient = recipeManager.getIngredientById(recipeId);
+                this.currentUser.addIngredientToFridge(ingredient);
+
+            } catch (Exception e){
+                System.out.println("Error retrieving ingredient");
+            }
+        }
     }
 
     //  ------  FAVORITE  ------
