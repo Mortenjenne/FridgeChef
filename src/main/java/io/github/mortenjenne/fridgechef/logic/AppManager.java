@@ -19,6 +19,7 @@ private DatabaseWriter dbWriter = new DatabaseWriter();
 
 private String searchQuery;
 private Dish selectedDish;
+private boolean showRecipeFromFavorites = false;
 
     public AppManager(SceneNavigator sceneNavigator, RecipeManager recipeManager, Account currentUser) {
         this.recipeManager = recipeManager;
@@ -162,6 +163,14 @@ private Dish selectedDish;
             System.out.println("Error loading ingredient search");
         }
         return dishes;
+    }
+
+    public void setShowRecipeFromFavorites(boolean showRecipeFromFavorites) {
+        this.showRecipeFromFavorites = showRecipeFromFavorites;
+    }
+
+    public boolean getShowRecipeFromFavorites(){
+        return this.showRecipeFromFavorites;
     }
 }
 

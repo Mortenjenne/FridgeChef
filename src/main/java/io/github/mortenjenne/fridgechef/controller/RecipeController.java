@@ -42,7 +42,7 @@ public class RecipeController implements Initializable, SceneController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        returnButton.setOnAction(event -> appManager.switchTo(View.RESULT));
+        returnButton.setOnAction(event -> returnButtonOptions());
         addToFavoriteButton.setOnAction(event -> appManager.addToFavoriteDishes(appManager.getSelectedDish()));
 
     }
@@ -91,6 +91,14 @@ public class RecipeController implements Initializable, SceneController {
         ingredientView.setItems(observableList);
     }
 
+    private void returnButtonOptions(){
+        if(appManager.getShowRecipeFromFavorites()) {
+            returnButton.setOnAction(event -> appManager.switchTo(View.FAVORITES));
+            appManager.setShowRecipeFromFavorites(false);
+        } else{
+        returnButton.setOnAction(event -> appManager.switchTo(View.RESULT));
+        }
+    }
 }
 
 
