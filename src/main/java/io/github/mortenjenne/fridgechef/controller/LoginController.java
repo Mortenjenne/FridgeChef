@@ -25,6 +25,9 @@ public class LoginController implements Initializable, SceneController {
     @FXML private PasswordField passwordField;
     @FXML private TextField emailTextField;
 
+    @FXML private Label loginErrorLabel;
+    private String loginErrorMessage = "Invalid username or password. Please try again.";
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loginButton.setOnAction(event -> {
@@ -42,18 +45,14 @@ public class LoginController implements Initializable, SceneController {
     }
 
     private void login(String email, String password){
-        // TODO login() body
         if(appManager.login(email,password)){
             appManager.switchTo(View.MAIN);
+        } else {
+            loginErrorLabel.setText(loginErrorMessage);
         }
     }
 
-    private void signUp(){
-        // TODO signUp() body
-    }
-
     private void closeApp(){
-        // TODO closeApp() body
         String message = "";
         System.out.println(message);
 
