@@ -49,7 +49,8 @@ public class FridgeController implements Initializable, SceneController {
     public void setAppManager(AppManager appManager) {
         this.appManager = appManager;
         this.account = appManager.getCurrentUser();
-        //TODO loadStoredFridgeFromDatabase();
+        //this.appManager.loadFridgeIngredients();
+        //loadStoredFridgeFromDatabase();
         updateFridgeDisplay();
         updateComboBox();
     }
@@ -83,26 +84,13 @@ public class FridgeController implements Initializable, SceneController {
         }
     }
 
-    private void loadStoredFridgeFromDatabase(){
-        //TODO Tag fra database
-        List<Ingredient> storedIngredients = appManager.loadFridgeIngredients();
-
-        for(Ingredient storedIngredient: storedIngredients){
-            for(ImageView view: fridgeDisplay){
-                if(view.getImage() == null){
-                    view.setImage(new Image(storedIngredient.getApiURL()));
-                    break;
-                }
-            }
-        }
-    }
-
     private void updateFridgeDisplay() {
         for (ImageView view : fridgeDisplay) {
             view.setImage(null);
         }
 
         List<Ingredient> updatedFridge = appManager.getIngredientsInFridge();
+
 
         for (int i = 0; i < updatedFridge.size() && i < fridgeDisplay.size(); i++) {
             fridgeDisplay.get(i).setImage(new Image(updatedFridge.get(i).getApiURL()));

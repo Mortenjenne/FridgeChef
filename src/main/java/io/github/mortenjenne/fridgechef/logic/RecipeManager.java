@@ -41,4 +41,9 @@ public class RecipeManager {
         String jsonResponse = apiClient.fetchIngredientByName(name);
         return jsonParser.parseIngredients(jsonResponse);
    }
+
+    public Ingredient getIngredientById(int recipeId) throws Exception{
+        String jsonResponse = apiClient.fetchIngredientById(recipeId);
+        return jsonParser.parseIngredientById(jsonResponse);
+    }
 }

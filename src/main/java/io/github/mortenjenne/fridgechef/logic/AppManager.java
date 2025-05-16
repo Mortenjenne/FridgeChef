@@ -78,12 +78,19 @@ private boolean showRecipeFromFavorites = false;
         return storedFavoriteDishes;
     }
 
-    public List<Ingredient> loadFridgeIngredients(){
-        List<Ingredient> storedIngredients = new ArrayList<>();
+    public void loadFridgeIngredients(){
+        Ingredient ingredient = null;
         List<Integer> storedIngredientsID = dbReader.getAccountIngredients(currentUser.getAccountID());
-        //TODO Lav en metode til at søge på Integer listen storedIngredientsID
 
-        return storedIngredients;
+        for(Integer recipeId: storedIngredientsID){
+            try {
+                ingredient = recipeManager.getIngredientById(recipeId);
+                this.currentUser.addIngredientToFridge(ingredient);
+
+            } catch (Exception e){
+                System.out.println("Error retrieving ingredient");
+            }
+        }
     }
 
     public Recipe getFullRecipeDescription(int recipeId){
@@ -129,6 +136,8 @@ private boolean showRecipeFromFavorites = false;
     public boolean login(String email, String password) {
         this.currentUser = dbReader.accountLogin(email,password);
         if(this.currentUser != null) {
+            //TODO Tilføj til metoden her: Load brugerens køleskab fra databasen ind i Listen på Account objektet
+            loadFridgeIngredients();
             return true;
         }
         return false;
@@ -140,43 +149,11 @@ private boolean showRecipeFromFavorites = false;
         }
     }
 
-    public boolean isEmailValid(String email) {
-        if (!email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
-            return false;
-        }
-        return true;
-    }
-
-    public boolean isUserNameValid(String userName) {
-        return userName.trim().length() >= 2;
-    }
-
-    public boolean isValidPassword(String password) {
-        if (password == null || password.trim().isEmpty()) {
-            return false;
-        }
-        if (password.length() < 6) {
-            return false;
-        }
-        if (!password.matches(".*[A-Z].*")) {
-            return false;
-        }
-        if (!password.matches(".*[a-z].*")) {
-            return false;
-        }
-        if (!password.matches(".*\\d.*")) {
-            return false;
-        }
-        return true;
-    }
-
     public boolean isEmailInSystem(String email) {
         return dbReader.checkExistingAccount(email);
     }
 
-    public boolean isPasswordIndentical(String password, String confirmPassword) {
-        return password.equals(confirmPassword);
-    }
+
 }
 
 
