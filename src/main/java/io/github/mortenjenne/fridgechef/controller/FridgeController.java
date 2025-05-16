@@ -128,6 +128,7 @@ public class FridgeController implements Initializable, SceneController {
 
     private void addIngredientsToFridge(){
         if (ingredient == null) return;
+
         appManager.addIngredientToFridge(ingredient);
         updateComboBox();
 

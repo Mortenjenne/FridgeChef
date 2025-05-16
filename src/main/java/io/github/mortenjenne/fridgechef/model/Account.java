@@ -23,7 +23,6 @@ public class Account {
         this.ingredientsInFridge = new ArrayList<>();
     }
 
-
     public Account(String userName, String email, String password){
         this.userName = userName;
         this.email = email;
@@ -69,7 +68,6 @@ public class Account {
     public void removeFromFavorites(Dish dish){
         this.favoriteDishes.remove(dish);
     }
-
 
     // Fridge
     public void addIngredientToFridge(Ingredient ingredient){

@@ -8,7 +8,7 @@ import java.net.URL;
 public class RecipeApiClient {
     private final String apiSearchByRecipe = "https://api.spoonacular.com/recipes/complexSearch";
     private final String apiSearchIngredient = "https://api.spoonacular.com/food/ingredients/search";
-    private final String apiKey = "547b0ab94e70406cad3689918b802f3a";
+    private final String apiKey = "e46029883b574497bbdc4df0b9806361";
     private final String search = "?query=";
     private final String recipeMustContainIngredient = "?includeIngredients=";
 
@@ -20,8 +20,8 @@ public class RecipeApiClient {
         return getResultFromApi(endpoint);
     }
 
-    public String fetchRecipeWidget(int recipeId) throws Exception{
-        String endpoint = "https://api.spoonacular.com/recipes/"+recipeId+"/card" + "&apiKey=" + apiKey;
+    public String fetchFullRecipe(int recipeId) throws Exception{
+        String endpoint = "https://api.spoonacular.com/recipes/" + recipeId + "/information?includeNutrition=false&apiKey=" + apiKey;
         return getResultFromApi(endpoint);
     }
 

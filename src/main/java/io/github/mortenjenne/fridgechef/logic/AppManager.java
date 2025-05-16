@@ -26,16 +26,6 @@ private Dish selectedDish;
         this.currentUser = currentUser;
     }
 
-    public List<Recipe> getRecipeView(int recipeId){
-        List<Recipe> recipes = new ArrayList<>();
-        try {
-            recipes = recipeManager.getImageUrl(recipeId);
-        } catch (Exception e){
-            System.out.println("Could not find image");
-        }
-        return recipes;
-    }
-
     public void setSelectedRecipe(Dish selectedDish){this.selectedDish = selectedDish;}
 
     public Dish getSelectedDish(){return this.selectedDish;}
@@ -62,7 +52,7 @@ private Dish selectedDish;
 
     public void addIngredientToFridge(Ingredient ingredient){
         currentUser.addIngredientToFridge(ingredient);
-        dbWriter.addIngredientToDatabase(ingredient, currentUser.getEmail());
+
     }
 
     public void removeIngredientFromFridge(Ingredient ingredient){
@@ -100,7 +90,7 @@ private Dish selectedDish;
     public void createAccount(String accountName, String email, String password) {
         if(!dbReader.checkExistingAccount(email)) {
             dbWriter.createAccount(email, accountName, password);
-
+            this.currentUser = new Account(accountName, email, password);
         }
     }
 
@@ -143,12 +133,23 @@ private Dish selectedDish;
         return password.equals(confirmPassword);
     }
 
+    public Recipe getFullRecipeDescription(int recipeId){
+        Recipe recipe = null;
+        try {
+            recipe = recipeManager.getFullRecipeDescription(recipeId);
+        } catch (Exception e){
+            System.out.println("Error loading full recipe information");
+        }
+        return recipe;
+    }
+
     public List<Ingredient> searchIngredients (String name){
         List<Ingredient> ingredients = new ArrayList<>();
         try {
             ingredients = recipeManager.getIngredient(name);
         } catch (Exception e){
             System.out.println("Error loading ingredient search");
+            e.getMessage();
         }
         return ingredients;
     }
