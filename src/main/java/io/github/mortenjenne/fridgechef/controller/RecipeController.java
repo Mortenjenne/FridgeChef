@@ -32,17 +32,30 @@ public class RecipeController implements Initializable, SceneController {
     @FXML private Label timeLabel;
     @FXML private Label servingsLabel;
     @FXML private Label ingredientLabel;
+    @FXML private Label isVegetarianLabel;
+    @FXML private Label favoriteConfirmLabel;
     @FXML private ListView ingredientView;
     @FXML private TextArea textArea;
     @FXML private ImageView recipeImage;
+
     private String instructions = "";
+    private String recipeAdded = "Recipe added!";
+    private String recipeRemoved = "Recipe removed!";
 
     private Recipe recipe;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        favoriteConfirmLabel.setText("");
         returnButton.setOnAction(event -> returnButtonOptions());
-        addToFavoriteButton.setOnAction(event -> appManager.addToFavoriteDishes(appManager.getSelectedDish()));
+        addToFavoriteButton.setOnAction(event -> {
+            appManager.addToFavoriteDishes(appManager.getSelectedDish());
+            if (favoriteConfirmLabel.getText().equals(recipeAdded)){
+                favoriteConfirmLabel.setText(recipeRemoved);
+            } else {
+                favoriteConfirmLabel.setText(recipeAdded);
+            }
+        });
 
     }
 
@@ -92,8 +105,8 @@ public class RecipeController implements Initializable, SceneController {
 
     private void returnButtonOptions(){
         if(appManager.getShowRecipeFromFavorites()) {
-            returnButton.setOnAction(event -> appManager.switchTo(View.FAVORITES));
             appManager.setShowRecipeFromFavorites(false);
+            returnButton.setOnAction(event -> appManager.switchTo(View.FAVORITES));
         } else{
         returnButton.setOnAction(event -> appManager.switchTo(View.RESULT));
         }

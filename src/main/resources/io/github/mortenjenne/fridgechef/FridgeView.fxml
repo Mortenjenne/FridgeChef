@@ -45,53 +45,101 @@
         <rowConstraints>
             <RowConstraints maxHeight="635.0" minHeight="10.0" prefHeight="92.00000254313152" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="635.0" minHeight="10.0" prefHeight="81.33333079020183" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="635.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="635.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="635.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="635.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
           <RowConstraints fillHeight="false" maxHeight="635.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="255.33331298828125" minHeight="0.0" prefHeight="59.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="225.33339436848962" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="160.33331298828125" minHeight="10.0" prefHeight="141.33333333333337" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="255.33331298828125" minHeight="0.0" prefHeight="48.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="225.33339436848962" minHeight="7.0" prefHeight="28.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="160.33331298828125" minHeight="10.0" prefHeight="108.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="364.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="472.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="577.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="683.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-            <ImageView fx:id="fridge1_1" fitHeight="60.0" fitWidth="60.0" layoutX="783.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <ImageView fx:id="fridge1_2" fitHeight="60.0" fitWidth="60.0" layoutX="364.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <ImageView fx:id="fridge1_3" fitHeight="60.0" fitWidth="60.0" layoutX="472.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-            <ImageView fx:id="fridge1_4" fitHeight="60.0" fitWidth="60.0" layoutX="577.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-            <ImageView fx:id="fridge1_5" fitHeight="60.0" fitWidth="60.0" layoutX="683.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-            <ImageView fx:id="fridge2_1" fitHeight="60.0" fitWidth="60.0" layoutX="783.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <ImageView fx:id="fridge2_2" fitHeight="60.0" fitWidth="60.0" layoutX="364.0" layoutY="574.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <ImageView fx:id="fridge2_3" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-            <ImageView fx:id="fridge2_4" fitHeight="60.0" fitWidth="60.0" layoutX="472.0" layoutY="574.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-            <ImageView fx:id="fridge2_5" fitHeight="60.0" fitWidth="60.0" layoutX="683.0" layoutY="574.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+            <ImageView fx:id="fridge1_1" fitHeight="60.0" fitWidth="60.0" layoutX="783.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="fridge1_2" fitHeight="60.0" fitWidth="60.0" layoutX="364.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="fridge1_3" fitHeight="60.0" fitWidth="60.0" layoutX="472.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="fridge1_4" fitHeight="60.0" fitWidth="60.0" layoutX="577.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="3">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="fridge1_5" fitHeight="60.0" fitWidth="60.0" layoutX="683.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="3">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="fridge2_1" fitHeight="60.0" fitWidth="60.0" layoutX="783.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="fridge2_2" fitHeight="60.0" fitWidth="60.0" layoutX="364.0" layoutY="574.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="fridge2_3" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="fridge2_4" fitHeight="60.0" fitWidth="60.0" layoutX="472.0" layoutY="574.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="4">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="fridge2_5" fitHeight="60.0" fitWidth="60.0" layoutX="683.0" layoutY="574.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
             <VBox alignment="CENTER" prefHeight="91.0" prefWidth="213.0" spacing="5.0" GridPane.columnIndex="1">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #d59faa; -fx-font-style: italic; -fx-font-weight: bold;" text="  Add ingredients">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
+                  <TextField fx:id="searchText" prefHeight="24.0" prefWidth="268.0" scaleY="1.1" style="-fx-background-color: #d59faa; -fx-font-style: italic; -fx-font-weight: bold;">
                      <effect>
                         <Glow />
                      </effect>
-                  </Label>
-                  <TextField fx:id="searchText" prefHeight="25.0" prefWidth="268.0" promptText="Search ingredient by name" style="-fx-background-color: #d59faa; -fx-font-style: italic; -fx-font-weight: bold;">
-                     <effect>
-                        <Glow />
-                     </effect></TextField>
-                  <Button fx:id="searchButton" mnemonicParsing="false" style="-fx-background-color: #d59faa; -fx-font-style: italic; -fx-font-weight: bold;" text="Search">
-                     <effect>
-                        <Glow />
-                     </effect></Button>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin></TextField>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Button fx:id="searchButton" mnemonicParsing="false" style="-fx-background-color: #d59faa; -fx-font-style: italic; -fx-font-weight: bold;" text="Search">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Button>
+                        <Button fx:id="addToFridgeButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="92.0" style="-fx-background-color: #d59faa;" text="Add to fridge">
+                           <font>
+                              <Font name="System Bold Italic" size="12.0" />
+                           </font>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="-20.0" />
+                     </VBox.margin>
+                  </HBox>
                </children>
             </VBox>
-            <ImageView fx:id="fridge3_2" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <ImageView fx:id="fridge3_3" fitHeight="60.0" fitWidth="60.0" layoutX="453.0" layoutY="580.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-            <ImageView fx:id="fridge3_4" fitHeight="60.0" fitWidth="60.0" layoutX="563.0" layoutY="580.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-            <ImageView fx:id="fridge3_5" fitHeight="60.0" fitWidth="60.0" layoutX="661.0" layoutY="580.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+            <ImageView fx:id="fridge3_2" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="5">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="fridge3_3" fitHeight="60.0" fitWidth="60.0" layoutX="453.0" layoutY="580.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="5">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="fridge3_4" fitHeight="60.0" fitWidth="60.0" layoutX="563.0" layoutY="580.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="5">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="fridge3_5" fitHeight="60.0" fitWidth="60.0" layoutX="661.0" layoutY="580.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="5">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
             <VBox prefHeight="93.0" prefWidth="86.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
@@ -116,52 +164,34 @@
             <ImageView fx:id="fridge3_1" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="5" />
             <VBox alignment="CENTER" prefHeight="156.0" prefWidth="349.0" spacing="5.0" GridPane.columnIndex="7">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #d59faa; -fx-font-style: italic; -fx-font-weight: bold;" text=" Remove ingredients">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <effect>
-                        <Glow />
-                     </effect>
-                  </Label>
                   <ComboBox fx:id="comboBox" prefHeight="25.0" prefWidth="249.0" promptText="Remove ingredient from your fridge" style="-fx-background-color: #d59faa; -fx-font-style: italic; -fx-font-weight: bold;">
                      <effect>
                         <Glow />
                      </effect></ComboBox>
-                  <Button fx:id="removeButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="117.0" style="-fx-background-color: #d59faa; -fx-font-style: italic; -fx-font-weight: bold;" text="Remove">
+                  <Button fx:id="removeButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #d59faa; -fx-font-style: italic; -fx-font-weight: bold;" text="Remove from Fridge">
                      <effect>
                         <Glow />
                      </effect></Button>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <children>
-                  <Button fx:id="addToFridgeButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="92.0" style="-fx-background-color: #d59faa;" text="Add to fridge">
-                     <font>
-                        <Font name="System Bold Italic" size="12.0" />
-                     </font>
-                     <effect>
-                        <Glow />
-                     </effect>
-                  </Button>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
-               <children>
-                  <Button fx:id="searchDishesButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="98.0" style="-fx-background-color: #d59faa;" text="Search Dishes">
-                     <font>
-                        <Font name="System Bold Italic" size="12.0" />
-                     </font>
-                     <effect>
-                        <Glow />
-                     </effect>
-                  </Button>
-               </children>
-            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="7" GridPane.rowIndex="7" />
          </children>
       </GridPane>
    </center>
    <effect>
       <InnerShadow />
    </effect>
+   <bottom>
+      <Button fx:id="searchDishesButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #d59faa;" text="Search Dishes" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+         <BorderPane.margin>
+            <Insets bottom="15.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
 </BorderPane>

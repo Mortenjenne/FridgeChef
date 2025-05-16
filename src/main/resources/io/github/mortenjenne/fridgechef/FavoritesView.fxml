@@ -28,7 +28,7 @@
                     <children>
                         <Label fx:id="dishOne" text="Dish 1">
                             <font>
-                                <Font name="System Bold Italic" size="16.0" />
+                                <Font name="System Bold Italic" size="14.0" />
                             </font>
                             <padding>
                                 <Insets top="20.0" />
@@ -44,7 +44,7 @@
                     <children>
                         <Label fx:id="dishTwo" text="Dish 2">
                             <font>
-                                <Font name="System Bold Italic" size="16.0" />
+                                <Font name="System Bold Italic" size="14.0" />
                             </font>
                             <padding>
                                 <Insets top="20.0" />
@@ -60,7 +60,7 @@
                     <children>
                         <Label fx:id="dishThree" text="Dish 3">
                             <font>
-                                <Font name="System Bold Italic" size="16.0" />
+                                <Font name="System Bold Italic" size="14.0" />
                             </font>
                             <padding>
                                 <Insets top="20.0" />
@@ -76,7 +76,7 @@
                     <children>
                         <Label fx:id="dishFour" text="Dish 4">
                             <font>
-                                <Font name="System Bold Italic" size="16.0" />
+                                <Font name="System Bold Italic" size="14.0" />
                             </font>
                             <padding>
                                 <Insets top="20.0" />
@@ -92,7 +92,7 @@
                     <children>
                         <Label fx:id="dishFive" text="Dish 5">
                             <font>
-                                <Font name="System Bold Italic" size="16.0" />
+                                <Font name="System Bold Italic" size="14.0" />
                             </font>
                             <padding>
                                 <Insets top="20.0" />
@@ -108,7 +108,7 @@
                     <children>
                         <Label fx:id="dishSix" text="Dish 6">
                             <font>
-                                <Font name="System Bold Italic" size="16.0" />
+                                <Font name="System Bold Italic" size="14.0" />
                             </font>
                             <padding>
                                 <Insets top="20.0" />
@@ -124,7 +124,7 @@
                     <children>
                         <Label fx:id="dishSeven" text="Dish 7">
                             <font>
-                                <Font name="System Bold Italic" size="16.0" />
+                                <Font name="System Bold Italic" size="14.0" />
                             </font>
                             <padding>
                                 <Insets top="20.0" />
@@ -140,7 +140,7 @@
                     <children>
                         <Label fx:id="dishEight" text="Dish 8">
                             <font>
-                                <Font name="System Bold Italic" size="16.0" />
+                                <Font name="System Bold Italic" size="14.0" />
                             </font>
                             <padding>
                                 <Insets top="20.0" />
@@ -156,7 +156,7 @@
                     <children>
                         <Label fx:id="dishNine" text="Dish 9">
                             <font>
-                                <Font name="System Bold Italic" size="16.0" />
+                                <Font name="System Bold Italic" size="14.0" />
                             </font>
                             <padding>
                                 <Insets top="20.0" />
