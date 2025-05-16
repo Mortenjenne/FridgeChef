@@ -81,6 +81,7 @@ private boolean showRecipeFromFavorites = false;
     public void loadFridgeIngredients(){
         Ingredient ingredient = null;
         List<Integer> storedIngredientsID = dbReader.getAccountIngredients(currentUser.getAccountID());
+        //TODO Lav en metode til at søge på Integer listen storedIngredientsID
 
         for(Integer recipeId: storedIngredientsID){
             try {

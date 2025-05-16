@@ -26,9 +26,8 @@ public class DatabaseReader extends DatabaseConnector{
 
                 int accountID = rs.getInt("accountID");
                 String accountName = rs.getString("accountName");
-                int fridgeID = getAccountFridgeID(accountID);
 
-                return new Account(accountName,email,password,accountID,fridgeID);
+                return new Account(accountName,email,password,accountID);
             }
 
         } catch (SQLException e) {

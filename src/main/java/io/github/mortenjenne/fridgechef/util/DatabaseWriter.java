@@ -92,5 +92,13 @@ public class DatabaseWriter extends DatabaseConnector{
         }
     }
 
+    public void removeIngredientFromDatabase(Ingredient ingredient, int accountID){
+        //TODO Lav metode som fjerner ingredienser fra brugerens database
+    }
+
+    public void removeDishFromFavorites(Dish selectedDish, int accountID){
+        //TODO Lav en metode som fjerner favoritter fra brugerens database
+    }
+
 
 }
