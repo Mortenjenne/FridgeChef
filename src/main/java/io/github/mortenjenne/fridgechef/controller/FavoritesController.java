@@ -104,11 +104,8 @@ public class FavoritesController implements Initializable, SceneController {
             Dish selected = favoriteDishes.get(dishIndex);
 
             appManager.setSelectedRecipe(selected);
-            System.out.println(appManager.getSelectedDishId());
             appManager.switchTo(View.RECIPE);
-            System.out.println(appManager.getSelectedDishId());
             appManager.setShowRecipeFromFavorites(true);
-            System.out.println(appManager.getShowRecipeFromFavorites());
         }
     }
 

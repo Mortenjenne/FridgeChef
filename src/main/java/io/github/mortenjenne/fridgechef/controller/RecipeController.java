@@ -42,7 +42,6 @@ public class RecipeController implements Initializable, SceneController {
     private void returnButtonOptions(){
         if(appManager.getShowRecipeFromFavorites()) {
             returnButton.setOnAction(event -> appManager.switchTo(View.FAVORITES));
-            System.out.println(appManager.getShowRecipeFromFavorites());
             appManager.setShowRecipeFromFavorites(false);
         } else{
         returnButton.setOnAction(event -> appManager.switchTo(View.RESULT));
