@@ -26,6 +26,9 @@ public class ResultController implements Initializable, SceneController {
     @FXML
     private Button returnButton, prevButton, nextButton;
 
+    @FXML Label searchParametersLabel;
+    private String searchParametersMessage;
+
     private List<Dish> searchResult;
     private List<ImageView> views = new ArrayList<>();
     private List<Label> labels = new ArrayList<>();
@@ -37,7 +40,11 @@ public class ResultController implements Initializable, SceneController {
     public void setAppManager(AppManager appManager) {
         this.appManager = appManager;
         this.searchResult = appManager.searchRecipesByIngredientList(appManager.getSearchQuery());
+
+        searchParametersMessage = appManager.getSearchQuery().replace(",", ", ");
+        this.searchParametersLabel.setText(searchParametersMessage);
         showSearchResult();
+
     }
 
     @Override

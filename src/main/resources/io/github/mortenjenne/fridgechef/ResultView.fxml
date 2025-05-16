@@ -28,7 +28,7 @@
                <children>
                   <Label fx:id="dishOne" text="Dish 1">
                      <font>
-                        <Font name="System Bold Italic" size="16.0" />
+                        <Font name="System Bold Italic" size="14.0" />
                      </font>
                      <padding>
                         <Insets top="20.0" />
@@ -44,7 +44,7 @@
                <children>
                   <Label fx:id="dishTwo" text="Dish 2">
                      <font>
-                        <Font name="System Bold Italic" size="16.0" />
+                        <Font name="System Bold Italic" size="14.0" />
                      </font>
                      <padding>
                         <Insets top="20.0" />
@@ -60,7 +60,7 @@
                <children>
                   <Label fx:id="dishThree" text="Dish 3">
                      <font>
-                        <Font name="System Bold Italic" size="16.0" />
+                        <Font name="System Bold Italic" size="14.0" />
                      </font>
                      <padding>
                         <Insets top="20.0" />
@@ -76,7 +76,7 @@
                <children>
                   <Label fx:id="dishFour" text="Dish 4">
                      <font>
-                        <Font name="System Bold Italic" size="16.0" />
+                        <Font name="System Bold Italic" size="14.0" />
                      </font>
                      <padding>
                         <Insets top="20.0" />
@@ -92,7 +92,7 @@
                <children>
                   <Label fx:id="dishFive" text="Dish 5">
                      <font>
-                        <Font name="System Bold Italic" size="16.0" />
+                        <Font name="System Bold Italic" size="14.0" />
                      </font>
                      <padding>
                         <Insets top="20.0" />
@@ -108,7 +108,7 @@
                <children>
                   <Label fx:id="dishSix" text="Dish 6">
                      <font>
-                        <Font name="System Bold Italic" size="16.0" />
+                        <Font name="System Bold Italic" size="14.0" />
                      </font>
                      <padding>
                         <Insets top="20.0" />
@@ -124,7 +124,7 @@
                <children>
                   <Label fx:id="dishSeven" text="Dish 7">
                      <font>
-                        <Font name="System Bold Italic" size="16.0" />
+                        <Font name="System Bold Italic" size="14.0" />
                      </font>
                      <padding>
                         <Insets top="20.0" />
@@ -140,7 +140,7 @@
                <children>
                   <Label fx:id="dishEight" text="Dish 8">
                      <font>
-                        <Font name="System Bold Italic" size="16.0" />
+                        <Font name="System Bold Italic" size="14.0" />
                      </font>
                      <padding>
                         <Insets top="20.0" />
@@ -156,7 +156,7 @@
                <children>
                   <Label fx:id="dishNine" text="Dish 9">
                      <font>
-                        <Font name="System Bold Italic" size="16.0" />
+                        <Font name="System Bold Italic" size="14.0" />
                      </font>
                      <padding>
                         <Insets top="20.0" />
@@ -187,15 +187,30 @@
                   <Glow />
                </effect>
                <HBox.margin>
-                  <Insets left="240.0" top="3.0" />
+                  <Insets left="115.0" top="3.0" />
                </HBox.margin>
             </Button>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="500.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Seached Ingredients:">
+                     <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                     </font></Text>
+                  <Label fx:id="searchParametersLabel" alignment="CENTER" maxWidth="800.0" prefWidth="800.0">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font></Label>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
             <Button fx:id="nextButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" style="-fx-background-color: #d59faa; -fx-font-style: italic; -fx-font-weight: bold;" text="Next">
                <effect>
                   <Glow />
                </effect>
                <HBox.margin>
-                  <Insets left="240.0" top="3.0" />
+                  <Insets top="3.0" />
                </HBox.margin>
             </Button>
          </children>

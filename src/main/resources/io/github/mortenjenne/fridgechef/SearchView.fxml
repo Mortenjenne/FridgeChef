@@ -10,44 +10,71 @@
    <center>
       <VBox alignment="CENTER" prefHeight="500.0" prefWidth="800.0" spacing="20.0" style="-fx-background-color: #d59faa;" BorderPane.alignment="CENTER">
          <children>
-            <Text text=" Choose Your Ingredients" wrappingWidth="395.86328125">
+            <Text layoutX="352.0" layoutY="241.0" text="Search Filters" textAlignment="CENTER" wrappingWidth="395.86328125">
                <font>
-                  <Font name="System Bold Italic" size="33.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="-20.0" />
-               </VBox.margin>
-            </Text>
-            <CheckBox fx:id="isVegetarian" mnemonicParsing="false" prefHeight="67.0" prefWidth="170.0" text="Vegetarian">
-               <font>
-                  <Font name="System Bold Italic" size="23.0" />
+                  <Font name="System Bold Italic" size="24.0" />
                </font>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
-            </CheckBox>
+            </Text>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <CheckBox fx:id="isVegetarian1" disable="true" mnemonicParsing="false" prefHeight="67.0" prefWidth="170.0" text="Vegan">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="isVegetarian" mnemonicParsing="false" prefHeight="67.0" prefWidth="170.0" text="Vegetarian">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="isVegetarian11" disable="true" layoutX="180.0" layoutY="10.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="170.0" text="Gluten Free">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="isVegetarian111" disable="true" layoutX="350.0" layoutY="10.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="170.0" text="Lactose Free">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font>
+                  </CheckBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="-40.0" />
+               </VBox.margin>
+            </HBox>
             <Text text="Cuisine" wrappingWidth="75.345703125">
                <font>
                   <Font name="System Bold Italic" size="22.0" />
                </font>
                <VBox.margin>
-                  <Insets top="-10.0" />
+                  <Insets top="-40.0" />
                </VBox.margin>
             </Text>
-            <ChoiceBox fx:id="chooseCuisineBox" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #d59faa;">
+            <ChoiceBox fx:id="chooseCuisineBox" prefHeight="40.0" prefWidth="500.0" style="-fx-background-color: #d59faa;">
                <effect>
                   <Glow level="0.45" />
                </effect>
                <VBox.margin>
-                  <Insets top="-10.0" />
+                  <Insets bottom="40.0" top="-10.0" />
                </VBox.margin>
             </ChoiceBox>
+            <Text text=" Choose Your Ingredients" textAlignment="CENTER" wrappingWidth="395.86328125">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Text>
             <Text text="First Ingredient">
                <font>
-                  <Font name="System Bold Italic" size="22.0" />
+                  <Font name="System Bold Italic" size="20.0" />
                </font>
             </Text>
-            <ChoiceBox fx:id="chooseIngredientBox1" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #d59faa;">
+            <ChoiceBox fx:id="chooseIngredientBox1" prefHeight="40.0" prefWidth="500.0" style="-fx-background-color: #d59faa;">
                <effect>
                   <Glow level="0.45" />
                </effect>
@@ -57,10 +84,10 @@
             </ChoiceBox>
             <Text text="Second Ingredient">
                <font>
-                  <Font name="System Bold Italic" size="22.0" />
+                  <Font name="System Bold Italic" size="20.0" />
                </font>
             </Text>
-            <ChoiceBox fx:id="chooseIngredientBox2" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #d59faa;">
+            <ChoiceBox fx:id="chooseIngredientBox2" prefHeight="40.0" prefWidth="500.0" style="-fx-background-color: #d59faa;">
                <effect>
                   <Glow level="0.45" />
                </effect>
@@ -70,10 +97,10 @@
             </ChoiceBox>
             <Text text="Third Ingredient">
                <font>
-                  <Font name="System Bold Italic" size="22.0" />
+                  <Font name="System Bold Italic" size="20.0" />
                </font>
             </Text>
-            <ChoiceBox fx:id="chooseIngredientBox3" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #d59faa;">
+            <ChoiceBox fx:id="chooseIngredientBox3" prefHeight="40.0" prefWidth="500.0" style="-fx-background-color: #d59faa;">
                <effect>
                   <Glow level="0.45" />
                </effect>

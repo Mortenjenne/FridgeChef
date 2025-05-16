@@ -6,6 +6,7 @@ import io.github.mortenjenne.fridgechef.logic.View;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,13 +20,13 @@ public class MainMenuController implements Initializable, SceneController {
     @FXML private Button favoriteDishButton;
     @FXML private Button fridgeButton;
     @FXML private Button returnButton;
+    @FXML private Label welcomeLabel;
+    @FXML private String welcomeMessage;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        searchButton.setOnAction(event -> {
-            // searchController.setIngredientsInFridge(appManager.getIngredientsInFridge());
-            appManager.switchTo(View.SEARCH);
-        });
+
+        searchButton.setOnAction(event -> appManager.switchTo(View.SEARCH));
         favoriteDishButton.setOnAction(event -> appManager.switchTo(View.FAVORITES));
         fridgeButton.setOnAction(event -> appManager.switchTo(View.FRIDGE));
         returnButton.setOnAction(event -> appManager.switchTo(View.LOGIN));
@@ -35,5 +36,7 @@ public class MainMenuController implements Initializable, SceneController {
     @Override
     public void setAppManager(AppManager appManager) {
         this.appManager = appManager;
+        welcomeMessage = "Welcome " + appManager.getCurrentUser().getUserName() + "!";
+        welcomeLabel.setText(welcomeMessage);
     }
 }

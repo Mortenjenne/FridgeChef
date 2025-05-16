@@ -30,10 +30,9 @@
    <bottom>
       <VBox alignment="CENTER" prefHeight="665.0" prefWidth="1080.0" spacing="40.0" BorderPane.alignment="CENTER">
          <children>
-
-            <Label text="Welcome Back &quot;User&quot;!">
+            <Label fx:id="welcomeLabel" text="Welcome Back &quot;User&quot;!">
                <font>
-                  <Font name="System Bold Italic" size="39.0" />
+                  <Font name="System Bold Italic" size="33.0" />
                </font>
                <VBox.margin>
                   <Insets top="20.0" />

@@ -32,6 +32,7 @@ public class SearchController implements Initializable, SceneController {
 
     private boolean isUpdatingChoiceBoxes = false;
 
+
     @Override
     public void setAppManager(AppManager appManager) {
         this.appManager = appManager;
@@ -40,7 +41,6 @@ public class SearchController implements Initializable, SceneController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //searchRecipeButton.setOnAction(event -> appManager.switchTo(View.RESULT));
         returnButton.setOnAction(event -> appManager.switchTo(View.MAIN));
         searchRecipeButton.setOnAction(event -> selectedIngredients());
     }
@@ -52,6 +52,7 @@ public class SearchController implements Initializable, SceneController {
         return findAppropriateName;
     }
 
+
     private void selectedIngredients(){
         String selectedCuisine = chooseCuisineBox.getValue();
 
@@ -62,12 +63,13 @@ public class SearchController implements Initializable, SceneController {
         // Create List as Stream - remove values if object is null or empty
         List<String> choices = Stream.of(selectedIngredientOne, selectedIngredientTwo, selectedIngredientThree).filter(Objects::nonNull).filter(s -> !s.isEmpty()).toList();
 
-        // Replace ALL whitespace - eliminates problem when searching with ingredients consisting of more than one word
-        String searchString = String.join(",", choices).replaceAll("\\s+", "");
+        // Separate values with ','
+        String searchString = String.join(",", choices);
 
         appManager.setSearchQuery(searchString);
         appManager.switchTo(View.RESULT);
     }
+
 
     private String checkNullChoiceBoxes(ChoiceBox<Ingredient> choiceBox){
         String empty = "";
@@ -134,6 +136,7 @@ public class SearchController implements Initializable, SceneController {
         box.getItems().setAll(stillAvailable);
         box.setValue(currentIngredient);
     }
+
 
 }
 

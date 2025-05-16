@@ -11,9 +11,14 @@
    <bottom>
       <VBox alignment="TOP_CENTER" prefHeight="112.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <children>
+            <Label fx:id="loginErrorLabel" alignment="CENTER" layoutX="479.0" layoutY="74.0" textFill="RED">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Label>
             <Button fx:id="loginButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="189.0" style="-fx-font-size: 20; -fx-background-color: #d59faa; -fx-font-style: italic; -fx-font-weight: Bold;" text="Login">
                <VBox.margin>
-                  <Insets />
+                  <Insets top="5.0" />
                </VBox.margin>
                <font>
                   <Font name="System Bold Italic" size="23.0" />
@@ -24,7 +29,7 @@
             </Button>
             <Label fx:id="createAccountLabel" text="Create New Account">
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets top="10.0" />
                </VBox.margin>
                <font>
                   <Font name="System Bold Italic" size="15.0" />

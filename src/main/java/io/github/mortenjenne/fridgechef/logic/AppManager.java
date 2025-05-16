@@ -139,6 +139,7 @@ private boolean showRecipeFromFavorites = false;
         this.currentUser = dbReader.accountLogin(email,password);
         if(this.currentUser != null) {
             //TODO Tilføj til metoden her: Load brugerens køleskab fra databasen ind i Listen på Account objektet
+            loadFridgeIngredients();
             return true;
         }
         return false;
@@ -150,43 +151,11 @@ private boolean showRecipeFromFavorites = false;
         }
     }
 
-    public boolean isEmailValid(String email) {
-        if (!email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
-            return false;
-        }
-        return true;
-    }
-
-    public boolean isUserNameValid(String userName) {
-        return userName.trim().length() >= 2;
-    }
-
-    public boolean isValidPassword(String password) {
-        if (password == null || password.trim().isEmpty()) {
-            return false;
-        }
-        if (password.length() < 6) {
-            return false;
-        }
-        if (!password.matches(".*[A-Z].*")) {
-            return false;
-        }
-        if (!password.matches(".*[a-z].*")) {
-            return false;
-        }
-        if (!password.matches(".*\\d.*")) {
-            return false;
-        }
-        return true;
-    }
-
     public boolean isEmailInSystem(String email) {
         return dbReader.checkExistingAccount(email);
     }
 
-    public boolean isPasswordIndentical(String password, String confirmPassword) {
-        return password.equals(confirmPassword);
-    }
+
 }
 
 

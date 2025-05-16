@@ -33,8 +33,11 @@ public class CreateAccountController implements Initializable, SceneController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         returnButton.setOnAction(event -> appManager.switchTo(View.LOGIN));
+
         createAccountButton.setOnAction(event -> {
+
             userName = firstNameTextField.getText();
             email = emailTextField.getText();
             password = passwordTextField.getText();
@@ -57,11 +60,11 @@ public class CreateAccountController implements Initializable, SceneController {
         emailErrorLabel.setText("");
         passwordErrorLabel.setText("");
 
-        if(!appManager.isUserNameValid(userName)){
+        if(!isUserNameValid(userName)){
             emailErrorLabel.setText("Your account name has to have a minimum of 2 characters.");
             return false;
         }
-        if(!appManager.isEmailValid(email)){
+        if(!isEmailValid(email)){
             emailErrorLabel.setText("Please enter a valid e-mail address.");
             return false;
         }
@@ -71,14 +74,48 @@ public class CreateAccountController implements Initializable, SceneController {
             return false;
         }
 
-        if(!appManager.isValidPassword(password1)){
+        if(!isValidPassword(password1)){
             passwordErrorLabel.setText("Invalid password: min. 6 chars, 1 upper, 1 lower, 1 digit.");
             return false;
         }
-        if(!appManager.isPasswordIndentical(password1,password2)){
+        if(!isPasswordIndentical(password1,password2)){
             passwordErrorLabel.setText("Passwords are not identical");
             return false;
         }
         return true;
+    }
+
+    private boolean isValidPassword(String password) {
+        if (password == null || password.trim().isEmpty()) {
+            return false;
+        }
+        if (password.length() < 6) {
+            return false;
+        }
+        if (!password.matches(".*[A-Z].*")) {
+            return false;
+        }
+        if (!password.matches(".*[a-z].*")) {
+            return false;
+        }
+        if (!password.matches(".*\\d.*")) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isPasswordIndentical(String password, String confirmPassword) {
+        return password.equals(confirmPassword);
+    }
+
+    private boolean isEmailValid(String email) {
+        if (!email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isUserNameValid(String userName) {
+        return userName.trim().length() >= 2;
     }
 }
