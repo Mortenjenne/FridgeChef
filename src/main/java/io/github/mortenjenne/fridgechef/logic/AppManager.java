@@ -129,6 +129,7 @@ private boolean showRecipeFromFavorites = false;
     public boolean login(String email, String password) {
         this.currentUser = dbReader.accountLogin(email,password);
         if(this.currentUser != null) {
+            //TODO Tilføj til metoden her: Load brugerens køleskab fra databasen ind i Listen på Account objektet
             return true;
         }
         return false;
