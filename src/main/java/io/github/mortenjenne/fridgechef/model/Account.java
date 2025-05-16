@@ -6,6 +6,7 @@ import java.util.List;
 public class Account {
 
     // Accountinfo
+    private int accountID;
     private String userName;
     private String email;
     private String password;
@@ -23,10 +24,12 @@ public class Account {
         this.ingredientsInFridge = new ArrayList<>();
     }
 
-    public Account(String userName, String email, String password){
+
+    public Account(String userName, String email, String password, int accountID){
         this.userName = userName;
         this.email = email;
         this.password = password;
+        this.accountID = accountID;
         this.favoriteDishes = new ArrayList<>();
         this.ingredientsInFridge = new ArrayList<>();
     }
@@ -34,6 +37,10 @@ public class Account {
     // Accountinfo
     public String getUserName(){
         return this.userName;
+    }
+
+    public int getAccountID(){
+        return this.accountID;
     }
 
     public String getEmail(){
@@ -68,6 +75,7 @@ public class Account {
     public void removeFromFavorites(Dish dish){
         this.favoriteDishes.remove(dish);
     }
+
 
     // Fridge
     public void addIngredientToFridge(Ingredient ingredient){
