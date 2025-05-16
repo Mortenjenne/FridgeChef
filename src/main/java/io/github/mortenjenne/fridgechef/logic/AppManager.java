@@ -90,7 +90,6 @@ private boolean showRecipeFromFavorites = false;
     public void createAccount(String accountName, String email, String password) {
         if(!dbReader.checkExistingAccount(email)) {
             dbWriter.createAccount(email, accountName, password);
-            this.currentUser = new Account(accountName, email, password);
         }
     }
 
