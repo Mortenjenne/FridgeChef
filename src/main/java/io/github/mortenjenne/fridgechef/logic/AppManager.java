@@ -30,15 +30,15 @@ private boolean showRecipeFromFavorites = false;
 
     public void setSelectedRecipe(Dish selectedDish){this.selectedDish = selectedDish;}
 
-    public Dish getSelectedDish(){return this.selectedDish;}
-
-    public int getSelectedDishId(){return this.selectedDish.getId();}
-
-    public String getSelectedDishTitle(){return this.selectedDish.getTitle();}
-
     public void setSearchQuery(String query){
         this.searchQuery = query;
     }
+
+    public String getSelectedDishTitle(){return this.selectedDish.getTitle();}
+
+    public Dish getSelectedDish(){return this.selectedDish;}
+
+    public int getSelectedDishId(){return this.selectedDish.getId();}
 
     public String getSearchQuery(){
         return this.searchQuery;
@@ -48,42 +48,17 @@ private boolean showRecipeFromFavorites = false;
         return this.currentUser;
     }
 
+    public List<Ingredient> getIngredientsInFridge(){
+        return currentUser.getIngredientsInFridge();
+    }
+
     public void addToFavoriteDishes(Dish selectedDish) {
         currentUser.addToFavorites(selectedDish);
         dbWriter.addDishToFavorites(selectedDish,currentUser.getAccountID());
     }
 
-    public void addIngredientToFridge(Ingredient ingredient){
-        currentUser.addIngredientToFridge(ingredient);
-        dbWriter.addIngredientToDatabase(ingredient, currentUser.getAccountID());
-    }
-
-    public void removeIngredientFromFridge(Ingredient ingredient){
-        currentUser.removeIngredientFromFridge(ingredient);
-    }
-
-    public List<Ingredient> getIngredientsInFridge(){
-        return currentUser.getIngredientsInFridge();
-    }
-
     public void switchTo(View view) {
         sceneNavigator.switchTo(view);
-    }
-
-    public List<Dish> loadFavoriteDishes(){
-        List<Dish> storedFavoriteDishes = new ArrayList<>();
-        List<Integer> storedFavoriteDishesID = dbReader.getAccountFavoriteDishes(currentUser.getAccountID());
-        //TODO Lav en metode til at søge på Integer listen storedFavoriteDishesID
-
-        return storedFavoriteDishes;
-    }
-
-    public List<Ingredient> loadFridgeIngredients(){
-        List<Ingredient> storedIngredients = new ArrayList<>();
-        List<Integer> storedIngredientsID = dbReader.getAccountIngredients(currentUser.getAccountID());
-        //TODO Lav en metode til at søge på Integer listen storedIngredientsID
-
-        return storedIngredients;
     }
 
     public Recipe getFullRecipeDescription(int recipeId){
@@ -95,6 +70,10 @@ private boolean showRecipeFromFavorites = false;
         }
         return recipe;
     }
+
+
+
+    //  ------  SEARCH  ------
 
     public List<Ingredient> searchIngredients (String name){
         List<Ingredient> ingredients = new ArrayList<>();
@@ -117,12 +96,42 @@ private boolean showRecipeFromFavorites = false;
         return dishes;
     }
 
+
+    //  ------  FRIDGE  ------
+    public void addIngredientToFridge(Ingredient ingredient){
+        currentUser.addIngredientToFridge(ingredient);
+        dbWriter.addIngredientToDatabase(ingredient, currentUser.getAccountID());
+    }
+
+    public void removeIngredientFromFridge(Ingredient ingredient){
+        currentUser.removeIngredientFromFridge(ingredient);
+        dbWriter.removeIngredientFromDatabase(ingredient, currentUser.getAccountID());
+    }
+
+    public List<Ingredient> loadFridgeIngredients(){
+        List<Ingredient> storedIngredients = new ArrayList<>();
+        List<Integer> storedIngredientsID = dbReader.getAccountIngredients(currentUser.getAccountID());
+        //TODO Lav en metode til at søge på Integer listen storedIngredientsID
+
+        return storedIngredients;
+    }
+
+    //  ------  FAVORITE  ------
+
     public void setShowRecipeFromFavorites(boolean showRecipeFromFavorites) {
         this.showRecipeFromFavorites = showRecipeFromFavorites;
     }
 
     public boolean getShowRecipeFromFavorites(){
         return this.showRecipeFromFavorites;
+    }
+
+    public List<Dish> loadFavoriteDishes(){
+        List<Dish> storedFavoriteDishes = new ArrayList<>();
+        List<Integer> storedFavoriteDishesID = dbReader.getAccountFavoriteDishes(currentUser.getAccountID());
+        //TODO Lav en metode til at søge på Integer listen storedFavoriteDishesID
+
+        return storedFavoriteDishes;
     }
 
     //  ------  ACCOUNT  ------

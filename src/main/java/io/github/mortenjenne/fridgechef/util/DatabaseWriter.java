@@ -82,10 +82,9 @@ public class DatabaseWriter extends DatabaseConnector{
         String sql = "INSERT INTO favorite_dishes (accountID, dishID) VALUES (?,?)";
 
         //Insert dish into favorite database
-        try{
-            PreparedStatement stm = conn.prepareStatement(sql);
-            stm.setInt(1,accountID);
-            stm.setInt(2,dishID);
+        try (PreparedStatement stm = conn.prepareStatement(sql)){
+            stm.setInt(1, accountID);
+            stm.setInt(2, dishID);
             stm.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -93,11 +92,38 @@ public class DatabaseWriter extends DatabaseConnector{
     }
 
     public void removeIngredientFromDatabase(Ingredient ingredient, int accountID){
-        //TODO Lav metode som fjerner ingredienser fra brugerens database
+        connect();
+
+        int ingredientID = ingredient.getId();
+
+        String sql = "DELETE FROM account_ingredients WHERE accountID = ? AND ingredientID = ?";
+
+        //Remove ingredient from account_ingredients (fridge) database
+        try (PreparedStatement stm = conn.prepareStatement(sql)){
+            stm.setInt(1, accountID);
+            stm.setInt(2, ingredientID);
+            stm.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 
     public void removeDishFromFavorites(Dish selectedDish, int accountID){
         //TODO Lav en metode som fjerner favoritter fra brugerens database
+        connect();
+
+        int dishID = selectedDish.getId();
+
+        String sql = "DELETE FROM favorite_dishes WHERE accountID = ? AND dishID = ?";
+
+        //Remove dish from favorite database
+        try (PreparedStatement stm = conn.prepareStatement(sql)){
+            stm.setInt(1, accountID);
+            stm.setInt(2, dishID);
+            stm.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 
 
