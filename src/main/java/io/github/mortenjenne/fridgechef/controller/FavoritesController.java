@@ -1,9 +1,3 @@
-//ALOT OF STUFF IS DIRECTLY COPIED FROM RECIPECONTROLLER, NEED TO BE LOOKED THROUGH
-
-
-
-
-
 package io.github.mortenjenne.fridgechef.controller;
 
 import io.github.mortenjenne.fridgechef.logic.AppManager;
@@ -43,6 +37,7 @@ public class FavoritesController implements Initializable, SceneController {
     public void setAppManager(AppManager appManager) {
         this.appManager = appManager;
         this.favoriteDishes = appManager.getCurrentUser().getFavoriteDishes();
+        showFavoritesResult();
     }
 
     @Override
@@ -89,7 +84,7 @@ public class FavoritesController implements Initializable, SceneController {
         });
     }
 
-    private void showSearchResult() {
+    private void showFavoritesResult() {
         addViewsToList();
         labelsToList();
         updatePage();
@@ -112,6 +107,8 @@ public class FavoritesController implements Initializable, SceneController {
             System.out.println(appManager.getSelectedDishId());
             appManager.switchTo(View.RECIPE);
             System.out.println(appManager.getSelectedDishId());
+            appManager.setShowRecipeFromFavorites(true);
+            System.out.println(appManager.getShowRecipeFromFavorites());
         }
     }
 
