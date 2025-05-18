@@ -28,6 +28,10 @@ public class RecipeJsonParser {
         return gson.fromJson(jsonResponse,Ingredient.class);
     }
 
+    public Dish parseDishById(String jsonResponse){
+        return gson.fromJson(jsonResponse,Dish.class);
+    }
+
 
 
 }

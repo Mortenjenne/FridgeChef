@@ -4,7 +4,6 @@ import io.github.mortenjenne.fridgechef.model.Account;
 import io.github.mortenjenne.fridgechef.model.Dish;
 import io.github.mortenjenne.fridgechef.model.Ingredient;
 import io.github.mortenjenne.fridgechef.model.Recipe;
-import io.github.mortenjenne.fridgechef.util.DatabaseConnector;
 import io.github.mortenjenne.fridgechef.util.DatabaseReader;
 import io.github.mortenjenne.fridgechef.util.DatabaseWriter;
 
@@ -19,6 +18,10 @@ private DatabaseReader dbReader = new DatabaseReader();
 private DatabaseWriter dbWriter = new DatabaseWriter();
 
 private String searchQuery;
+private String cusineQuery;
+private String intolerances;
+private boolean isSearchOnlyVegan;
+private boolean isSearchOnlyVegetarian;
 private Dish selectedDish;
 private boolean showRecipeFromFavorites = false;
 
@@ -26,6 +29,39 @@ private boolean showRecipeFromFavorites = false;
         this.recipeManager = recipeManager;
         this.sceneNavigator = sceneNavigator;
         this.currentUser = currentUser;
+    }
+
+    public void setIsSearchVegan(boolean isSearchOnlyVegan){
+        this.isSearchOnlyVegan = isSearchOnlyVegan;
+    }
+
+    public void setIntolerances(String intolerances){
+        this.intolerances = intolerances;
+    }
+
+    public String getIntolerances(){
+        return this.intolerances;
+    }
+
+    public boolean isSearchOnlyVegan(){
+        return  this.isSearchOnlyVegan;
+    }
+
+
+    public void setCusineQuery(String cuisine){
+        this.cusineQuery = cuisine;
+    }
+
+    public void setIsSearchVegetarian(boolean isVegetarian){
+        this.isSearchOnlyVegetarian = isVegetarian;
+    }
+
+    public String getCusineQuery(){
+        return  this.cusineQuery;
+    }
+
+    public boolean getIsSearchOnlyVegetarian(){
+        return this.isSearchOnlyVegetarian;
     }
 
     public void setSelectedRecipe(Dish selectedDish){this.selectedDish = selectedDish;}
@@ -86,10 +122,10 @@ private boolean showRecipeFromFavorites = false;
         return ingredients;
     }
 
-    public List<Dish> searchRecipesByIngredientList (String ingredients){
+    public List<Dish> searchRecipesByIngredientList (String ingredients, String cuisine, boolean isSearchOnlyVegetarian, boolean isSearchOnlyVegan, String intolerances){
         List<Dish> dishes = new ArrayList<>();
         try {
-            dishes = recipeManager.getRecipesByIngredients(ingredients);
+            dishes = recipeManager.getRecipesByIngredients(ingredients,cuisine,isSearchOnlyVegetarian,isSearchOnlyVegan,intolerances);
         } catch (Exception e){
             System.out.println("Error loading ingredient search");
         }
@@ -111,7 +147,6 @@ private boolean showRecipeFromFavorites = false;
     public void loadFridgeIngredients(){
         Ingredient ingredient = null;
         List<Integer> storedIngredientsID = dbReader.getAccountIngredients(currentUser.getAccountID());
-        //TODO Lav en metode til at søge på Integer listen storedIngredientsID
 
         for(Integer recipeId: storedIngredientsID){
             try {
@@ -119,7 +154,7 @@ private boolean showRecipeFromFavorites = false;
                 this.currentUser.addIngredientToFridge(ingredient);
 
             } catch (Exception e){
-                System.out.println("Error retrieving ingredient");
+                System.out.println("Error retrieving account ingredients");
             }
         }
     }
@@ -134,19 +169,26 @@ private boolean showRecipeFromFavorites = false;
         return this.showRecipeFromFavorites;
     }
 
-    public List<Dish> loadFavoriteDishes(){
+    public void loadFavoriteDishes(){
         List<Dish> storedFavoriteDishes = new ArrayList<>();
         List<Integer> storedFavoriteDishesID = dbReader.getAccountFavoriteDishes(currentUser.getAccountID());
         //TODO Lav en metode til at søge på Integer listen storedFavoriteDishesID
+        for(Integer dishId: storedFavoriteDishesID){
+            try {
+                Dish dish = recipeManager.getDishById(dishId);
+                this.currentUser.addToFavorites(dish);
+            } catch (Exception e){
+                System.out.println("Error loading account favorite dishes");
+            }
 
-        return storedFavoriteDishes;
+        }
     }
 
     //  ------  ACCOUNT  ------
     public boolean login(String email, String password) {
         this.currentUser = dbReader.accountLogin(email,password);
         if(this.currentUser != null) {
-            //TODO Tilføj til metoden her: Load brugerens køleskab fra databasen ind i Listen på Account objektet
+            //loadFavoriteDishes();
             loadFridgeIngredients();
             return true;
         }

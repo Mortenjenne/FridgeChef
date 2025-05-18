@@ -17,13 +17,35 @@ public class RecipeApiClient {
     private final String apiSearchByRecipe = "https://api.spoonacular.com/recipes/complexSearch";
     private final String apiSearchIngredient = "https://api.spoonacular.com/food/ingredients/search";
     private final String getApiSearchIngredientById = "https://api.spoonacular.com/food/ingredients/";
-    private final String apiKey = apiKeyToby1;
+    private final String apiKey = apiKeyDaniel1;
     private final String search = "?query=";
     private final String recipeMustContainIngredient = "?includeIngredients=";
+    private final String cuisine = "&cuisine=";
+    private final String onlyVegetarian = "&diet=vegetarian";
+    private final String onlyVegan = "&diet=vegan";
+    private final String intolerances = "&intolerances=";
 
 
-    public String fetchRecipesByIngredientList(String ingredients) throws Exception{
-        String endpoint = apiSearchByRecipe + recipeMustContainIngredient + ingredients + "&number=100&apiKey=" + apiKey;
+    public String fetchRecipesByIngredientList(String ingredients, String cuisineType, boolean isVegetarian, boolean isVegan, String intolerancesType) throws Exception{
+        String endpoint = apiSearchByRecipe + recipeMustContainIngredient + ingredients;
+
+        if(isVegetarian){
+            endpoint += onlyVegetarian;
+        }
+
+        if(isVegan){
+            endpoint += onlyVegan;
+        }
+
+        if(!intolerancesType.isEmpty()){
+            endpoint += intolerances + intolerancesType;
+        }
+
+        if(!cuisine.isEmpty()){
+            endpoint += cuisine + cuisineType;
+        }
+
+        endpoint = endpoint + "&number=100&apiKey=" + apiKey;
         return getResultFromApi(endpoint);
     }
 

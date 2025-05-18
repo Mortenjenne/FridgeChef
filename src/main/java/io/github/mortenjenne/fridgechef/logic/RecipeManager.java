@@ -22,14 +22,19 @@ public class RecipeManager {
         return jsonParser.parseFullRecipeDescription(jsonResponse);
     }
 
-    public List<Dish> getRecipesByIngredients(String ingredients) throws Exception{
-        String jsonResponse = apiClient.fetchRecipesByIngredientList(ingredients);
+    public List<Dish> getRecipesByIngredients(String ingredients, String cuisine, boolean isSearchVegetarian, boolean isSearchVegan, String intolerances) throws Exception{
+        String jsonResponse = apiClient.fetchRecipesByIngredientList(ingredients,cuisine,isSearchVegetarian, isSearchVegan,intolerances);
         return jsonParser.parseRecipes(jsonResponse);
     }
 
     public List<Dish> getRecipesByName(String name) throws Exception {
         String jsonResponse = apiClient.fetchRecipesByTitle(name);
         return jsonParser.parseRecipes(jsonResponse);
+    }
+
+    public Dish getDishById(int recipeId) throws Exception{
+        String jsonResponse = apiClient.fetchFullRecipe(recipeId);
+        return jsonParser.parseDishById(jsonResponse);
     }
 
     public List<Dish> getRecipesByCuisine(String cuisine) throws Exception {
