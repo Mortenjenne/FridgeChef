@@ -13,7 +13,7 @@ public class RecipeApiClient {
     private final String apiKeyDaniel1 = "d4f793953bf14d308de5180683e9a387";
     private final String apiKeyToby1 = "757341ceb29e45e78e97f4bb4d1a8776";
 
-    private final String apiKeyInUse = apiKeyMorten2;
+    private final String apiKeyInUse = apiKeyJesper1;
 
     private final String apiSearchByRecipe = "https://api.spoonacular.com/recipes/complexSearch";
     private final String apiSearchIngredient = "https://api.spoonacular.com/food/ingredients/search";
@@ -26,26 +26,28 @@ public class RecipeApiClient {
     private final String intolerances = "&intolerances=";
 
     public String fetchRecipesByIngredientList(String ingredients, String cuisineType, boolean isVegetarian, boolean isVegan, String intolerancesType) throws Exception{
-        String endpoint = apiSearchByRecipe + recipeMustContainIngredient + ingredients;
+        StringBuilder endpoint = new StringBuilder();
+        endpoint.append(apiSearchByRecipe).append(recipeMustContainIngredient).append(ingredients);
 
         if(isVegetarian){
-            endpoint += onlyVegetarian;
+            endpoint.append(onlyVegetarian);
         }
 
         if(isVegan){
-            endpoint += onlyVegan;
+            endpoint.append(onlyVegan);
         }
 
-        if(!intolerancesType.isEmpty()){
-            endpoint += intolerances + intolerancesType;
+        if(!intolerancesType.isEmpty() && intolerancesType != null){
+            endpoint.append(intolerances).append(intolerancesType);
         }
 
-        if(!cuisine.isEmpty()){
-            endpoint += cuisine + cuisineType;
+        if(!cuisineType.isEmpty() && cuisineType != null){
+            endpoint.append(cuisine).append(cuisineType);
         }
 
-        endpoint += "&number=100&apiKey=" + apiKeyInUse;
-        return getResultFromApi(endpoint);
+        endpoint.append("&number=100&apiKey=").append(apiKeyInUse);
+
+        return getResultFromApi(endpoint.toString());
     }
 
     public String fetchFullRecipe(int recipeId) throws Exception{

@@ -91,6 +91,7 @@ public class RecipeController implements Initializable, SceneController {
 
     private void loadRecipe(){
         if(recipe != null){
+
             recipeNameLabel.setText(recipe.getTitle());
             timeLabel.setText("Cooking time: " + String.valueOf(recipe.getReadyInMinutes()) + " mins");
             servingsLabel.setText("Serves: " + String.valueOf(recipe.getServings()) + " people");
@@ -108,9 +109,10 @@ public class RecipeController implements Initializable, SceneController {
 
             for(AnalyzedInstruction ing: recipe.getAnalyzedInstructions()){
                 for(InstructionStep steps: ing.getSteps()){
-                    instructions += steps.getNumber() + ": " + steps.getStep() + "\n";
+                    instructions += steps.getNumber() + ": " + steps.getStep() + "\n" + "\n";
                 }
             }
+
             textArea.setText(instructions);
 
         } else {
