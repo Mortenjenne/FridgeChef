@@ -45,6 +45,7 @@ public class RecipeController implements Initializable, SceneController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         favoriteConfirmLabel.setText("");
+        addToFavoriteButton.setOnAction(event -> addToFavorites());
 
         returnButton.setOnAction(event -> {
             if (appManager.getShowRecipeFromFavorites()) {
@@ -54,8 +55,6 @@ public class RecipeController implements Initializable, SceneController {
                 appManager.switchTo(View.RESULT);
             }
         });
-
-        addToFavoriteButton.setOnAction(event -> addToFavorites());
     }
 
     private void addToFavorites() {
@@ -102,8 +101,8 @@ public class RecipeController implements Initializable, SceneController {
                 isVeganLabel.setText("Vegan");
             } else if(recipe.IsVegetarian()){
                 isVeganLabel.setText("Vegetarian");
-            } else {
-                isVeganLabel.setText("Not vegetarian");
+            } else if(!recipe.isVegan() && !recipe.IsVegetarian()) {
+                isVeganLabel.setText("");
             }
             setListView();
 
