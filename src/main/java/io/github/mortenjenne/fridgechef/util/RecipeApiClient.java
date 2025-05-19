@@ -13,7 +13,7 @@ public class RecipeApiClient {
     private final String apiKeyDaniel1 = "d4f793953bf14d308de5180683e9a387";
     private final String apiKeyToby1 = "757341ceb29e45e78e97f4bb4d1a8776";
 
-    private final String apiKeyInUse = apiKeyMorten2;
+    private final String apiKeyInUse = apiKeyToby1;
 
     private final String apiSearchByRecipe = "https://api.spoonacular.com/recipes/complexSearch";
     private final String apiSearchIngredient = "https://api.spoonacular.com/food/ingredients/search";

@@ -40,8 +40,6 @@ public class DatabaseConnector {
         return urlMap;
     }
 
-
-
     public void connect() {
         Map<String, String> env = loadEnvFile(".env");
         String dburl = env.get("AIVEN_DB_URL");
