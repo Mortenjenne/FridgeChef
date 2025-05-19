@@ -24,6 +24,10 @@ public class SearchController implements Initializable, SceneController {
     @FXML private ChoiceBox<Ingredient> chooseIngredientBox2;
     @FXML private ChoiceBox<Ingredient> chooseIngredientBox3;
     @FXML private Button returnButton;
+    @FXML private Button clearCuisineButton;
+    @FXML private Button clearIngredientButton1;
+    @FXML private Button clearIngredientButton2;
+    @FXML private Button clearIngredientButton3;
 
     private AppManager appManager;
     private final String[] cuisines = {"Chinese", "French", "Indian", "Italian", "Japanese", "Mexican", "Thai"};
@@ -40,6 +44,18 @@ public class SearchController implements Initializable, SceneController {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         returnButton.setOnAction(event -> appManager.switchTo(View.MAIN));
         searchRecipeButton.setOnAction(event -> selectedIngredients());
+        clearCuisineButton.setOnAction(event -> clearCuisineChoice(chooseCuisineBox));
+        clearIngredientButton1.setOnAction(event -> clearIngredientChoice(chooseIngredientBox1));
+        clearIngredientButton2.setOnAction(event -> clearIngredientChoice(chooseIngredientBox2));
+        clearIngredientButton3.setOnAction(event -> clearIngredientChoice(chooseIngredientBox3));
+    }
+
+    private void clearIngredientChoice(ChoiceBox<Ingredient> box){
+        box.setValue(null);
+    }
+
+    private void clearCuisineChoice(ChoiceBox<String> box){
+        box.setValue("");
     }
 
     private void selectedIngredients(){
