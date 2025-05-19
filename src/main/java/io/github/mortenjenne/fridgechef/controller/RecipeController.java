@@ -14,15 +14,12 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class RecipeController implements Initializable, SceneController {
-    private AppManager appManager;
-
     @FXML private Button returnButton, addToFavoriteButton;
     @FXML private Label recipeNameLabel;
     @FXML private Label timeLabel;
@@ -34,16 +31,14 @@ public class RecipeController implements Initializable, SceneController {
     @FXML private TextArea textArea;
     @FXML private ImageView recipeImage;
 
+    private AppManager appManager;
     private String instructions = "";
-    private String recipeAdded = "Recipe added!";
-    private String recipeRemoved = "Recipe removed!";
-
     private Recipe recipe;
 
     @Override
     public void setAppManager(AppManager appManager) {
         this.appManager = appManager;
-        recipe = appManager.getFullRecipeDescription(appManager.getSelectedDishId());
+        this.recipe = appManager.getFullRecipeDescription(appManager.getSelectedDishId());
         loadRecipe();
     }
 
@@ -77,9 +72,11 @@ public class RecipeController implements Initializable, SceneController {
         }
         if (dishNotFound) {
             appManager.addToFavoriteDishes(dish);
+            String recipeAdded = "Recipe added!";
             favoriteConfirmLabel.setText(recipeAdded);
         } else {
             appManager.removeFromFavoriteDishes(dish);
+            String recipeRemoved = "Recipe removed!";
             favoriteConfirmLabel.setText(recipeRemoved);
         }
     }
@@ -128,5 +125,3 @@ public class RecipeController implements Initializable, SceneController {
         }
     }
 }
-
-

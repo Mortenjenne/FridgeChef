@@ -13,15 +13,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class FridgeController implements Initializable, SceneController {
-    private AppManager appManager;
-
     @FXML private Button addToFridgeButton;
     @FXML private Button returnButton;
     @FXML private Button searchButton;
@@ -31,20 +28,17 @@ public class FridgeController implements Initializable, SceneController {
     @FXML private Label removeListIsEmpty;
     @FXML private ImageView searchImage;
     @FXML private TextField searchText;
-
     @FXML ComboBox<Ingredient> comboBox;
-
-
     @FXML ImageView fridge1_1, fridge1_2, fridge1_3, fridge1_4, fridge1_5;
     @FXML ImageView fridge2_1, fridge2_2, fridge2_3, fridge2_4, fridge2_5;
     @FXML ImageView fridge3_1, fridge3_2, fridge3_3, fridge3_4, fridge3_5;
 
-    List<ImageView> fridgeDisplay = new ArrayList<>();
+    private AppManager appManager;
+    private Account account;
     private Ingredient ingredient;
     private List<Ingredient> ingredientList = new ArrayList<>();
     private List<Ingredient> userFridge = new ArrayList<>();
-    private Account account;
-
+    private List<ImageView> fridgeDisplay = new ArrayList<>();
 
     @Override
     public void setAppManager(AppManager appManager) {
@@ -91,9 +85,7 @@ public class FridgeController implements Initializable, SceneController {
         for (ImageView view : fridgeDisplay) {
             view.setImage(null);
         }
-
         List<Ingredient> updatedFridge = appManager.getIngredientsInFridge();
-
 
         for (int i = 0; i < updatedFridge.size() && i < fridgeDisplay.size(); i++) {
             fridgeDisplay.get(i).setImage(new Image(updatedFridge.get(i).getApiURL()));
@@ -139,7 +131,6 @@ public class FridgeController implements Initializable, SceneController {
                 }
             }
         }
-
     }
 
     private void addViewsToList(){
@@ -147,5 +138,4 @@ public class FridgeController implements Initializable, SceneController {
                 fridge2_1, fridge2_2, fridge2_3, fridge2_4, fridge2_5,
                 fridge3_1, fridge3_2, fridge3_3, fridge3_4, fridge3_5));
     }
-
 }

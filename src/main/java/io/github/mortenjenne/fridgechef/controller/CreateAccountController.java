@@ -6,18 +6,10 @@ import io.github.mortenjenne.fridgechef.logic.View;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CreateAccountController implements Initializable, SceneController {
-    private AppManager appManager;
-    private String userName;
-    private String email;
-    String password;
-    String confirmPassword;
-
     @FXML private Label firstNameErrorLabel;
     @FXML private Label emailErrorLabel;
     @FXML private Label passwordErrorLabel;
@@ -29,6 +21,11 @@ public class CreateAccountController implements Initializable, SceneController {
     @FXML private Button createAccountButton;
     @FXML private Button returnButton;
 
+    private AppManager appManager;
+    private String userName;
+    private String email;
+    private String password;
+    private String confirmPassword;
 
     @Override
     public void setAppManager(AppManager appManager) {
@@ -38,11 +35,9 @@ public class CreateAccountController implements Initializable, SceneController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         returnButton.setOnAction(event -> appManager.switchTo(View.LOGIN));
 
         createAccountButton.setOnAction(event -> {
-
             userName = firstNameTextField.getText();
             email = emailTextField.getText();
             password = passwordTextField.getText();
@@ -61,11 +56,11 @@ public class CreateAccountController implements Initializable, SceneController {
         emailErrorLabel.setText("");
         passwordErrorLabel.setText("");
 
-
         if(!isUserNameValid(userName)){
             firstNameErrorLabel.setText("Your account name has to have a minimum of 2 characters.");
             return false;
         }
+
         if(!isEmailValid(email)){
             emailErrorLabel.setText("Please enter a valid e-mail address.");
             return false;
@@ -80,7 +75,8 @@ public class CreateAccountController implements Initializable, SceneController {
             passwordErrorLabel.setText("Invalid password");
             return false;
         }
-        if(!isPasswordIndentical(password1,password2)){
+
+        if(!isPasswordIdentical(password1,password2)){
             passwordErrorLabel.setText("Passwords are not identical");
             return false;
         }
@@ -106,7 +102,7 @@ public class CreateAccountController implements Initializable, SceneController {
         return true;
     }
 
-    private boolean isPasswordIndentical(String password, String confirmPassword) {
+    private boolean isPasswordIdentical(String password, String confirmPassword) {
         return password.equals(confirmPassword);
     }
 

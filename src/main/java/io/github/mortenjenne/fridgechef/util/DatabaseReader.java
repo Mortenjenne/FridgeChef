@@ -1,7 +1,6 @@
 package io.github.mortenjenne.fridgechef.util;
 
 import io.github.mortenjenne.fridgechef.model.Account;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,32 +30,12 @@ public class DatabaseReader extends DatabaseConnector{
             }
 
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
         return null;
     }
 
-
     //      ------  GETTERS  ------
-    public int getAccountFridgeID(int accountID){
-        connect();
-        String sql = "SELECT fridgeID FROM fridges WHERE accountID = ?";
-        int value = 0;
-        try{
-            PreparedStatement stm = conn.prepareStatement(sql);
-            stm.setInt(1,accountID);
-            ResultSet rs = stm.executeQuery();
-
-            if (rs.next()) {
-                value = rs.getInt("fridgeID"); //Returns fridgetID if account email exists
-            }
-
-        } catch (SQLException e){
-            System.out.println("Error checking for fridgeID: "+e.getMessage());
-        }
-        return value;
-    }
-
     public int getAccountId(String email) {
         connect();
         String sql = "SELECT accountID FROM accounts WHERE email = ?";
@@ -70,12 +49,10 @@ public class DatabaseReader extends DatabaseConnector{
                 System.out.println("getAccountID has next");
                 value = rs.getInt("accountID"); //Returns accountID if account email exists
             }
-
         } catch (SQLException e){
             System.out.println("Error checking for accountID: "+e.getMessage());
         }
         return value;
-
     }
 
     public String getAccountName(String email) {
@@ -96,7 +73,6 @@ public class DatabaseReader extends DatabaseConnector{
             System.out.println("Error checking for accountname: "+e.getMessage());
         }
         return null;
-
     }
 
     public List<Integer> getAccountIngredients(int accountID){

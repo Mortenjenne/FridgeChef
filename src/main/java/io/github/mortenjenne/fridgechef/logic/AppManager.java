@@ -6,7 +6,6 @@ import io.github.mortenjenne.fridgechef.model.Ingredient;
 import io.github.mortenjenne.fridgechef.model.Recipe;
 import io.github.mortenjenne.fridgechef.util.DatabaseReader;
 import io.github.mortenjenne.fridgechef.util.DatabaseWriter;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,15 +13,14 @@ public class AppManager {
 private RecipeManager recipeManager;
 private Account currentUser;
 private SceneNavigator sceneNavigator;
+private Dish selectedDish;
 private DatabaseReader dbReader = new DatabaseReader();
 private DatabaseWriter dbWriter = new DatabaseWriter();
-
 private String searchQuery;
 private String cuisineQuery;
 private String intolerances;
 private boolean isSearchOnlyVegan;
 private boolean isSearchOnlyVegetarian;
-private Dish selectedDish;
 private boolean showRecipeFromFavorites = false;
 private boolean accountCreated = false;
 
@@ -48,8 +46,7 @@ private boolean accountCreated = false;
         return  this.isSearchOnlyVegan;
     }
 
-
-    public void setCusineQuery(String cuisine){
+    public void setCuisineQuery(String cuisine){
         this.cuisineQuery = cuisine;
     }
 
@@ -57,7 +54,7 @@ private boolean accountCreated = false;
         this.isSearchOnlyVegetarian = isVegetarian;
     }
 
-    public String getCusineQuery(){
+    public String getCuisineQuery(){
         return  this.cuisineQuery;
     }
 
@@ -70,8 +67,6 @@ private boolean accountCreated = false;
     public void setSearchQuery(String query){
         this.searchQuery = query;
     }
-
-    public String getSelectedDishTitle(){return this.selectedDish.getTitle();}
 
     public Dish getSelectedDish(){return this.selectedDish;}
 
@@ -108,12 +103,10 @@ private boolean accountCreated = false;
         try {
             recipe = recipeManager.getFullRecipeDescription(recipeId);
         } catch (Exception e){
-            System.out.println("Error loading full recipe information");
+            System.out.println("Error loading full recipe information" + e.getMessage());
         }
         return recipe;
     }
-
-
 
     //  ------  SEARCH  ------
 
@@ -122,7 +115,7 @@ private boolean accountCreated = false;
         try {
             ingredients = recipeManager.getIngredient(name);
         } catch (Exception e){
-            System.out.println("Error loading ingredient search");
+            System.out.println("Error loading ingredient search" + e.getMessage());
             e.getMessage();
         }
         return ingredients;
@@ -133,11 +126,10 @@ private boolean accountCreated = false;
         try {
             dishes = recipeManager.getRecipesByIngredients(ingredients,cuisine,isSearchOnlyVegetarian,isSearchOnlyVegan,intolerances);
         } catch (Exception e){
-            System.out.println("Error loading ingredient search");
+            System.out.println("Error loading ingredient search" + e.getMessage());
         }
         return dishes;
     }
-
 
     //  ------  FRIDGE  ------
     public void addIngredientToFridge(Ingredient ingredient){
@@ -160,7 +152,7 @@ private boolean accountCreated = false;
                 this.currentUser.addIngredientToFridge(ingredient);
 
             } catch (Exception e){
-                System.out.println("Error retrieving account ingredients");
+                System.out.println("Error retrieving account ingredients" + e.getMessage());
             }
         }
     }
@@ -187,9 +179,8 @@ private boolean accountCreated = false;
                 Dish dish = recipeManager.getDishById(dishId);
                 this.currentUser.addToFavorites(dish);
             } catch (Exception e){
-                System.out.println("Error loading account favorite dishes");
+                System.out.println("Error loading account favorite dishes" + e.getMessage());
             }
-
         }
     }
 
@@ -214,7 +205,6 @@ private boolean accountCreated = false;
         return dbReader.checkExistingAccount(email);
     }
 
-
     public void setAccountCreated(boolean b) {
         this.accountCreated = b;
     }
@@ -223,6 +213,3 @@ private boolean accountCreated = false;
         return this.accountCreated;
     }
 }
-
-
-

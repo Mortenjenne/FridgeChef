@@ -10,46 +10,39 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.fxml.FXML;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class ResultController implements Initializable, SceneController {
-    private AppManager appManager;
-
     @FXML
     private Label dishOne, dishTwo, dishThree, dishFour, dishFive, dishSix, dishSeven, dishEight, dishNine;
     @FXML
     private ImageView dishOneImg, dishTwoImg, dishThreeImg, dishFourImg, dishFiveImg, dishSixImg, dishSevenImg, dishEightImg, dishNineImg;
     @FXML
     private Button returnButton, prevButton, nextButton;
-
     @FXML Label searchParametersLabel;
-    private String searchParametersMessage;
 
+    private AppManager appManager;
     private List<Dish> searchResult;
     private List<ImageView> views = new ArrayList<>();
     private List<Label> labels = new ArrayList<>();
-
     private int currentPage = 0;
     private final int resultPerPage = 9;
 
     @Override
     public void setAppManager(AppManager appManager) {
         this.appManager = appManager;
-        this.searchResult = appManager.searchRecipesByIngredientList(appManager.getSearchQuery(),appManager.getCusineQuery(),appManager.getIsSearchOnlyVegetarian(),appManager.isSearchOnlyVegan(),appManager.getIntolerances());
+        this.searchResult = appManager.searchRecipesByIngredientList(appManager.getSearchQuery(),appManager.getCuisineQuery(),appManager.getIsSearchOnlyVegetarian(),appManager.isSearchOnlyVegan(),appManager.getIntolerances());
 
-        searchParametersMessage = appManager.getSearchQuery().replace(",", ", ");
+        String searchParametersMessage = appManager.getSearchQuery().replace(",", ", ");
         this.searchParametersLabel.setText(searchParametersMessage);
         showSearchResult();
-
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         returnButton.setOnAction(event -> appManager.switchTo(View.SEARCH));
 
         dishOne.setOnMouseClicked(event -> showRecipe(0));
@@ -78,7 +71,6 @@ public class ResultController implements Initializable, SceneController {
 
         dishNine.setOnMouseClicked(event -> showRecipe(8));
         dishNineImg.setOnMouseClicked(event -> showRecipe(8));
-
 
         prevButton.setOnAction(event -> {
             this.currentPage--;
@@ -142,7 +134,5 @@ public class ResultController implements Initializable, SceneController {
         }
         prevButton.setDisable(currentPage == 0);
         nextButton.setDisable(currentPage * resultPerPage + resultPerPage >= searchResult.size());
-
     }
-
 }

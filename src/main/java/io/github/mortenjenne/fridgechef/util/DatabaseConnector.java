@@ -38,7 +38,6 @@ public class DatabaseConnector {
 
         try {
             conn = DriverManager.getConnection(dburl);
-            //System.out.println("Connected to DB - OK");
         } catch (Exception e) {
             e.printStackTrace();
         }

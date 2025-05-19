@@ -6,7 +6,6 @@ public class Ingredient {
     private String image;
     private final String apiURL = "https://spoonacular.com/cdn/ingredients_250x250/";
 
-
     public void setId(int id) {
         this.id = id;
     }

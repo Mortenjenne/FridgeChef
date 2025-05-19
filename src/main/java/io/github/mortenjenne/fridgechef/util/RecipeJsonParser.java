@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import io.github.mortenjenne.fridgechef.model.Dish;
 import io.github.mortenjenne.fridgechef.model.Ingredient;
 import io.github.mortenjenne.fridgechef.model.Recipe;
-
 import java.util.List;
 
 public class RecipeJsonParser {
@@ -31,7 +30,4 @@ public class RecipeJsonParser {
     public Dish parseDishById(String jsonResponse){
         return gson.fromJson(jsonResponse,Dish.class);
     }
-
-
-
 }

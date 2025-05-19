@@ -9,40 +9,36 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable, SceneController {
-       private AppManager appManager;
-
-       private String email;
-       private String password;
-
     @FXML private Button loginButton;
     @FXML private Button exitButton;
     @FXML private Label createAccountLabel;
     @FXML private Label accountCreatedLabel;
     @FXML private PasswordField passwordField;
     @FXML private TextField emailTextField;
-
-
     @FXML private Label loginErrorLabel;
-    private String loginErrorMessage = "Invalid username or password. Please try again.";
+
+    private AppManager appManager;
+    private String email;
+    private String password;
 
     @Override
     public void setAppManager(AppManager appManager) {
         this.appManager = appManager;
         if(appManager.getAccountCreated()){
-            accountCreatedLabel.setText("Account created successfully!");
+            String accountCreatedMessage = "Account created successfully!";
+            accountCreatedLabel.setText(accountCreatedMessage);
         }
     }
-
 
     private void login(String email, String password){
         if(appManager.login(email,password)){
             appManager.switchTo(View.MAIN);
         } else {
+            String loginErrorMessage = "Invalid username or password. Please try again.";
             loginErrorLabel.setText(loginErrorMessage);
         }
     }
@@ -55,14 +51,6 @@ public class LoginController implements Initializable, SceneController {
             login(email,password);
         });
         createAccountLabel.setOnMouseClicked(event -> appManager.switchTo(View.CREATE));
-        exitButton.setOnAction(event -> closeApp());
-    }
-
-    private void closeApp(){
-        String message = "";
-        System.out.println(message);
-
-        // Test if System.exit works with JavaFX
-        System.exit(0);
+        exitButton.setOnAction(event -> System.exit(0));
     }
 }

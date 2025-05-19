@@ -44,7 +44,6 @@ class DatabaseReaderTest {
     void getAccountIngredients() {
         //Test for getting ingredientID in fridge, prints the ingredientID list if successfull
 
-
         //Arrange
         DatabaseReader dbReader = new DatabaseReader();
         String email = "toby@chef.dk";
@@ -66,4 +65,3 @@ class DatabaseReaderTest {
 
     }
 }
-

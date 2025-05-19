@@ -7,10 +7,8 @@ public enum View {
     SEARCH("/io/github/mortenjenne/fridgechef/SearchView.fxml"),
     RESULT("/io/github/mortenjenne/fridgechef/ResultView.fxml"),
     RECIPE("/io/github/mortenjenne/fridgechef/RecipeView.fxml"),
-    TEST("/io/github/mortenjenne/fridgechef/hello-view.fxml"),
     FRIDGE("/io/github/mortenjenne/fridgechef/FridgeView.fxml"),
     FAVORITES("/io/github/mortenjenne/fridgechef/FavoritesView.fxml");
-
 
     private String fileName;
 
@@ -21,5 +19,4 @@ public enum View {
     public String getFileName(){
         return this.fileName;
     }
-
 }

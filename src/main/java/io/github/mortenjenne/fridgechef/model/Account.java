@@ -4,26 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Account {
-
-    // Accountinfo
     private int accountID;
     private String userName;
     private String email;
     private String password;
-
-    // Dishes
     private List<Dish> favoriteDishes;
-
-    // Fridge
-    private Ingredient ingredient;
-    private int amount;
     private List<Ingredient> ingredientsInFridge;
 
     public Account(){
         this.favoriteDishes = new ArrayList<>();
         this.ingredientsInFridge = new ArrayList<>();
     }
-
 
     public Account(String userName, String email, String password, int accountID){
         this.userName = userName;
@@ -34,7 +25,6 @@ public class Account {
         this.ingredientsInFridge = new ArrayList<>();
     }
 
-    // Accountinfo
     public String getUserName(){
         return this.userName;
     }
@@ -51,10 +41,6 @@ public class Account {
         return this.password;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -63,7 +49,6 @@ public class Account {
         this.password = password;
     }
 
-    // Dishes
     public List<Dish> getFavoriteDishes(){
         return this.favoriteDishes;
     }
@@ -76,8 +61,6 @@ public class Account {
         this.favoriteDishes.remove(dish);
     }
 
-
-    // Fridge
     public void addIngredientToFridge(Ingredient ingredient){
         this.ingredientsInFridge.add(ingredient);
     }
@@ -86,12 +69,7 @@ public class Account {
         this.ingredientsInFridge.remove(ingredient);
     }
 
-    public boolean useIngredient(String name){
-        return false;
-    }
-
     public List<Ingredient> getIngredientsInFridge(){
         return this.ingredientsInFridge;
     }
-
 }

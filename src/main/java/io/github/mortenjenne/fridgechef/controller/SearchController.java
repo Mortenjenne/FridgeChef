@@ -4,21 +4,16 @@ import io.github.mortenjenne.fridgechef.logic.AppManager;
 import io.github.mortenjenne.fridgechef.logic.SceneController;
 import io.github.mortenjenne.fridgechef.logic.View;
 import io.github.mortenjenne.fridgechef.model.Ingredient;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
-
-
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Stream;
 
 public class SearchController implements Initializable, SceneController {
-    private AppManager appManager;
-
     @FXML private Button searchRecipeButton;
     @FXML private CheckBox isVegan;
     @FXML private CheckBox isVegetarian;
@@ -30,11 +25,10 @@ public class SearchController implements Initializable, SceneController {
     @FXML private ChoiceBox<Ingredient> chooseIngredientBox3;
     @FXML private Button returnButton;
 
+    private AppManager appManager;
     private final String[] cuisines = {"Chinese", "French", "Indian", "Italian", "Japanese", "Mexican", "Thai"};
     private List<Ingredient> ingredientsInFridge;
-
     private boolean isUpdatingChoiceBoxes = false;
-
 
     @Override
     public void setAppManager(AppManager appManager) {
@@ -47,14 +41,6 @@ public class SearchController implements Initializable, SceneController {
         returnButton.setOnAction(event -> appManager.switchTo(View.MAIN));
         searchRecipeButton.setOnAction(event -> selectedIngredients());
     }
-
-
-    private boolean isVegetarian(boolean isVegetarian) {
-        // TODO change name an code isVegetarian() body
-        boolean findAppropriateName = isVegetarian;
-        return findAppropriateName;
-    }
-
 
     private void selectedIngredients(){
         String selectedCuisine = chooseCuisineBox.getValue();
@@ -90,15 +76,13 @@ public class SearchController implements Initializable, SceneController {
         }
 
         if(selectedCuisine == null || selectedCuisine.isEmpty()){
-            appManager.setCusineQuery("");
+            appManager.setCuisineQuery("");
         } else {
-            appManager.setCusineQuery(selectedCuisine);
+            appManager.setCuisineQuery(selectedCuisine);
         }
             appManager.setSearchQuery(searchString);
             appManager.switchTo(View.RESULT);
-
     }
-
 
     private String checkNullChoiceBoxes(ChoiceBox<Ingredient> choiceBox){
         String empty = "";
@@ -125,7 +109,6 @@ public class SearchController implements Initializable, SceneController {
         box.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newValue) -> {
             updateChoiceBoxes();
         });
-
     }
 
     private void updateChoiceBoxes() {
@@ -152,7 +135,6 @@ public class SearchController implements Initializable, SceneController {
         updateChoiceBox(chooseIngredientBox3, selectedThree, selected);
 
         isUpdatingChoiceBoxes = false;
-
     }
 
     private void updateChoiceBox(ChoiceBox<Ingredient> box, Ingredient currentIngredient, List<Ingredient> selected) {
@@ -165,7 +147,4 @@ public class SearchController implements Initializable, SceneController {
         box.getItems().setAll(stillAvailable);
         box.setValue(currentIngredient);
     }
-
-
 }
-

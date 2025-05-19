@@ -1,7 +1,6 @@
 package io.github.mortenjenne.fridgechef.util;
 
 import io.github.mortenjenne.fridgechef.model.Dish;
-
 import java.util.List;
 
 public class RecipeResponse {

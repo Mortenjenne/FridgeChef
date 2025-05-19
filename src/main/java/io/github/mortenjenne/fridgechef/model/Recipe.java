@@ -93,11 +93,4 @@ public class Recipe {
     public List<AnalyzedInstruction> getAnalyzedInstructions(){
         return  this.analyzedInstructions;
     }
-
-    @Override
-    public String toString() {
-        return title + " (" + readyInMinutes + " min, " + servings + " servings)";
-    }
-
-
 }

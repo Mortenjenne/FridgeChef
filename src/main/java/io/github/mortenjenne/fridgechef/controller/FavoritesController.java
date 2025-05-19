@@ -10,15 +10,12 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.fxml.FXML;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class FavoritesController implements Initializable, SceneController {
-    private AppManager appManager;
-
     @FXML
     private Label dishOne, dishTwo, dishThree, dishFour, dishFive, dishSix, dishSeven, dishEight, dishNine;
     @FXML
@@ -26,10 +23,10 @@ public class FavoritesController implements Initializable, SceneController {
     @FXML
     private Button returnButton, prevButton, nextButton;
 
+    private AppManager appManager;
     private List<Dish> favoriteDishes;
     private List<ImageView> views = new ArrayList<>();
     private List<Label> labels = new ArrayList<>();
-
     private int currentPage = 0;
     private final int resultPerPage = 9;
 
@@ -42,7 +39,6 @@ public class FavoritesController implements Initializable, SceneController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         returnButton.setOnAction(event -> appManager.switchTo(View.MAIN));
 
         dishOne.setOnMouseClicked(event -> showRecipe(0));
@@ -134,7 +130,5 @@ public class FavoritesController implements Initializable, SceneController {
         }
         prevButton.setDisable(currentPage == 0);
         nextButton.setDisable(currentPage * resultPerPage + resultPerPage >= favoriteDishes.size());
-
     }
-
 }
