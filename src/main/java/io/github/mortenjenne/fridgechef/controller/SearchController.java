@@ -79,10 +79,10 @@ public class SearchController implements Initializable, SceneController {
             appManager.setIsSearchVegetarian(false);
         }
 
-        if(isGlutenFree.isSelected() & isLactoseFree.isSelected()){
-            appManager.setIntolerances("gluten,diary");
+        if(isGlutenFree.isSelected() && isLactoseFree.isSelected()){
+            appManager.setIntolerances("gluten,dairy");
         } else if(isLactoseFree.isSelected()){
-            appManager.setIntolerances("diary");
+            appManager.setIntolerances("dairy");
         } else if(isGlutenFree.isSelected()){
             appManager.setIntolerances("gluten");
         } else {
@@ -96,9 +96,7 @@ public class SearchController implements Initializable, SceneController {
         }
             appManager.setSearchQuery(searchString);
             appManager.switchTo(View.RESULT);
-
     }
-
 
     private String checkNullChoiceBoxes(ChoiceBox<Ingredient> choiceBox){
         String empty = "";

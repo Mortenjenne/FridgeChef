@@ -45,7 +45,7 @@ public class RecipeApiClient {
             endpoint += cuisine + cuisineType;
         }
 
-        endpoint = endpoint + "&number=100&apiKey=" + apiKey;
+        endpoint += "&number=100&apiKey=" + apiKey;
         return getResultFromApi(endpoint);
     }
 
