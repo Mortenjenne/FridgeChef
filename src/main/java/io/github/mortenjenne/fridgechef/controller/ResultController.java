@@ -103,9 +103,7 @@ public class ResultController implements Initializable, SceneController {
             Dish selected = searchResult.get(dishIndex);
 
             appManager.setSelectedRecipe(selected);
-            System.out.println(appManager.getSelectedDishId());
             appManager.switchTo(View.RECIPE);
-            System.out.println(appManager.getSelectedDishId());
         }
     }
 
