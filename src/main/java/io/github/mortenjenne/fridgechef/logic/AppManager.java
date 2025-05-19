@@ -24,91 +24,58 @@ private boolean isSearchOnlyVegetarian;
 private boolean showRecipeFromFavorites = false;
 private boolean accountCreated = false;
 
+    //  ------  APP MANAGER  ------
     public AppManager(SceneNavigator sceneNavigator, RecipeManager recipeManager, Account currentUser) {
         this.recipeManager = recipeManager;
         this.sceneNavigator = sceneNavigator;
         this.currentUser = currentUser;
     }
 
-    public void setIsSearchVegan(boolean isSearchOnlyVegan){
-        this.isSearchOnlyVegan = isSearchOnlyVegan;
+    public void switchTo(View view) {
+        sceneNavigator.switchTo(view);
     }
 
-    public void setIntolerances(String intolerances){
-        this.intolerances = intolerances;
-    }
 
+    //  ------  SEARCH  ------
     public String getIntolerances(){
         return this.intolerances;
-    }
-
-    public boolean isSearchOnlyVegan(){
-        return  this.isSearchOnlyVegan;
-    }
-
-    public void setCuisineQuery(String cuisine){
-        this.cuisineQuery = cuisine;
-    }
-
-    public void setIsSearchVegetarian(boolean isVegetarian){
-        this.isSearchOnlyVegetarian = isVegetarian;
     }
 
     public String getCuisineQuery(){
         return  this.cuisineQuery;
     }
 
+    public String getSearchQuery(){
+        return this.searchQuery;
+    }
+
+    public boolean getIsSearchOnlyVegan(){
+        return  this.isSearchOnlyVegan;
+    }
+
     public boolean getIsSearchOnlyVegetarian(){
         return this.isSearchOnlyVegetarian;
     }
 
-    public void setSelectedRecipe(Dish selectedDish){this.selectedDish = selectedDish;}
+    public void setIntolerances(String intolerances){
+        this.intolerances = intolerances;
+    }
+
+    public void setCuisineQuery(String cuisine){
+        this.cuisineQuery = cuisine;
+    }
 
     public void setSearchQuery(String query){
         this.searchQuery = query;
     }
 
-    public Dish getSelectedDish(){return this.selectedDish;}
-
-    public int getSelectedDishId(){return this.selectedDish.getId();}
-
-    public String getSearchQuery(){
-        return this.searchQuery;
+    public void setIsSearchVegan(boolean isSearchOnlyVegan){
+        this.isSearchOnlyVegan = isSearchOnlyVegan;
     }
 
-    public Account getCurrentUser(){
-        return this.currentUser;
+    public void setIsSearchVegetarian(boolean isVegetarian){
+        this.isSearchOnlyVegetarian = isVegetarian;
     }
-
-    public List<Ingredient> getIngredientsInFridge(){
-        return currentUser.getIngredientsInFridge();
-    }
-
-    public void addToFavoriteDishes(Dish selectedDish) {
-        currentUser.addToFavorites(selectedDish);
-        dbWriter.addDishToFavorites(selectedDish,currentUser.getAccountID());
-    }
-
-    public void removeFromFavoriteDishes(Dish selectedDish) {
-        currentUser.removeFromFavorites(selectedDish);
-        dbWriter.removeDishFromFavorites(selectedDish,currentUser.getAccountID());
-    }
-
-    public void switchTo(View view) {
-        sceneNavigator.switchTo(view);
-    }
-
-    public Recipe getFullRecipeDescription(int recipeId){
-        Recipe recipe = null;
-        try {
-            recipe = recipeManager.getFullRecipeDescription(recipeId);
-        } catch (Exception e){
-            System.out.println("Error loading full recipe information" + e.getMessage());
-        }
-        return recipe;
-    }
-
-    //  ------  SEARCH  ------
 
     public List<Ingredient> searchIngredients (String name){
         List<Ingredient> ingredients = new ArrayList<>();
@@ -131,7 +98,12 @@ private boolean accountCreated = false;
         return dishes;
     }
 
+
     //  ------  FRIDGE  ------
+    public List<Ingredient> getIngredientsInFridge(){
+        return currentUser.getIngredientsInFridge();
+    }
+
     public void addIngredientToFridge(Ingredient ingredient){
         currentUser.addIngredientToFridge(ingredient);
         dbWriter.addIngredientToDatabase(ingredient, currentUser.getAccountID());
@@ -157,17 +129,42 @@ private boolean accountCreated = false;
         }
     }
 
-    //  ------  FAVORITE  ------
+
+    //  ------  DISH/RECIPE  ------
+    public Recipe getFullRecipeDescription(int recipeId){
+        Recipe recipe = null;
+        try {
+            recipe = recipeManager.getFullRecipeDescription(recipeId);
+        } catch (Exception e){
+            System.out.println("Error loading full recipe information" + e.getMessage());
+        }
+        return recipe;
+    }
+
+    public Dish getSelectedDish(){
+        return this.selectedDish;
+    }
+
+    public int getSelectedDishId(){
+        return this.selectedDish.getId();
+    }
+
+    public void setSelectedRecipe(Dish selectedDish){
+        this.selectedDish = selectedDish;
+    }
+
+
+    //  ------  FAVORITES  ------
     public List<Dish> getFavoriteDishesList(){
         return currentUser.getFavoriteDishes();
     }
 
-    public void setShowRecipeFromFavorites(boolean showRecipeFromFavorites) {
-        this.showRecipeFromFavorites = showRecipeFromFavorites;
-    }
-
     public boolean getShowRecipeFromFavorites(){
         return this.showRecipeFromFavorites;
+    }
+
+    public void setShowRecipeFromFavorites(boolean showRecipeFromFavorites) {
+        this.showRecipeFromFavorites = showRecipeFromFavorites;
     }
 
     public void loadFavoriteDishes(){
@@ -184,7 +181,28 @@ private boolean accountCreated = false;
         }
     }
 
+    public void addToFavoriteDishes(Dish selectedDish) {
+        currentUser.addToFavorites(selectedDish);
+        dbWriter.addDishToFavorites(selectedDish,currentUser.getAccountID());
+    }
+
+    public void removeFromFavoriteDishes(Dish selectedDish) {
+        currentUser.removeFromFavorites(selectedDish);
+        dbWriter.removeDishFromFavorites(selectedDish,currentUser.getAccountID());
+    }
+
+
     //  ------  ACCOUNT  ------
+    public Account getCurrentUser(){
+        return this.currentUser;
+    }
+
+    public void createAccount(String accountName, String email, String password) {
+        if(!dbReader.checkExistingAccount(email)) {
+            dbWriter.createAccount(email, accountName, password);
+        }
+    }
+
     public boolean login(String email, String password) {
         this.currentUser = dbReader.accountLogin(email,password);
         if(this.currentUser != null) {
@@ -193,12 +211,6 @@ private boolean accountCreated = false;
             return true;
         }
         return false;
-    }
-
-    public void createAccount(String accountName, String email, String password) {
-        if(!dbReader.checkExistingAccount(email)) {
-            dbWriter.createAccount(email, accountName, password);
-        }
     }
 
     public boolean isEmailInSystem(String email) {
