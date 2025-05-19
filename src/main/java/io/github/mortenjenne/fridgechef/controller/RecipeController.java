@@ -7,7 +7,6 @@ import io.github.mortenjenne.fridgechef.model.AnalyzedInstruction;
 import io.github.mortenjenne.fridgechef.model.ExtendedIngredient;
 import io.github.mortenjenne.fridgechef.model.InstructionStep;
 import io.github.mortenjenne.fridgechef.model.Recipe;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -32,7 +31,7 @@ public class RecipeController implements Initializable, SceneController {
     @FXML private Label timeLabel;
     @FXML private Label servingsLabel;
     @FXML private Label ingredientLabel;
-    @FXML private Label isVegetarianLabel;
+    @FXML private Label isVeganLabel;
     @FXML private Label favoriteConfirmLabel;
     @FXML private ListView ingredientView;
     @FXML private TextArea textArea;
@@ -47,7 +46,10 @@ public class RecipeController implements Initializable, SceneController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         favoriteConfirmLabel.setText("");
+
         returnButton.setOnAction(event -> returnButtonOptions());
+
+
         addToFavoriteButton.setOnAction(event -> {
             appManager.addToFavoriteDishes(appManager.getSelectedDish());
             if (favoriteConfirmLabel.getText().equals(recipeAdded)){
@@ -69,18 +71,15 @@ public class RecipeController implements Initializable, SceneController {
             servingsLabel.setText("Serves: " + String.valueOf(recipe.getServings()) + " people");
             ingredientLabel.setText("Ingredients:");
             recipeImage.setImage(new Image(recipe.getImage()));
-            setListView();
 
-
-            System.out.println("Navn: " + recipe.getTitle());
-            System.out.println("Tid: " + recipe.getReadyInMinutes() + " min");
-            System.out.println("Serveringer: " + recipe.getServings());
-            System.out.println("Instruktioner: " + recipe.getInstructions());
-            System.out.println("Ingredienser:");
-
-            for (ExtendedIngredient ing : recipe.getExtendedIngredients()) {
-                System.out.println(" - " + ing);
+            if(recipe.isVegan()){
+                isVeganLabel.setText("Vegan");
+            } else if(recipe.IsVegetarian()){
+                isVeganLabel.setText("Vegetarian");
+            } else {
+                isVeganLabel.setText("Not vegetarian");
             }
+            setListView();
 
             for(AnalyzedInstruction ing: recipe.getAnalyzedInstructions()){
                 for(InstructionStep steps: ing.getSteps()){
@@ -90,7 +89,13 @@ public class RecipeController implements Initializable, SceneController {
             textArea.setText(instructions);
 
         } else {
-            System.out.println("Recipe not found/loaded");
+            recipeNameLabel.setText("⚠ Recipe not found");
+            timeLabel.setText("");
+            servingsLabel.setText("");
+            ingredientLabel.setText("");
+            textArea.setText("Something went wrong with this recipe. Please try again later.");
+            favoriteConfirmLabel.setText("");
+            recipeImage.setImage(null);
         }
     }
 

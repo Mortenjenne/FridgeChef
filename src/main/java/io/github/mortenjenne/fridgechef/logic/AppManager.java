@@ -18,7 +18,7 @@ private DatabaseReader dbReader = new DatabaseReader();
 private DatabaseWriter dbWriter = new DatabaseWriter();
 
 private String searchQuery;
-private String cusineQuery;
+private String cuisineQuery;
 private String intolerances;
 private boolean isSearchOnlyVegan;
 private boolean isSearchOnlyVegetarian;
@@ -49,7 +49,7 @@ private boolean showRecipeFromFavorites = false;
 
 
     public void setCusineQuery(String cuisine){
-        this.cusineQuery = cuisine;
+        this.cuisineQuery = cuisine;
     }
 
     public void setIsSearchVegetarian(boolean isVegetarian){
@@ -57,7 +57,7 @@ private boolean showRecipeFromFavorites = false;
     }
 
     public String getCusineQuery(){
-        return  this.cusineQuery;
+        return  this.cuisineQuery;
     }
 
     public boolean getIsSearchOnlyVegetarian(){
