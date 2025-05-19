@@ -56,8 +56,6 @@ public class RecipeController implements Initializable, SceneController {
             }
         });
 
-
-
         addToFavoriteButton.setOnAction(event -> {
             appManager.addToFavoriteDishes(appManager.getSelectedDish());
             if (favoriteConfirmLabel.getText().equals(recipeAdded)){

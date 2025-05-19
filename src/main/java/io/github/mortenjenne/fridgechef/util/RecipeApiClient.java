@@ -17,7 +17,7 @@ public class RecipeApiClient {
     private final String apiSearchByRecipe = "https://api.spoonacular.com/recipes/complexSearch";
     private final String apiSearchIngredient = "https://api.spoonacular.com/food/ingredients/search";
     private final String getApiSearchIngredientById = "https://api.spoonacular.com/food/ingredients/";
-    private final String apiKey = apiKeyDaniel1;
+    private final String apiKey = apiKeyMorten1;
     private final String search = "?query=";
     private final String recipeMustContainIngredient = "?includeIngredients=";
     private final String cuisine = "&cuisine=";
