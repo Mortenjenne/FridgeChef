@@ -14,9 +14,9 @@
     <top>
         <HBox prefHeight="31.0" prefWidth="1060.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="returnButton" mnemonicParsing="false" style="-fx-background-color: #d59faa;" text="&lt;">
+                <Button fx:id="returnButton" mnemonicParsing="false" scaleX="1.3" scaleY="1.3" style="-fx-background-color: #d59faa;" text="⮐">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="15.0" />
                     </font>
                     <effect>
                         <Glow />
@@ -58,7 +58,7 @@
                   <Insets left="20.0" />
                </VBox.margin>
             </Label>
-            <TextArea fx:id="textArea" maxWidth="1040.0" prefHeight="200.0" prefWidth="1069.0" style="-fx-background-color: #d59faa;">
+            <TextArea fx:id="textArea" maxWidth="1040.0" prefHeight="200.0" prefWidth="1069.0" style="-fx-background-color: #d59faa; -fx-text-fill: black">
                <VBox.margin>
                   <Insets left="20.0" />
                </VBox.margin>
@@ -121,7 +121,7 @@
                         <Insets left="20.0" />
                      </VBox.margin>
                   </Label>
-                  <ListView fx:id="ingredientView" fixedCellSize="0.0" prefHeight="225.0" prefWidth="517.0" style="-fx-font-family: 'System'; -fx-font-size: 16px; -fx-font-weight: bold; -fx-font-style: italic;">
+                  <ListView fx:id="ingredientView" fixedCellSize="0.0" prefHeight="225.0" prefWidth="517.0" style="-fx-font-family: 'System'; -fx-font-size: 16px; -fx-font-weight: bold; -fx-font-style: italic; -fx-text-fill: black">
                      <VBox.margin>
                         <Insets left="20.0" />
                      </VBox.margin>

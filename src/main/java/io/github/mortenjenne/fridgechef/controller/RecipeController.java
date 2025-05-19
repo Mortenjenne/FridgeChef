@@ -47,7 +47,16 @@ public class RecipeController implements Initializable, SceneController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         favoriteConfirmLabel.setText("");
-        returnButton.setOnAction(event -> returnButtonOptions());
+
+        returnButton.setOnAction(event -> {
+            if (appManager.getShowRecipeFromFavorites()) {
+                appManager.setShowRecipeFromFavorites(false);
+                appManager.switchTo(View.FAVORITES);
+            } else {
+                appManager.switchTo(View.RESULT);
+            }
+        });
+
         addToFavoriteButton.setOnAction(event -> {
             appManager.addToFavoriteDishes(appManager.getSelectedDish());
             if (favoriteConfirmLabel.getText().equals(recipeAdded)){
@@ -101,15 +110,6 @@ public class RecipeController implements Initializable, SceneController {
         }
         ObservableList<String> observableList = FXCollections.observableArrayList(ingredients);
         ingredientView.setItems(observableList);
-    }
-
-    private void returnButtonOptions(){
-        if(appManager.getShowRecipeFromFavorites()) {
-            appManager.setShowRecipeFromFavorites(false);
-            returnButton.setOnAction(event -> appManager.switchTo(View.FAVORITES));
-        } else{
-        returnButton.setOnAction(event -> appManager.switchTo(View.RESULT));
-        }
     }
 }
 

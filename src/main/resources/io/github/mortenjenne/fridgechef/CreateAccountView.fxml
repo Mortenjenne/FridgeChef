@@ -125,9 +125,9 @@
     <top>
         <HBox alignment="CENTER" prefHeight="26.0" prefWidth="335.0" BorderPane.alignment="TOP_RIGHT">
             <children>
-                <Button fx:id="returnButton" mnemonicParsing="false" style="-fx-background-color: #d59faa;" text="&lt;">
+                <Button fx:id="returnButton" mnemonicParsing="false" scaleX="1.3" scaleY="1.3" style="-fx-background-color: #d59faa;" text="⮐">
                     <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="15.0" />
                     </font>
                     <effect>
                         <Glow />
