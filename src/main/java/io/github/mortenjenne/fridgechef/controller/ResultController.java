@@ -39,7 +39,7 @@ public class ResultController implements Initializable, SceneController {
     @Override
     public void setAppManager(AppManager appManager) {
         this.appManager = appManager;
-        this.searchResult = appManager.searchRecipesByIngredientList(appManager.getSearchQuery());
+        this.searchResult = appManager.searchRecipesByIngredientList(appManager.getSearchQuery(),appManager.getCusineQuery(),appManager.getIsSearchOnlyVegetarian(),appManager.isSearchOnlyVegan(),appManager.getIntolerances());
 
         searchParametersMessage = appManager.getSearchQuery().replace(",", ", ");
         this.searchParametersLabel.setText(searchParametersMessage);

@@ -20,7 +20,10 @@ public class SearchController implements Initializable, SceneController {
     private AppManager appManager;
 
     @FXML private Button searchRecipeButton;
+    @FXML private CheckBox isVegan;
     @FXML private CheckBox isVegetarian;
+    @FXML private CheckBox isGlutenFree;
+    @FXML private CheckBox isLactoseFree;
     @FXML private ChoiceBox<String> chooseCuisineBox;
     @FXML private ChoiceBox<Ingredient> chooseIngredientBox1;
     @FXML private ChoiceBox<Ingredient> chooseIngredientBox2;
@@ -55,7 +58,6 @@ public class SearchController implements Initializable, SceneController {
 
     private void selectedIngredients(){
         String selectedCuisine = chooseCuisineBox.getValue();
-
         String selectedIngredientOne = checkNullChoiceBoxes(chooseIngredientBox1);
         String selectedIngredientTwo = checkNullChoiceBoxes(chooseIngredientBox2);
         String selectedIngredientThree = checkNullChoiceBoxes(chooseIngredientBox3);
@@ -66,8 +68,35 @@ public class SearchController implements Initializable, SceneController {
         // Separate values with ','
         String searchString = String.join(",", choices);
 
-        appManager.setSearchQuery(searchString);
-        appManager.switchTo(View.RESULT);
+        if (isVegan.isSelected()) {
+            appManager.setIsSearchVegan(true);
+            appManager.setIsSearchVegetarian(false);
+        } else if (isVegetarian.isSelected()) {
+            appManager.setIsSearchVegetarian(true);
+            appManager.setIsSearchVegan(false);
+        } else {
+            appManager.setIsSearchVegan(false);
+            appManager.setIsSearchVegetarian(false);
+        }
+
+        if(isGlutenFree.isSelected() & isLactoseFree.isSelected()){
+            appManager.setIntolerances("gluten,diary");
+        } else if(isLactoseFree.isSelected()){
+            appManager.setIntolerances("diary");
+        } else if(isGlutenFree.isSelected()){
+            appManager.setIntolerances("gluten");
+        } else {
+            appManager.setIntolerances("");
+        }
+
+        if(selectedCuisine == null || selectedCuisine.isEmpty()){
+            appManager.setCusineQuery("");
+        } else {
+            appManager.setCusineQuery(selectedCuisine);
+        }
+            appManager.setSearchQuery(searchString);
+            appManager.switchTo(View.RESULT);
+
     }
 
 

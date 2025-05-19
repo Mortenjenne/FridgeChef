@@ -8,6 +8,8 @@ public class Recipe {
     private String image;
     private int readyInMinutes;
     private int servings;
+    private boolean vegetarian;
+    private boolean vegan;
     private String instructions;
     private List<AnalyzedInstruction> analyzedInstructions;
     private List<ExtendedIngredient> extendedIngredients;
@@ -26,6 +28,14 @@ public class Recipe {
 
     public void setReadyInMinutes(int readyInMinutes){
         this.readyInMinutes = readyInMinutes;
+    }
+
+    public void setVegetarian(boolean vegetarian){
+        this.vegetarian = vegetarian;
+    }
+
+    public void setVegan(boolean vegan){
+        this.vegan = vegan;
     }
 
     public void setServings(int servings){
@@ -66,6 +76,14 @@ public class Recipe {
 
     public String getInstructions() {
         return this.instructions;
+    }
+
+    public boolean IsVegetarian(){
+        return this.vegetarian;
+    }
+
+    public boolean isVegan(){
+        return this.vegan;
     }
 
     public List<ExtendedIngredient> getExtendedIngredients(){
