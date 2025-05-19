@@ -80,9 +80,9 @@ public class SearchController implements Initializable, SceneController {
         }
 
         if(isGlutenFree.isSelected() & isLactoseFree.isSelected()){
-            appManager.setIntolerances("gluten,diary");
+            appManager.setIntolerances("gluten,dairy");
         } else if(isLactoseFree.isSelected()){
-            appManager.setIntolerances("diary");
+            appManager.setIntolerances("dairy");
         } else if(isGlutenFree.isSelected()){
             appManager.setIntolerances("gluten");
         } else {
