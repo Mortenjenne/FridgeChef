@@ -28,6 +28,7 @@ public class FridgeController implements Initializable, SceneController {
     @FXML private Button searchDishesButton;
     @FXML private Button removeButton;
     @FXML private Label searchLabel;
+    @FXML private Label removeListIsEmpty;
     @FXML private ImageView searchImage;
     @FXML private TextField searchText;
 
@@ -49,9 +50,6 @@ public class FridgeController implements Initializable, SceneController {
     public void setAppManager(AppManager appManager) {
         this.appManager = appManager;
         this.account = appManager.getCurrentUser();
-        //this.appManager.loadFridgeIngredients();
-        //loadStoredFridgeFromDatabase();
-        this.appManager.loadFridgeIngredients();
         updateFridgeDisplay();
         updateComboBox();
     }
@@ -73,9 +71,13 @@ public class FridgeController implements Initializable, SceneController {
 
     private void removeIngredientFromFridge(){
         Ingredient selectedIngredient = comboBox.getValue();
-        appManager.removeIngredientFromFridge(selectedIngredient);
-        updateComboBox();
-        updateFridgeDisplay();
+        if(selectedIngredient != null){
+            appManager.removeIngredientFromFridge(selectedIngredient);
+            updateComboBox();
+            updateFridgeDisplay();
+            removeListIsEmpty.setText("");
+        }
+        removeListIsEmpty.setText("Please choose an ingredient");
     }
 
     private void updateComboBox(){
@@ -116,18 +118,28 @@ public class FridgeController implements Initializable, SceneController {
     }
 
     private void addIngredientsToFridge(){
-        if (ingredient == null) return;
+        boolean ingredientNotFound = true;
 
-        appManager.addIngredientToFridge(ingredient);
-        updateComboBox();
-
-        for (int i = 0; i < fridgeDisplay.size(); i++) {
-            ImageView view = fridgeDisplay.get(i);
-            if (view.getImage() == null) {
-                view.setImage(new Image(ingredient.getApiURL()));
-                break;
+        if (ingredient == null){
+            return;
+        }
+        for(Ingredient i: appManager.getIngredientsInFridge()) {
+            if (ingredient.getId() == i.getId()) {
+                ingredientNotFound = false;
             }
         }
+        if(ingredientNotFound){
+            appManager.addIngredientToFridge(ingredient);
+            updateComboBox();
+            for (int i = 0; i < fridgeDisplay.size(); i++) {
+                ImageView view = fridgeDisplay.get(i);
+                if (view.getImage() == null) {
+                    view.setImage(new Image(ingredient.getApiURL()));
+                    break;
+                }
+            }
+        }
+
     }
 
     private void addViewsToList(){

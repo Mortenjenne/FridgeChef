@@ -24,6 +24,7 @@ private boolean isSearchOnlyVegan;
 private boolean isSearchOnlyVegetarian;
 private Dish selectedDish;
 private boolean showRecipeFromFavorites = false;
+private boolean accountCreated = false;
 
     public AppManager(SceneNavigator sceneNavigator, RecipeManager recipeManager, Account currentUser) {
         this.recipeManager = recipeManager;
@@ -93,6 +94,11 @@ private boolean showRecipeFromFavorites = false;
         dbWriter.addDishToFavorites(selectedDish,currentUser.getAccountID());
     }
 
+    public void removeFromFavoriteDishes(Dish selectedDish) {
+        currentUser.removeFromFavorites(selectedDish);
+        dbWriter.removeDishFromFavorites(selectedDish,currentUser.getAccountID());
+    }
+
     public void switchTo(View view) {
         sceneNavigator.switchTo(view);
     }
@@ -160,6 +166,9 @@ private boolean showRecipeFromFavorites = false;
     }
 
     //  ------  FAVORITE  ------
+    public List<Dish> getFavoriteDishesList(){
+        return currentUser.getFavoriteDishes();
+    }
 
     public void setShowRecipeFromFavorites(boolean showRecipeFromFavorites) {
         this.showRecipeFromFavorites = showRecipeFromFavorites;
@@ -170,9 +179,9 @@ private boolean showRecipeFromFavorites = false;
     }
 
     public void loadFavoriteDishes(){
-        List<Dish> storedFavoriteDishes = new ArrayList<>();
+
         List<Integer> storedFavoriteDishesID = dbReader.getAccountFavoriteDishes(currentUser.getAccountID());
-        //TODO Lav en metode til at søge på Integer listen storedFavoriteDishesID
+
         for(Integer dishId: storedFavoriteDishesID){
             try {
                 Dish dish = recipeManager.getDishById(dishId);
@@ -188,7 +197,7 @@ private boolean showRecipeFromFavorites = false;
     public boolean login(String email, String password) {
         this.currentUser = dbReader.accountLogin(email,password);
         if(this.currentUser != null) {
-            //loadFavoriteDishes();
+            loadFavoriteDishes();
             loadFridgeIngredients();
             return true;
         }
@@ -206,6 +215,13 @@ private boolean showRecipeFromFavorites = false;
     }
 
 
+    public void setAccountCreated(boolean b) {
+        this.accountCreated = b;
+    }
+
+    public boolean getAccountCreated(){
+        return this.accountCreated;
+    }
 }
 
 

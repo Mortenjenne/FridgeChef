@@ -131,7 +131,7 @@ public class DatabaseReader extends DatabaseConnector{
             stm.setInt(1,accountID);
             ResultSet rs = stm.executeQuery();
             while(rs.next()){
-                returnFavoriteDishID.add(rs.getInt("ingredientID"));
+                returnFavoriteDishID.add(rs.getInt("dishID"));
             }
             return returnFavoriteDishID;
 

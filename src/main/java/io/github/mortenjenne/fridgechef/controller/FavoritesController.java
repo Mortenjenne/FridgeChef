@@ -119,7 +119,7 @@ public class FavoritesController implements Initializable, SceneController {
         }
 
         if (favoriteDishes.isEmpty()) {
-            labels.get(0).setText("No Favorites Added.");
+            labels.get(1).setText("No Favorites Added.");
             prevButton.setDisable(true);
             nextButton.setDisable(true);
 

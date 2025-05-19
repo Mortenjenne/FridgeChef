@@ -88,12 +88,20 @@
                   <Glow />
                </effect>
                 </PasswordField>
+            <Label fx:id="passwordRequirementLabel" layoutX="550.0" layoutY="572.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="-45.0" />
+               </VBox.margin>
+            </Label>
                 <Text layoutX="144.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Retype Password">
                     <font>
                         <Font name="System Bold Italic" size="25.0" />
                     </font>
                     <VBox.margin>
-                        <Insets top="-25.0" />
+                        <Insets top="-35.0" />
                     </VBox.margin>
                 </Text>
                 <PasswordField fx:id="retypePasswordTextField" layoutY="238.0" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #d59faa;">
@@ -113,7 +121,7 @@
                 </Label>
                 <Button fx:id="createAccountButton" prefHeight="53.0" prefWidth="198.0" style="-fx-background-color: #d59faa; -fx-font-size: 20; -fx-font-style: italic; -fx-font-weight: bold;" text="Create Account">
                     <VBox.margin>
-                        <Insets top="-30.0" />
+                        <Insets top="-50.0" />
                     </VBox.margin>
                <effect>
                   <Glow />

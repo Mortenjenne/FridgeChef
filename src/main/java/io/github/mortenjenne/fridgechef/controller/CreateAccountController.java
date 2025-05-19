@@ -2,7 +2,6 @@ package io.github.mortenjenne.fridgechef.controller;
 
 import io.github.mortenjenne.fridgechef.logic.AppManager;
 import io.github.mortenjenne.fridgechef.logic.SceneController;
-import io.github.mortenjenne.fridgechef.logic.SceneNavigator;
 import io.github.mortenjenne.fridgechef.logic.View;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,11 +17,11 @@ public class CreateAccountController implements Initializable, SceneController {
     private String email;
     String password;
     String confirmPassword;
-    String passwordRequirements = "Enter a password:\nRequirements: at least 6 characters, at least 1 uppercase letter, at least 1 lowercase letter, at least 1 number:";
 
-    //@FXML private Label nameErrorLabel;
+    @FXML private Label firstNameErrorLabel;
     @FXML private Label emailErrorLabel;
     @FXML private Label passwordErrorLabel;
+    @FXML private Label passwordRequirementLabel;
     @FXML private TextField firstNameTextField;
     @FXML private TextField emailTextField;
     @FXML private PasswordField passwordTextField;
@@ -30,6 +29,12 @@ public class CreateAccountController implements Initializable, SceneController {
     @FXML private Button createAccountButton;
     @FXML private Button returnButton;
 
+
+    @Override
+    public void setAppManager(AppManager appManager) {
+        this.appManager = appManager;
+        passwordRequirementLabel.setText("Requirements: min. 6 characters which includes 1 upper, 1 lower & 1 digit.");
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -45,23 +50,20 @@ public class CreateAccountController implements Initializable, SceneController {
 
             if (validateUserInfo(userName,email, password, confirmPassword)) {
                 appManager.createAccount(userName,email, password);
+                appManager.setAccountCreated(true);
                 appManager.switchTo(View.LOGIN);
             }
         });
     }
 
-    @Override
-    public void setAppManager(AppManager appManager) {
-        this.appManager = appManager;
-    }
-
     private boolean validateUserInfo(String userName, String email, String password1, String password2){
-        //nameErrorLabel.setText("");
+        firstNameErrorLabel.setText("");
         emailErrorLabel.setText("");
         passwordErrorLabel.setText("");
 
+
         if(!isUserNameValid(userName)){
-            emailErrorLabel.setText("Your account name has to have a minimum of 2 characters.");
+            firstNameErrorLabel.setText("Your account name has to have a minimum of 2 characters.");
             return false;
         }
         if(!isEmailValid(email)){
@@ -75,7 +77,7 @@ public class CreateAccountController implements Initializable, SceneController {
         }
 
         if(!isValidPassword(password1)){
-            passwordErrorLabel.setText("Invalid password: min. 6 chars, 1 upper, 1 lower, 1 digit.");
+            passwordErrorLabel.setText("Invalid password");
             return false;
         }
         if(!isPasswordIndentical(password1,password2)){

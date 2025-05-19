@@ -26,14 +26,10 @@ public class DatabaseWriter extends DatabaseConnector{
                 int rowsUpdated = stm.executeUpdate();
 
                 if (rowsUpdated > 0) {
-                    //Account created, now gets the accountID so we can create a Fridge for the account
                     ResultSet generatedKeys = stm.getGeneratedKeys();
                     if (generatedKeys.next()){
                         int accountID = generatedKeys.getInt(1);
                         System.out.println("Generated account ID: " + accountID);
-                        createFridgeForAccount(accountID);
-                        System.out.println("Account and fridge created - OK");
-
                         return true;
                     }
                 }

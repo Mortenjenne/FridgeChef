@@ -3,10 +3,7 @@ package io.github.mortenjenne.fridgechef.controller;
 import io.github.mortenjenne.fridgechef.logic.AppManager;
 import io.github.mortenjenne.fridgechef.logic.SceneController;
 import io.github.mortenjenne.fridgechef.logic.View;
-import io.github.mortenjenne.fridgechef.model.AnalyzedInstruction;
-import io.github.mortenjenne.fridgechef.model.ExtendedIngredient;
-import io.github.mortenjenne.fridgechef.model.InstructionStep;
-import io.github.mortenjenne.fridgechef.model.Recipe;
+import io.github.mortenjenne.fridgechef.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -44,6 +41,13 @@ public class RecipeController implements Initializable, SceneController {
     private Recipe recipe;
 
     @Override
+    public void setAppManager(AppManager appManager) {
+        this.appManager = appManager;
+        recipe = appManager.getFullRecipeDescription(appManager.getSelectedDishId());
+        loadRecipe();
+    }
+
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         favoriteConfirmLabel.setText("");
 
@@ -56,21 +60,40 @@ public class RecipeController implements Initializable, SceneController {
             }
         });
 
-        addToFavoriteButton.setOnAction(event -> {
-            appManager.addToFavoriteDishes(appManager.getSelectedDish());
-            if (favoriteConfirmLabel.getText().equals(recipeAdded)){
-                favoriteConfirmLabel.setText(recipeRemoved);
-            } else {
-                favoriteConfirmLabel.setText(recipeAdded);
-            }
-        });
-
+        addToFavoriteButton.setOnAction(event -> addToFavorites());
     }
 
-    @Override
-    public void setAppManager(AppManager appManager) {
-        this.appManager = appManager;
-        recipe = appManager.getFullRecipeDescription(appManager.getSelectedDishId());
+    private void addToFavorites() {
+        Dish dish = appManager.getSelectedDish();
+        boolean dishNotFound = true;
+
+        if (dish == null) {
+            return;
+        }
+        for (Dish d : appManager.getFavoriteDishesList()) {
+            if (dish.getId() == d.getId()) {
+                dishNotFound = false;
+            }
+        }
+        if (dishNotFound) {
+            appManager.addToFavoriteDishes(dish);
+            favoriteConfirmLabel.setText(recipeAdded);
+        } else {
+            appManager.removeFromFavoriteDishes(dish);
+            favoriteConfirmLabel.setText(recipeRemoved);
+        }
+    }
+
+    private void setListView(){
+        List<String> ingredients = new ArrayList<>();
+        for(ExtendedIngredient ingredient: recipe.getExtendedIngredients()){
+            ingredients.add(ingredient.toString());
+        }
+        ObservableList<String> observableList = FXCollections.observableArrayList(ingredients);
+        ingredientView.setItems(observableList);
+    }
+
+    private void loadRecipe(){
         if(recipe != null){
             recipeNameLabel.setText(recipe.getTitle());
             timeLabel.setText("Cooking time: " + String.valueOf(recipe.getReadyInMinutes()) + " mins");
@@ -103,15 +126,6 @@ public class RecipeController implements Initializable, SceneController {
             favoriteConfirmLabel.setText("");
             recipeImage.setImage(null);
         }
-    }
-
-    private void setListView(){
-        List<String> ingredients = new ArrayList<>();
-        for(ExtendedIngredient ingredient: recipe.getExtendedIngredients()){
-            ingredients.add(ingredient.toString());
-        }
-        ObservableList<String> observableList = FXCollections.observableArrayList(ingredients);
-        ingredientView.setItems(observableList);
     }
 }
 

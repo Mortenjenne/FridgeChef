@@ -127,7 +127,7 @@ public class ResultController implements Initializable, SceneController {
         }
 
         if (searchResult.isEmpty()) {
-            labels.get(0).setText("No recipes found matching your ingredients.");
+            labels.get(1).setText("No recipes found matching your ingredients.");
             prevButton.setDisable(true);
             nextButton.setDisable(true);
 

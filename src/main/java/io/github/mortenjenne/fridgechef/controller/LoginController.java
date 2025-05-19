@@ -22,11 +22,30 @@ public class LoginController implements Initializable, SceneController {
     @FXML private Button loginButton;
     @FXML private Button exitButton;
     @FXML private Label createAccountLabel;
+    @FXML private Label accountCreatedLabel;
     @FXML private PasswordField passwordField;
     @FXML private TextField emailTextField;
 
+
     @FXML private Label loginErrorLabel;
     private String loginErrorMessage = "Invalid username or password. Please try again.";
+
+    @Override
+    public void setAppManager(AppManager appManager) {
+        this.appManager = appManager;
+        if(appManager.getAccountCreated()){
+            accountCreatedLabel.setText("Account created successfully!");
+        }
+    }
+
+
+    private void login(String email, String password){
+        if(appManager.login(email,password)){
+            appManager.switchTo(View.MAIN);
+        } else {
+            loginErrorLabel.setText(loginErrorMessage);
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -37,19 +56,6 @@ public class LoginController implements Initializable, SceneController {
         });
         createAccountLabel.setOnMouseClicked(event -> appManager.switchTo(View.CREATE));
         exitButton.setOnAction(event -> closeApp());
-    }
-
-    @Override
-    public void setAppManager(AppManager appManager) {
-        this.appManager = appManager;
-    }
-
-    private void login(String email, String password){
-        if(appManager.login(email,password)){
-            appManager.switchTo(View.MAIN);
-        } else {
-            loginErrorLabel.setText(loginErrorMessage);
-        }
     }
 
     private void closeApp(){

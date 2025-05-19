@@ -97,18 +97,26 @@
       </VBox>
    </center>
    <top>
-      <HBox alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="335.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="26.0" prefWidth="335.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="exitButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #d59faa;" text="x">
+            <Label fx:id="accountCreatedLabel" text="                                               " textAlignment="CENTER" textFill="#00ff22">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </Label>
+            <Button fx:id="exitButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #d59faa;" text="x" translateX="340.0">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
-               <HBox.margin>
-                  <Insets right="10.0" top="10.0" />
-               </HBox.margin>
                <effect>
                   <Glow />
                </effect>
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
             </Button>
          </children>
       </HBox>
