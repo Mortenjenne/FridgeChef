@@ -70,8 +70,9 @@ public class FridgeController implements Initializable, SceneController {
             updateComboBox();
             updateFridgeDisplay();
             removeListIsEmpty.setText("");
+        }else {
+            removeListIsEmpty.setText("Please choose an ingredient");
         }
-        removeListIsEmpty.setText("Please choose an ingredient");
     }
 
     private void updateComboBox(){
