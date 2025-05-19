@@ -27,4 +27,8 @@ public class ExtendedIngredient {
     public double getAmount() { return amount; }
     public String getUnit() { return unit; }
 
+    @Override
+    public String toString() {
+        return "- " + amount + " " + unit + " " + name;
+    }
 }

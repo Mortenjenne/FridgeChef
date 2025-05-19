@@ -172,7 +172,7 @@
                      <effect>
                         <Glow />
                      </effect></Button>
-                  <Label fx:id="removeListIsEmpty" style="-fx-background-color: #d59faa;" text="Test Label" textFill="RED">
+                  <Label fx:id="removeListIsEmpty" style="-fx-background-color: #d59faa;" textFill="RED">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
