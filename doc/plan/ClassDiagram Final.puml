@@ -1,0 +1,616 @@
+@startuml
+
+!pragma layout smetana
+top to bottom direction
+
+
+class CreateAccountController {
+    - Label firstNameErrorLabel
+    - Label emailErrorLabel
+    - Label passwordErrorLabel
+    - Label passwordRequirementLabel
+    - TextField firstNameTextField
+    - TextField emailTextField
+    - PasswordField passwordTextField
+    - PasswordField retypePasswordTextField
+    - Button createAccountButton
+    - Button returnButton
+    - AppManager appManager
+    - String userName
+    - String email
+    - String password
+    - String confirmPassword
+
+    + void setAppManager(AppManager appManager)
+    + void initialize(URL url, ResourceBundle resourceBundle)
+    - boolean validateUserInfo(String userName, String email, String password1, String password2)
+    - boolean isValidPassword(String password)
+    - boolean isPasswordIdentical(String password, String confirmPassword)
+    - boolean isEmailValid(String email)
+    - boolean isUserNameValid(String userName)
+
+}
+class FavoritesController {
+    - Label dishOne
+    - Label dishTwo
+    - Label dishThree
+    - Label dishFour
+    - Label dishFive
+    - Label dishSix
+    - Label dishSeven
+    - Label dishEight
+    - Label dishNine
+
+    - ImageView dishOneImg
+    - ImageView dishTwoImg
+    - ImageView dishThreeImg
+    - ImageView dishFourImg
+    - ImageView dishFiveImg
+    - ImageView dishSixImg
+    - ImageView dishSevenImg
+    - ImageView dishEightImg
+    - ImageView dishNineImg
+
+    - Button returnButton
+    - Button prevButton
+    - Button nextButton
+
+    - AppManager appManager
+    - List~Dish~ favoriteDishes
+    - List~ImageView~ views
+    - List~Label~ labels
+    - int currentPage
+    - int resultPerPage
+
+    + void setAppManager(AppManager appManager)
+    + void initialize(URL url, ResourceBundle resourceBundle)
+    - void showFavoritesResult()
+    - void addViewsToList()
+    - void labelsToList()
+    - void showRecipe(int index)
+    - void updatePage()
+}
+class FridgeController {
+    - Button addToFridgeButton
+    - Button returnButton
+    - Button searchButton
+    - Button searchDishesButton
+    - Button removeButton
+    - Label searchLabel
+    - Label removeListIsEmpty
+    - ImageView searchImage
+    - TextField searchText
+    - ComboBox~Ingredient~ comboBox
+
+    - ImageView fridge1_1
+    - ImageView fridge1_2
+    - ImageView fridge1_3
+    - ImageView fridge1_4
+    - ImageView fridge1_5
+    - ImageView fridge2_1
+    - ImageView fridge2_2
+    - ImageView fridge2_3
+    - ImageView fridge2_4
+    - ImageView fridge2_5
+    - ImageView fridge3_1
+    - ImageView fridge3_2
+    - ImageView fridge3_3
+    - ImageView fridge3_4
+    - ImageView fridge3_5
+
+    - AppManager appManager
+    - Account account
+    - Ingredient ingredient
+    - List~Ingredient~ ingredientList
+    - List~Ingredient~ userFridge
+    - List~ImageView~ fridgeDisplay
+
+    + void setAppManager(AppManager appManager)
+    + void initialize(URL url, ResourceBundle resourceBundle)
+    - void removeIngredientFromFridge()
+    - void updateComboBox()
+    - void updateFridgeDisplay()
+    - void searchForIngredient()
+    - void addIngredientsToFridge()
+    - void addViewsToList()
+}
+class LoginController {
+    - Button loginButton
+    - Button exitButton
+    - Label createAccountLabel
+    - Label accountCreatedLabel
+    - PasswordField passwordField
+    - TextField emailTextField
+    - Label loginErrorLabel
+
+    - AppManager appManager
+    - String email
+    - String password
+
+    + void setAppManager(AppManager appManager)
+    - void login(String email, String password)
+    + void initialize(URL url, ResourceBundle resourceBundle)
+}
+class MainMenuController {
+    - Button searchButton
+    - Button favoriteDishButton
+    - Button fridgeButton
+    - Button returnButton
+    - Label welcomeLabel
+
+    - AppManager appManager
+
+    + void setAppManager(AppManager appManager)
+    + void initialize(URL url, ResourceBundle resourceBundle)
+}
+class RecipeController {
+    - Button returnButton
+    - Button addToFavoriteButton
+    - Label recipeNameLabel
+    - Label timeLabel
+    - Label servingsLabel
+    - Label ingredientLabel
+    - Label isVeganLabel
+    - Label favoriteConfirmLabel
+    - ListView ingredientView
+    - TextArea textArea
+    - ImageView recipeImage
+
+    - AppManager appManager
+    - String instructions
+    - Recipe recipe
+
+    + void setAppManager(AppManager appManager)
+    + void initialize(URL url, ResourceBundle resourceBundle)
+    - void addToFavorites()
+    - void setListView()
+    - void loadRecipe()
+}
+class ResultController {
+    - Label dishOne
+    - Label dishTwo
+    - Label dishThree
+    - Label dishFour
+    - Label dishFive
+    - Label dishSix
+    - Label dishSeven
+    - Label dishEight
+    - Label dishNine
+
+    - ImageView dishOneImg
+    - ImageView dishTwoImg
+    - ImageView dishThreeImg
+    - ImageView dishFourImg
+    - ImageView dishFiveImg
+    - ImageView dishSixImg
+    - ImageView dishSevenImg
+    - ImageView dishEightImg
+    - ImageView dishNineImg
+
+    - Button returnButton
+    - Button prevButton
+    - Button nextButton
+
+    - Label searchParametersLabel
+
+    - AppManager appManager
+    - List<Dish> searchResult
+    - List<ImageView> views
+    - List<Label> labels
+    - int currentPage
+    - final int resultPerPage
+
+    + void setAppManager(AppManager appManager)
+    + void initialize(URL url, ResourceBundle resourceBundle)
+    - void showSearchResult()
+    - void addViewsToList()
+    - void labelsToList()
+    - void showRecipe(int index)
+    - void updatePage()
+}
+class SearchController {
+    - Button searchRecipeButton
+    - CheckBox isVegan
+    - CheckBox isVegetarian
+    - CheckBox isGlutenFree
+    - CheckBox isLactoseFree
+    - ChoiceBox<String> chooseCuisineBox
+    - ChoiceBox<Ingredient> chooseIngredientBox1
+    - ChoiceBox<Ingredient> chooseIngredientBox2
+    - ChoiceBox<Ingredient> chooseIngredientBox3
+    - Button returnButton
+    - Button clearCuisineButton
+    - Button clearIngredientButton1
+    - Button clearIngredientButton2
+    - Button clearIngredientButton3
+
+    - AppManager appManager
+    - String[] cuisines
+    - List<Ingredient> ingredientsInFridge
+    - boolean isUpdatingChoiceBoxes
+
+    + void setAppManager(AppManager appManager)
+    + void initialize(URL url, ResourceBundle resourceBundle)
+    - void clearIngredientChoice(ChoiceBox<Ingredient> box)
+    - void clearCuisineChoice(ChoiceBox<String> box)
+    - void selectedIngredients()
+    - String checkNullChoiceBoxes(ChoiceBox<Ingredient> choiceBox)
+    - void fillChoiceBoxes()
+    - void addListener(ChoiceBox<Ingredient> box)
+    - void updateChoiceBoxes()
+    - void updateChoiceBox(ChoiceBox<Ingredient> box, Ingredient currentIngredient, List<Ingredient> selected)
+}
+
+
+class AppManager {
+    - RecipeManager recipeManager
+    - Account currentUser
+    - SceneNavigator sceneNavigator
+    - Dish selectedDish
+    - DatabaseReader dbReader
+    - DatabaseWriter dbWriter
+    - String searchQuery
+    - String cuisineQuery
+    - String intolerances
+    - boolean isSearchOnlyVegan
+    - boolean isSearchOnlyVegetarian
+    - boolean showRecipeFromFavorites
+    - boolean accountCreated
+
+    + AppManager(SceneNavigator, RecipeManager, Account)
+    + void switchTo(View)
+    + String getIntolerances()
+    + String getCuisineQuery()
+    + String getSearchQuery()
+    + boolean getIsSearchOnlyVegan()
+    + boolean getIsSearchOnlyVegetarian()
+    + void setIntolerances(String)
+    + void setCuisineQuery(String)
+    + void setSearchQuery(String)
+    + void setIsSearchVegan(boolean)
+    + void setIsSearchVegetarian(boolean)
+    + List<Ingredient> searchIngredients(String)
+    + List<Dish> searchRecipesByIngredientList(String, String, boolean, boolean, String)
+    + List<Ingredient> getIngredientsInFridge()
+    + void addIngredientToFridge(Ingredient)
+    + void removeIngredientFromFridge(Ingredient)
+    + void loadFridgeIngredients()
+    + Recipe getFullRecipeDescription(int)
+    + Dish getSelectedDish()
+    + int getSelectedDishId()
+    + void setSelectedRecipe(Dish)
+    + List<Dish> getFavoriteDishesList()
+    + boolean getShowRecipeFromFavorites()
+    + void setShowRecipeFromFavorites(boolean)
+    + void loadFavoriteDishes()
+    + void addToFavoriteDishes(Dish)
+    + void removeFromFavoriteDishes(Dish)
+    + Account getCurrentUser()
+    + void createAccount(String, String, String)
+    + boolean login(String, String)
+    + boolean isEmailInSystem(String)
+    + void setAccountCreated(boolean)
+    + boolean getAccountCreated()
+}
+class RecipeManager {
+    - RecipeApiClient apiClient
+    - RecipeJsonParser jsonParser
+
+    + RecipeManager()
+    + Recipe getFullRecipeDescription(int) throws Exception
+    + List<Dish> getRecipesByIngredients(String, String, boolean, boolean, String) throws Exception
+    + List<Dish> getRecipesByName(String) throws Exception
+    + Dish getDishById(int) throws Exception
+    + List<Dish> getRecipesByCuisine(String) throws Exception
+    + List<Ingredient> getIngredient(String) throws Exception
+    + Ingredient getIngredientById(int) throws Exception
+}
+interface SceneController {
+    + setAppManager(AppManager)
+}
+class SceneNavigator {
+    - Stage stage
+    - AppManager appManager
+    + SceneNavigator(Stage)
+    + void setAppManager(AppManager)
+    + void switchTo(View)
+    - void setController(View, FXMLLoader)
+}
+
+
+
+class Account {
+    - int accountID
+    - String userName
+    - String email
+    - String password
+    - List<Dish> favoriteDishes
+    - List<Ingredient> ingredientsInFridge
+    + Account()
+    + Account(String, String, String, int)
+    + String getUserName()
+    + int getAccountID()
+    + String getEmail()
+    + String getPassword()
+    + void setEmail(String)
+    + void setPassword(String)
+    + List<Dish> getFavoriteDishes()
+    + void addToFavorites(Dish)
+    + void removeFromFavorites(Dish)
+    + void addIngredientToFridge(Ingredient)
+    + void removeIngredientFromFridge(Ingredient)
+    + List<Ingredient> getIngredientsInFridge()
+}
+
+
+class AnalyzedInstruction {
+    - String name
+    - List<InstructionStep> steps
+    + void setName(String)
+    + void setSteps(List<InstructionStep>)
+    + String getName()
+    + List<InstructionStep> getSteps()
+}
+
+
+class Dish {
+    - int id
+    - String title
+    - String image
+    + int getId()
+    + void setId(int)
+    + String getTitle()
+    + void setTitle(String)
+    + String getImageUrl()
+    + void setImage(String)
+    + String toString()
+}
+class ExtendedIngredient {
+    - int id
+    - String original
+    - String name
+    - double amount
+    - String unit
+    + int getId()
+    + void setId(int)
+    + String getOriginal()
+    + void setOriginal(String)
+    + String getName()
+    + void setName(String)
+    + double getAmount()
+    + void setAmount(double)
+    + String getUnit()
+    + void setUnit(String)
+    + String toString()
+}
+class Ingredient {
+    - int id
+    - String name
+    - String image
+    - final String apiURL = "https://spoonacular.com/cdn/ingredients_250x250/"
+    + int getId()
+    + void setId(int)
+    + String getName()
+    + void setName(String)
+    + String getImage()
+    + void setImage(String)
+    + String getApiURL()
+    + String toString()
+}
+class InstructionStep {
+    - int number
+    - String step
+    + int getNumber()
+    + void setNumber(int)
+    + String getStep()
+    + void setStep(String)
+}
+class Recipe {
+    - int id
+    - String title
+    - String image
+    - int readyInMinutes
+    - int servings
+    - boolean vegetarian
+    - boolean vegan
+    - String instructions
+    - List<AnalyzedInstruction> analyzedInstructions
+    - List<ExtendedIngredient> extendedIngredients
+    + void setId(int)
+    + void setTitle(String)
+    + void setImage(String)
+    + void setReadyInMinutes(int)
+    + void setVegetarian(boolean)
+    + void setVegan(boolean)
+    + void setServings(int)
+    + void setInstructions(String)
+    + void setAnalyzedInstructions(List<AnalyzedInstruction>)
+    + void setExtendedIngredients(List<ExtendedIngredient>)
+    + int getId()
+    + String getTitle()
+    + String getImage()
+    + int getReadyInMinutes()
+    + int getServings()
+    + String getInstructions()
+    + boolean IsVegetarian()
+    + boolean isVegan()
+    + List<ExtendedIngredient> getExtendedIngredients()
+    + List<AnalyzedInstruction> getAnalyzedInstructions()
+    + String toString()
+}
+
+
+
+class DatabaseConnector {
+    - Connection conn
+    - Map<String, String> loadEnvFile(String filepath)
+    + void connect()
+}
+
+
+class DatabaseConnector {
+    - conn : Connection
+    - loadEnvFile(filepath : String) : Map<String,String>
+    + connect() : void
+}
+
+class DatabaseReader {
+    + accountLogin(email : String, password : String) : Account
+    + getAccountId(email : String) : int
+    + getAccountName(email : String) : String
+    + getAccountIngredients(accountID : int) : List<Integer>
+    + getAccountFavoriteDishes(accountID : int) : List<Integer>
+    + checkExistingAccount(email : String) : boolean
+    + checkExistingIngredient(ingredientID : int) : boolean
+}
+
+
+class DatabaseWriter {
+    - dbReader : DatabaseReader
+    + createAccount(email : String, accountName : String, password : String) : boolean
+    - createFridgeForAccount(accountID : int) : void
+    + addIngredientToDatabase(ingredient : Ingredient, accountID : int) : void
+    + addDishToFavorites(selectedDish : Dish, accountID : int) : void
+    + removeIngredientFromDatabase(ingredient : Ingredient, accountID : int) : void
+    + removeDishFromFavorites(selectedDish : Dish, accountID : int) : void
+}
+
+class RecipeApiClient {
+    - apiKeyMorten1 : String
+    - apiKeyMorten2 : String
+    - apiKeyJesper1 : String
+    - apiKeyDaniel1 : String
+    - apiKeyToby1 : String
+    - apiKeyInUse : String
+
+    - apiSearchByRecipe : String
+    - apiSearchIngredient : String
+    - getApiSearchIngredientById : String
+    - search : String
+    - recipeMustContainIngredient : String
+    - cuisine : String
+    - onlyVegetarian : String
+    - onlyVegan : String
+    - intolerances : String
+
+    + fetchRecipesByIngredientList(ingredients : String, cuisineType : String, isVegetarian : boolean, isVegan : boolean, intolerancesType : String) : String
+    + fetchFullRecipe(recipeId : int) : String
+    + fetchRecipesByTitle(title : String) : String
+    + fetchIngredientById(ingredientId : int) : String
+    + fetchIngredientByName(name : String) : String
+    + fetchRecipesByCuisine(cuisine : String) : String
+
+    - getResultFromApi(endpoint : String) : String
+}
+
+class RecipeResponse {
+    + getResults() : List<Dish>
+}
+
+class IngredientResponse {
+    + getResults() : List<Ingredient>
+}
+
+class RecipeJsonParser {
+    - gson : Gson
+
+    + parseRecipes(jsonResponse : String) : List<Dish>
+    + parseIngredients(jsonResponse : String) : List<Ingredient>
+    + parseFullRecipeDescription(jsonResponse : String) : Recipe
+    + parseIngredientById(jsonResponse : String) : Ingredient
+    + parseDishById(jsonResponse : String) : Dish
+}
+
+class RecipeResponse {
+    - results : List<Dish>
+    + getResults() : List<Dish>
+    + setResults(results : List<Dish>)
+}
+
+class IngredientResponse {
+    - results : List<Ingredient>
+    + getResults() : List<Ingredient>
+    + setResults(results : List<Ingredient>)
+}
+
+
+class CreateAccountView {}
+class FavoritesView {}
+class FridgeView {}
+class LoginView {}
+class MainMenuView {}
+class RecipeView {}
+class ResultView {}
+class SearchView {}
+
+
+class FridgeChefApp {
++ static void main(String[] args)
++ void start(Stage stage)
+}
+
+
+
+
+
+FridgeChefApp *-- AppManager
+AppManager *-- SceneNavigator
+AppManager *-- RecipeManager
+AppManager *-- Account
+
+RecipeManager *-- RecipeJsonParser
+
+RecipeJsonParser *-- RecipeApiClient
+RecipeJsonParser *-- RecipeResponse
+RecipeResponse *-- Dish
+Recipe --* RecipeJsonParser
+
+IngredientResponse *-- Ingredient
+
+RecipeController -* RecipeView
+RecipeController --* AppManager
+SceneController <|.. RecipeController
+
+SceneController <|.. LoginController
+LoginView *- LoginController
+LoginController --* AppManager
+
+SceneController <|.. CreateAccountController
+CreateAccountView *- CreateAccountController
+
+SceneController <|.. MainMenuController
+MainMenuView *- MainMenuController
+MainMenuController --* AppManager
+
+SceneController <|.. SearchController
+SearchView *- SearchController
+SearchController --* AppManager
+
+SceneController <|.. ResultController
+ResultView *- ResultController
+ResultController --* AppManager
+
+SceneController <|.. FridgeController
+FridgeView *- FridgeController
+FridgeController --* AppManager
+
+SceneController <|.. FavoritesController
+FavoritesView *- FavoritesController
+FavoritesController --* AppManager
+
+DatabaseConnector <|-- DatabaseWriter
+DatabaseConnector <|-- DatabaseReader
+DatabaseConnector -* AppManager
+
+
+RecipeJsonParser *- Ingredient
+RecipeJsonParser *- IngredientResponse
+RecipeJsonParser *-- ExtendedIngredient
+RecipeJsonParser *-- AnalyzedInstruction
+RecipeJsonParser *-- InstructionStep
+
+}
+
+
+
+@enduml
