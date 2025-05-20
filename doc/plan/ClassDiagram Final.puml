@@ -476,11 +476,6 @@ class DatabaseWriter {
 }
 
 class RecipeApiClient {
-    - apiKeyMorten1 : String
-    - apiKeyMorten2 : String
-    - apiKeyJesper1 : String
-    - apiKeyDaniel1 : String
-    - apiKeyToby1 : String
     - apiKeyInUse : String
 
     - apiSearchByRecipe : String
@@ -549,7 +544,9 @@ class FridgeChefApp {
 + void start(Stage stage)
 }
 
-
+class ApiKeyReader {
++ String loadApiKey(String apiKeyName)
+}
 
 
 
@@ -559,6 +556,8 @@ AppManager *-- RecipeManager
 AppManager *-- Account
 
 RecipeManager *-- RecipeJsonParser
+
+RecipeApiClient *-- ApiKeyReader
 
 RecipeJsonParser *-- RecipeApiClient
 RecipeJsonParser *-- RecipeResponse
