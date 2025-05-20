@@ -24,21 +24,21 @@
 
 - JavaFX til GUI
 
+- MySQL via Aiven
+
 - Spoonacular API til opskriftsdata
 
-- JUnit til test
+- JUnit5 til test
 
 ---
 
 ## 🏗️ Arkitektur og design
+Projektet anvender Facade Design Pattern med AppManager som central facade, der håndterer data og kommunikation mellem UI og API.
 
-- AppManager: Central logikklasse, der håndterer data og kommunikation mellem UI og API.
-
-- SceneNavigator: Skifter mellem forskellige views i JavaFX.
-
-- Model: Klasser som Account, Dish, Ingredient der repræsenterer data.
-
-- Controller: Styrer brugerinteraktion og opdaterer views.
+- AppManager: Facadeklasse, der styrer hovedlogik og koordinerer appens funktioner.,
+- SceneNavigator: Ansvarlig for navigation mellem views i JavaFX.,
+- Model: Datarepræsentation via klasser som Account, Dish og Ingredient.,
+- Controller: Håndterer brugerinteraktion og opdaterer UI baseret på modellens data.
 
 ---
 
