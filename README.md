@@ -39,7 +39,7 @@ Projektet anvender Facade Design Pattern med AppManager som central facade, der 
 - SceneNavigator: Ansvarlig for navigation mellem views i JavaFX.,
 - Model: Datarepræsentation via klasser som Account, Dish og Ingredient.,
 - Controller: Håndterer brugerinteraktion og opdaterer UI baseret på modellens data.
-
+- Account implementerer Singleton Design Pattern for at sikre én instans af en brugers lister. Dette forbedrer data-konsistens og forenkler interaktion med databasen.
 ---
 
 ## 🚀 Kom godt i gang
