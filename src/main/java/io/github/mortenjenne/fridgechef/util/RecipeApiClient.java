@@ -8,7 +8,7 @@ import java.net.URL;
 public class RecipeApiClient {
     ApiKeyReader apiKeyReader = new ApiKeyReader();
     //apiKeyMorten1, apiKeyMorten2, apiKeyJesper1, apiKeyDaniel1, apiKeyToby1;
-    private final String apiKeyInUse = apiKeyReader.loadApiKeys("apiKeyJesper1");
+    private final String apiKeyInUse = apiKeyReader.loadApiKeys("apiKeyMorten1");
 
     private final String apiSearchByRecipe = "https://api.spoonacular.com/recipes/complexSearch";
     private final String apiSearchIngredient = "https://api.spoonacular.com/food/ingredients/search";
