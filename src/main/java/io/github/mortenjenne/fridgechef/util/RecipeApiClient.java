@@ -6,14 +6,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class RecipeApiClient {
-
-    private final String apiKeyMorten1 = "547b0ab94e70406cad3689918b802f3a";
-    private final String apiKeyMorten2 = "e46029883b574497bbdc4df0b9806361";
-    private final String apiKeyJesper1 = "4523e62af8d1441a889954ececef6c9a";
-    private final String apiKeyDaniel1 = "d4f793953bf14d308de5180683e9a387";
-    private final String apiKeyToby1 = "757341ceb29e45e78e97f4bb4d1a8776";
-
-    private final String apiKeyInUse = apiKeyJesper1;
+    ApiKeyReader apiKeyReader = new ApiKeyReader();
+    //apiKeyMorten1, apiKeyMorten2, apiKeyJesper1, apiKeyDaniel1, apiKeyToby1;
+    private final String apiKeyInUse = apiKeyReader.loadApiKeys("apiKeyJesper1");
 
     private final String apiSearchByRecipe = "https://api.spoonacular.com/recipes/complexSearch";
     private final String apiSearchIngredient = "https://api.spoonacular.com/food/ingredients/search";
