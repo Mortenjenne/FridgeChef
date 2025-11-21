@@ -12,25 +12,29 @@ public class DatabaseWriter extends DatabaseConnector{
         String sql = "INSERT INTO accounts (email, accountName, password) values (?, ?, ?)";
 
         if (dbReader.checkExistingAccount(email)) {
+            closeConnection();
             return false;
         } else {
-            try {
-                PreparedStatement stm = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            try (PreparedStatement stm = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 stm.setString(1, email);
                 stm.setString(2, accountName);
                 stm.setString(3, password);
                 int rowsUpdated = stm.executeUpdate();
 
                 if (rowsUpdated > 0) {
-                    ResultSet generatedKeys = stm.getGeneratedKeys();
-                    if (generatedKeys.next()){
-                        int accountID = generatedKeys.getInt(1);
-                        //System.out.println("Generated account ID: " + accountID);
-                        return true;
+                    try (ResultSet generatedKeys = stm.getGeneratedKeys()){
+                        if (generatedKeys.next()){
+                            int accountID = generatedKeys.getInt(1);
+                            // Optionally create a fridge for the new account
+                            createFridgeForAccount(accountID);
+                            return true;
+                        }
                     }
                 }
             } catch (SQLException e) {
                 System.out.println(e);
+            } finally {
+                closeConnection();
             }
         }
         return false;
@@ -39,12 +43,20 @@ public class DatabaseWriter extends DatabaseConnector{
     private void createFridgeForAccount(int accountID) {
         String sql = "INSERT INTO fridges (accountID) VALUES (?)";
 
-        try {
-            PreparedStatement stm = conn.prepareStatement(sql);
+        // This method assumes a connection is open when called
+        boolean createdHere = false;
+        if (conn == null) {
+            connect();
+            createdHere = true;
+        }
+
+        try (PreparedStatement stm = conn.prepareStatement(sql)) {
             stm.setInt(1,accountID);
             stm.executeUpdate();
-        }catch (SQLException e){
+        } catch (SQLException e){
             System.out.println(e);
+        } finally {
+            if (createdHere) closeConnection();
         }
     }
 
@@ -55,13 +67,14 @@ public class DatabaseWriter extends DatabaseConnector{
 
         String sql = "INSERT INTO account_ingredients (accountID, ingredientID) VALUES (?,?)";
 
-        try{
-            PreparedStatement stm = conn.prepareStatement(sql);
+        try (PreparedStatement stm = conn.prepareStatement(sql)){
             stm.setInt(1,accountID);
             stm.setInt(2,ingredientID);
             stm.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
+        } finally {
+            closeConnection();
         }
     }
 
@@ -79,6 +92,8 @@ public class DatabaseWriter extends DatabaseConnector{
             stm.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
+        } finally {
+            closeConnection();
         }
     }
 
@@ -96,6 +111,8 @@ public class DatabaseWriter extends DatabaseConnector{
             stm.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
+        } finally {
+            closeConnection();
         }
     }
 
@@ -113,6 +130,8 @@ public class DatabaseWriter extends DatabaseConnector{
             stm.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
+        } finally {
+            closeConnection();
         }
     }
 }
